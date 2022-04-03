@@ -150,155 +150,77 @@
 
                 <div id="main">
                      
-<div class="categories-tags">
+<link rel="stylesheet" href="/css/post-body.css">
+<div class="article">
+    <div>
+        <h1>Css Grid 布局 </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <a-icon type="calendar" theme="filled" />
+            </span>
+            2022/4/3
+        </span>
+
+        
+        <span class="category">
+            <a href="/categories/学习笔记">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" />
+                </span>
+                学习笔记
+            </a>
+        </span>
+        
+
+        
+
+        <span class="tags">
+            <span class="icon">
+                <a-icon type="tags" theme="filled" />
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/前端" style=color:#03a9f4>
+                    前端
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/CSS" style=color:#ff7d73>
+                    CSS
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+
+    <div class="content" v-pre>
+        <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p><code>Grid</code> 布局即网格布局，是一种新的 <code>CSS</code> 布局模型，比较擅长将一个页面划分为几个主要区域，以及定义这些区域的大小、位置、层次等关系。号称是最强大的的 <code>CSS</code> 布局方案，是目前唯一一种 <code>CSS</code> 二维布局。</p>
+<span id="more"></span>
+<h3 id="Flex-和-Grid-的区别"><a href="#Flex-和-Grid-的区别" class="headerlink" title="Flex 和 Grid 的区别"></a>Flex 和 Grid 的区别</h3><p><code>Flex</code> 为 一维布局 弹性布局<br><code>Grid</code> 为 二维布局 网格布局</p>
+<h3 id="关于-Flex"><a href="#关于-Flex" class="headerlink" title="关于 Flex"></a>关于 Flex</h3><h4 id="Flex-的使用"><a href="#Flex-的使用" class="headerlink" title="Flex 的使用"></a>Flex 的使用</h4><pre><code class="css">    div&#123;
+        display: flex;
+    &#125;
+</code></pre>
+<h3 id="关于-Grid"><a href="#关于-Grid" class="headerlink" title="关于 Grid"></a>关于 Grid</h3><h4 id="Grid-的使用"><a href="#Grid-的使用" class="headerlink" title="Grid 的使用"></a>Grid 的使用</h4><pre><code class="css">    div&#123;
+        display: grid;
+    &#125;
+</code></pre>
+
+    </div>
+
     
-    <div class="all-s">
-        
-        
-        <span>
-            <a href="/tags/算法/" style=background:#03a9f4>
-                <span class="icon">
-                    <a-icon type="tag" theme="filled" />
-                </span>
-                算法
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/tags/前端/" style='background:linear-gradient(120deg, #9abbf7 0%, #ffbbf4 100%)'>
-                <span class="icon">
-                    <a-icon type="tag" theme="filled" />
-                </span>
-                前端
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/tags/CSS/" style=background:#00bcd4>
-                <span class="icon">
-                    <a-icon type="tag" theme="filled" />
-                </span>
-                CSS
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/tags/ts/" style=background:#00a596>
-                <span class="icon">
-                    <a-icon type="tag" theme="filled" />
-                </span>
-                ts
-            </a>
-        </span>
-        
-        
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <div id="comment">
+        <div id="gitalk-container">
+        </div>
     </div>
-    <div id="archives">
-        
-        <a-timeline>
-            <a-timeline-item color="#a5c2f5">
-                <a-card hoverable>
-                    <div class="item-time">2021/7/5</div>
-                    <a href="/2021/07/05/algorithm-dataStructure/">
-                        <h3>算法 数据结构</h3>
-                    </a>
-                    <div class="info">
-                        
-                        <span class="category">
-                            <a href="/categories/学习笔记">
-                                <span class="icon">
-                                    <a-icon type="book" theme="filled" />
-                                </span>
-                                学习笔记
-                            </a>
-                        </span>
-                        
-
-                        
-                        <span class="tags">
-                            <span class="icon">
-                                <a-icon type="tags" theme="filled" />
-                            </span>
-                            
-                            <span class="tag">
-                                
-                                <a href="/tags/算法" style=color:#00a596>
-                                    算法
-                                </a>
-                            </span>
-                            
-                            <span class="tag">
-                                
-                                <a href="/tags/前端" style=color:#00bcd4>
-                                    前端
-                                </a>
-                            </span>
-                            
-                        </span>
-                        
-                    </div>
-                </a-card>
-            </a-timeline-item>
-        </a-timeline>
-        
-        <a-timeline>
-            <a-timeline-item color="#a5c2f5">
-                <a-card hoverable>
-                    <div class="item-time">2022/4/3</div>
-                    <a href="/2022/04/03/grid/">
-                        <h3>Css Grid 布局</h3>
-                    </a>
-                    <div class="info">
-                        
-                        <span class="category">
-                            <a href="/categories/学习笔记">
-                                <span class="icon">
-                                    <a-icon type="book" theme="filled" />
-                                </span>
-                                学习笔记
-                            </a>
-                        </span>
-                        
-
-                        
-                        <span class="tags">
-                            <span class="icon">
-                                <a-icon type="tags" theme="filled" />
-                            </span>
-                            
-                            <span class="tag">
-                                
-                                <a href="/tags/前端" style=color:#ffa2c4>
-                                    前端
-                                </a>
-                            </span>
-                            
-                            <span class="tag">
-                                
-                                <a href="/tags/CSS" style=color:#00a596>
-                                    CSS
-                                </a>
-                            </span>
-                            
-                        </span>
-                        
-                    </div>
-                </a-card>
-            </a-timeline-item>
-        </a-timeline>
-        
-    </div>
-    <script>
-        new Vue({
-            el: '#archives'
-        })
-    </script>
+    
 </div>
                      
 <footer id="footer">
@@ -360,6 +282,21 @@
             }
         }
     })
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: '',
+        clientSecret: '',
+        repo: 'Gregory-wyg.github.io',      // The repository of store comments,
+        owner: 'Gregory-wyg',
+        admin: ['Gregory-wyg'],
+        language: 'cn',
+        id: location.pathname,      // Ensure uniqueness and length less than 50
+        distractionFreeMode: true  // Facebook-like distraction free mode
+    })
+    gitalk.render('gitalk-container')
 </script>
 
 </body>
