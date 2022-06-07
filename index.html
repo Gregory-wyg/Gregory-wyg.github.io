@@ -9,7 +9,7 @@
     <meta name="author" content="Gregory Wu">
     <meta name="description" content=" ">
     <meta name="keywords" content=" ">
-    <link rel="icon" href="/images/gregory.png">
+    <link rel="icon" href="/images/gregory.jpg">
     <link rel="stylesheet" href="/css/antd.min.css">
     <link rel="stylesheet" href="/css/icon-font.css">
     
@@ -181,9 +181,9 @@
 
 <div class="post">
 
-    <a href="/2022/04/03/grid/">
+    <a href="/2022/03/12/Javascript 使用Prettier-Husky强制格式化代码/">
         <h2>
-            Css Grid 布局
+            使用Prettier+Husky强制格式化代码
         </h2>
     </a>
 
@@ -203,7 +203,7 @@
             <span class="icon">
                 <a-icon type="calendar" theme="filled" />
             </span>
-            2022/4/3
+            2022/3/12
         </span>
 
     </div>
@@ -211,7 +211,78 @@
     <div class="excerpt">
         <div class="content" v-pre>
             
-            <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p><code>Grid</code> 布局即网格布局，是一种新的 <code>CSS</code> 布局模型，比较擅长将一个页面划分为几个主要区域，以及定义这些区域的大小、位置、层次等关系。号称是最强大的的 <code>CSS</code> 布局方案，是目前唯一一种 <code>CSS</code> 二维布局。</p>
+            <h4 id="一、格式化痛点"><a href="#一、格式化痛点" class="headerlink" title="一、格式化痛点"></a>一、格式化痛点</h4><p>虽然我们团队制定了代码规范，但是平时大家写代码的时候还是各有各的风格，遇上紧急的需求或者bug，规范基本是没有的。</p>
+<p>而且目前团队不建议使用编辑器自带的格式化插件，所以多人开发的项目通常是越来越乱。</p>
+<p>关于代码格式化的插件，大家不喜欢的原因是，</p>
+<p>第一，团队有人用<code>WebStorm</code>，有人用<code>VScode</code>，格式化风格可能不一样；</p>
+<p>第二，例如<code>VScode</code>的插件<code>Prettier</code>和<code>Vetur</code>，它们都有格式化的功能，可能会有冲突；</p>
+<p>第三，有时格式化后的代码很奇怪，例如下面这种，总之就是看着不舒服。</p>
+            
+            
+        </div>
+    </div>
+
+    <div class="post-tags">
+        
+        <span class="icon">
+            <a-icon type="tags" theme="filled" />
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/前端" style=color:#00bcd4>
+                前端
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/JavaScript" style=color:#ffa2c4>
+                JavaScript
+            </a>
+        </span>
+        
+    </div>
+
+    <a href="/2022/03/12/Javascript 使用Prettier-Husky强制格式化代码/ " class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+
+    <a href="/2022/03/01/Vue vue使用防抖函数时出现的this丢失问题/">
+        <h2>
+            vue使用防抖函数时出现的this丢失问题
+        </h2>
+    </a>
+
+    <div class="category-and-date">
+
+        
+        <span class="category">
+            <a href="/categories/学习笔记">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" /></span>
+                学习笔记
+            </a>
+        </span>
+        
+
+        <span class="date">
+            <span class="icon">
+                <a-icon type="calendar" theme="filled" />
+            </span>
+            2022/3/1
+        </span>
+
+    </div>
+
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <p>接到一个需求，滚动一次鼠标，改变时间轴刻度。因为鼠标滚动一次会触发多次滚动事件，为了节约性能，就想到使用防抖。</p>
             
             
         </div>
@@ -233,150 +304,595 @@
         
         <span class="tag">
             
-            <a href="/tags/CSS" style=color:#00bcd4>
+            <a href="/tags/Vue" style=color:#00a596>
+                Vue
+            </a>
+        </span>
+        
+    </div>
+
+    <a href="/2022/03/01/Vue vue使用防抖函数时出现的this丢失问题/ " class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+
+    <a href="/2021/11/07/Javascript Json.stringify九个特征/">
+        <h2>
+            Json.stringify九个特征
+        </h2>
+    </a>
+
+    <div class="category-and-date">
+
+        
+
+        <span class="date">
+            <span class="icon">
+                <a-icon type="calendar" theme="filled" />
+            </span>
+            2021/11/7
+        </span>
+
+    </div>
+
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h4 id="特性一"><a href="#特性一" class="headerlink" title="特性一"></a>特性一</h4><p><code>undefined</code>、任意的函数以及<code>symbol</code>值，出现在非数组对象的属性值中时在序列化过程中会被忽略<br><code>undefined</code>、任意的函数以及<code>symbol</code>值出现在数组中时会被转换成 <code>null</code><br><code>undefined</code>、任意的函数以及<code>symbol</code>值被单独转换时，会返回 <code>undefined</code></p>
+            
+            
+        </div>
+    </div>
+
+    <div class="post-tags">
+        
+        <span class="icon">
+            <a-icon type="tags" theme="filled" />
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/前端" style=color:#ff7d73>
+                前端
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/JavaScript" style=color:#ff7d73>
+                JavaScript
+            </a>
+        </span>
+        
+    </div>
+
+    <a href="/2021/11/07/Javascript Json.stringify九个特征/ " class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+
+    <a href="/2021/11/02/CSS css实现渐变色边框的3种方法/">
+        <h2>
+            css实现渐变色边框的3种方法
+        </h2>
+    </a>
+
+    <div class="category-and-date">
+
+        
+        <span class="category">
+            <a href="/categories/技术分享">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" /></span>
+                技术分享
+            </a>
+        </span>
+        
+
+        <span class="date">
+            <span class="icon">
+                <a-icon type="calendar" theme="filled" />
+            </span>
+            2021/11/2
+        </span>
+
+    </div>
+
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h4 id="使用-border-image"><a href="#使用-border-image" class="headerlink" title="使用 border-image"></a>使用 border-image</h4><p>CSS 提供了 <code>border-image</code> 属性用于给 <code>border</code> 绘制复杂图样，与 <code>background-image</code> 类似，我们可以在 <code>border</code> 中展示 <code>image</code> 和 <code>linear-gradient</code>。</p>
+<p>通过 <code>border-image</code> 设置渐变色 <code>border</code> 是最简单的方法，只需要两行代码：</p>
+<pre><code class="css">div &#123;
+  border: 4px solid;
+  border-image: linear-gradient(to right, #8f41e9, #578aef) 1;
+&#125;
+ 
+/* 或者 */
+div &#123;
+  border: 4px solid;
+  border-image-source: linear-gradient(to right, #8f41e9, #578aef);
+  border-image-slice: 1;
+&#125;
+</code></pre>
+<p>这种方式虽然简单但有个明显的缺陷，不支持设置 <code>border-radius</code>。接下来会介绍几种支持 <code>border-radius</code> 的方法。</p>
+            
+            
+        </div>
+    </div>
+
+    <div class="post-tags">
+        
+        <span class="icon">
+            <a-icon type="tags" theme="filled" />
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/CSS" style=color:#00a596>
                 CSS
             </a>
         </span>
         
-    </div>
-
-    <a href="/2022/04/03/grid/ " class="go-post">
-        阅读全文
-    </a>
-</div>
-
-<div class="post">
-
-    <a href="/2021/07/06/algorithm-dynamicProgramming/">
-        <h2>
-            算法 动态规划
-        </h2>
-    </a>
-
-    <div class="category-and-date">
-
-        
-        <span class="category">
-            <a href="/categories/学习笔记">
-                <span class="icon">
-                    <a-icon type="book" theme="filled" /></span>
-                学习笔记
-            </a>
-        </span>
-        
-
-        <span class="date">
-            <span class="icon">
-                <a-icon type="calendar" theme="filled" />
-            </span>
-            2021/7/6
-        </span>
-
-    </div>
-
-    <div class="excerpt">
-        <div class="content" v-pre>
-            
-            <h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><p>动态规划不是魔法，它也是通过暴力方法尝试答案，只是方式更加 “聪明”，使得实际上时间复杂度并不高。</p>
-<h3 id="动态规划与暴力、回溯算法的区别"><a href="#动态规划与暴力、回溯算法的区别" class="headerlink" title="动态规划与暴力、回溯算法的区别"></a>动态规划与暴力、回溯算法的区别</h3><p>上面这句话也说明了，所有动态规划问题都能通过暴力方法解决！是的，所有最优解问题都可以通过暴力方法尝试（以及回溯算法），最终找出最优的那个。<br>暴力算法几乎可以解决一切问题。回溯算法的特点是，通过暴力尝试不同分支，最终选择结果最优的线路。<br>而动态规划也有分支概念，但不用把每条分支尝试到终点，而是在走到分叉路口时，可以直接根据前面各分支的表现，直接推导出下一步的最优解！然而无论是直接推导，还是前面各分支判断，都是有条件的。动态规划可解问题需同时满足以下三个特点：</p>
-<p>1.存在最优子结构。<br>2.存在重复子问题。<br>3.无后效性。</p>
-            
-            
-        </div>
-    </div>
-
-    <div class="post-tags">
-        
-        <span class="icon">
-            <a-icon type="tags" theme="filled" />
-        </span>
-        
-        
         <span class="tag">
             
-            <a href="/tags/算法" style=color:#ffa2c4>
-                算法
-            </a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/ts" style=color:#00bcd4>
-                ts
-            </a>
-        </span>
-        
-    </div>
-
-    <a href="/2021/07/06/algorithm-dynamicProgramming/ " class="go-post">
-        阅读全文
-    </a>
-</div>
-
-<div class="post">
-
-    <a href="/2021/07/05/algorithm-dataStructure/">
-        <h2>
-            算法 数据结构
-        </h2>
-    </a>
-
-    <div class="category-and-date">
-
-        
-        <span class="category">
-            <a href="/categories/学习笔记">
-                <span class="icon">
-                    <a-icon type="book" theme="filled" /></span>
-                学习笔记
-            </a>
-        </span>
-        
-
-        <span class="date">
-            <span class="icon">
-                <a-icon type="calendar" theme="filled" />
-            </span>
-            2021/7/5
-        </span>
-
-    </div>
-
-    <div class="excerpt">
-        <div class="content" v-pre>
-            
-            <h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><p><img src="/images/algorithm-dataStructure/1.png" alt="1"></p>
-<p>数组非常常用，它是一块连续的内存空间，因此可以根据下标直接访问，其查找效率为 O(1)。</p>
-<p>但数组的插入、删除效率较低，只有 O(n)，原因是为了保持数组的连续性，必须在插入或删除后对数组进行一些操作：比如插入第 K 个元素，需要将后面元素后移；而删除第 K 个元素，需要将后面元素前移。</p>
-            
-            
-        </div>
-    </div>
-
-    <div class="post-tags">
-        
-        <span class="icon">
-            <a-icon type="tags" theme="filled" />
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/算法" style=color:#00a596>
-                算法
-            </a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/前端" style=color:#00a596>
+            <a href="/tags/前端" style=color:#ffa2c4>
                 前端
             </a>
         </span>
         
     </div>
 
-    <a href="/2021/07/05/algorithm-dataStructure/ " class="go-post">
+    <a href="/2021/11/02/CSS css实现渐变色边框的3种方法/ " class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+
+    <a href="/2021/10/01/CSS 实现头像与国旗的融合/">
+        <h2>
+            头像与国旗的融合
+        </h2>
+    </a>
+
+    <div class="category-and-date">
+
+        
+        <span class="category">
+            <a href="/categories/技术分享">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" /></span>
+                技术分享
+            </a>
+        </span>
+        
+
+        <span class="date">
+            <span class="icon">
+                <a-icon type="calendar" theme="filled" />
+            </span>
+            2021/10/1
+        </span>
+
+    </div>
+
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <p>到国庆，大家都急着给祖国母亲庆生。</p>
+<p>每年每到此时，微信朋友圈就会流行起给头像装饰上国旗，而今年又流行这款：<br><img src="/images/实现头像与国旗的融合/1.jpg" style="margin:0;"/></p>
+<p>那么，将一张国旗图片与我们的头像，快速得到想要的头像，使用 CSS 如何简单实现呢？</p>
+<p>有人认为是改变其中一张图的透明度，实际上不是的。仔细观察合成后的头像，最左边的基本上只能看到红旗看不到原本的头像内容，而最右边基本只能看到头像而不再显示红旗的红色背景。</p>
+            
+            
+        </div>
+    </div>
+
+    <div class="post-tags">
+        
+        <span class="icon">
+            <a-icon type="tags" theme="filled" />
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/CSS" style=color:#00a596>
+                CSS
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/前端" style=color:#03a9f4>
+                前端
+            </a>
+        </span>
+        
+    </div>
+
+    <a href="/2021/10/01/CSS 实现头像与国旗的融合/ " class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+
+    <a href="/2021/08/12/ES6 ES6以上新特性/">
+        <h2>
+            ES6以上新特性
+        </h2>
+    </a>
+
+    <div class="category-and-date">
+
+        
+        <span class="category">
+            <a href="/categories/学习笔记">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" /></span>
+                学习笔记
+            </a>
+        </span>
+        
+
+        <span class="date">
+            <span class="icon">
+                <a-icon type="calendar" theme="filled" />
+            </span>
+            2021/8/12
+        </span>
+
+    </div>
+
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h4 id="ES7新特性"><a href="#ES7新特性" class="headerlink" title="ES7新特性"></a>ES7新特性</h4><h5 id="1-Array-prototype-includes-方法"><a href="#1-Array-prototype-includes-方法" class="headerlink" title="1.Array.prototype.includes()方法"></a>1.Array.prototype.includes()方法</h5><p>在 <code>ES6</code> 中我们有 <code>String.prototype.includes()</code> 可以查询给定字符串是否包含一个字符，而在 <code>ES7</code> 中，我们在数组中也可以用 <code>Array.prototype.includes</code> 方法来判断一个数组是否包含一个指定的值，根据情况，如果包含则返回<code>true</code>，否则返回<code>false</code>。</p>
+            
+            
+        </div>
+    </div>
+
+    <div class="post-tags">
+        
+        <span class="icon">
+            <a-icon type="tags" theme="filled" />
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/前端" style=color:#03a9f4>
+                前端
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/JavaScript" style=color:#ffa2c4>
+                JavaScript
+            </a>
+        </span>
+        
+    </div>
+
+    <a href="/2021/08/12/ES6 ES6以上新特性/ " class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+
+    <a href="/2021/07/12/ES6 Map-方法的基本使用/">
+        <h2>
+            Map()方法的基本使用
+        </h2>
+    </a>
+
+    <div class="category-and-date">
+
+        
+        <span class="category">
+            <a href="/categories/学习笔记">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" /></span>
+                学习笔记
+            </a>
+        </span>
+        
+
+        <span class="date">
+            <span class="icon">
+                <a-icon type="calendar" theme="filled" />
+            </span>
+            2021/7/12
+        </span>
+
+    </div>
+
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <p><code>JavaScript</code> 的对象（<code>Object</code>），本质上是键值对的集合（<code>Hash</code> 结构），但是传统上只能用字符串当作键。这给它的使用带来了很大的限制。</p>
+<pre><code class="javascript">const data = &#123;&#125;;
+const element = document.getElementById(&#39;myDiv&#39;);
+ 
+data[element] = &#39;metadata&#39;;
+data[&#39;[object HTMLDivElement]&#39;] // &quot;metadata&quot;
+</code></pre>
+<p>上面代码原意是将一个 <code>DOM</code> 节点作为对象<code>data</code>的键，但是由于对象只接受字符串作为键名，所以<code>element</code>被自动转为字符串<code>[object HTMLDivElement]</code>。</p>
+<h4 id="什么是Map"><a href="#什么是Map" class="headerlink" title="什么是Map"></a>什么是Map</h4><p>为了解决这个问题，<code>ES6</code> 提供了 <code>Map</code> 数据结构。它类似于对象，也是键值对的集合，但是“键”的范围不限于字符串，各种类型的值（包括对象）都可以当作键。<br>也就是说，<code>Object</code> 结构提供了“字符串—值”的对应，<code>Map</code> 结构提供了“值—值”的对应，是一种更完善的 <code>Hash</code> 结构实现。<br>如果你需要“键值对”的数据结构，<code>Map</code> 比 <code>Object</code> 更合适。</p>
+            
+            
+        </div>
+    </div>
+
+    <div class="post-tags">
+        
+        <span class="icon">
+            <a-icon type="tags" theme="filled" />
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/前端" style=color:#03a9f4>
+                前端
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/JavaScript" style=color:#ffa2c4>
+                JavaScript
+            </a>
+        </span>
+        
+    </div>
+
+    <a href="/2021/07/12/ES6 Map-方法的基本使用/ " class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+
+    <a href="/2021/07/01/CSS 使用scss实现切换主题色/">
+        <h2>
+            使用scss实现切换主题色
+        </h2>
+    </a>
+
+    <div class="category-and-date">
+
+        
+        <span class="category">
+            <a href="/categories/技术分享">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" /></span>
+                技术分享
+            </a>
+        </span>
+        
+
+        <span class="date">
+            <span class="icon">
+                <a-icon type="calendar" theme="filled" />
+            </span>
+            2021/7/1
+        </span>
+
+    </div>
+
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h3 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h3><div style="display: flex;">
+  <img src="/images/使用scss实现切换主题色/1.png" style="margin:0;max-width: 50%;"/>
+  <img src="/images/使用scss实现切换主题色/2.png" style="margin:0;max-width: 50%"/>
+</div>
+
+<p>直接上代码</p>
+<pre><code class="javascript">APP.vue
+
+/** 设置主题 */
+changeTheme(data) &#123;
+    window.document.documentElement.setAttribute(&#39;data-theme&#39;, data); // 给根节点设置data-theme属性，切换主题色就是修改data-theme的值
+&#125;,
+</code></pre>
+            
+            
+        </div>
+    </div>
+
+    <div class="post-tags">
+        
+        <span class="icon">
+            <a-icon type="tags" theme="filled" />
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/CSS" style=color:#00bcd4>
+                CSS
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/前端" style=color:#00bcd4>
+                前端
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/SCSS" style=color:#00bcd4>
+                SCSS
+            </a>
+        </span>
+        
+    </div>
+
+    <a href="/2021/07/01/CSS 使用scss实现切换主题色/ " class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+
+    <a href="/2021/06/03/CSS attr-counter-calc-使用技巧/">
+        <h2>
+            attr counter calc使用技巧
+        </h2>
+    </a>
+
+    <div class="category-and-date">
+
+        
+        <span class="category">
+            <a href="/categories/技术分享">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" /></span>
+                技术分享
+            </a>
+        </span>
+        
+
+        <span class="date">
+            <span class="icon">
+                <a-icon type="calendar" theme="filled" />
+            </span>
+            2021/6/3
+        </span>
+
+    </div>
+
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h4 id="在CSS中用attr-显示HTML属性值"><a href="#在CSS中用attr-显示HTML属性值" class="headerlink" title="在CSS中用attr()显示HTML属性值"></a>在CSS中用attr()显示HTML属性值</h4><p><code>attr()</code>功能早在CSS 2.1标准中就已经出现，但现在才开始普遍流行。它提供了一个巧妙的方法在CSS中使用HTML标签上的属性，在很多情况下都能帮你省去了以往需要Javascript处理的过程。要想使用这个功能，你需要用到三种元素：一个<code>:before</code> 或 <code>:after</code> CSS伪类样式，<code>content</code>属性，和一个带有你想使用的HTML属性名称的<code>attr()</code>表达式。</p>
+<p>例如，想去显示&lt;h3&gt;标题上的<code>data-prefix</code>属性的值，你可以写成这样：</p>
+<pre><code class="css">h3:before&#123;
+  content: attr(data-prefix) &quot;&quot;
+&#125;
+
+&lt;h3 (data-prefix=&quot;Custom prefix&quot;&gt;标题&lt;/h3&gt;
+</code></pre>
+<p>显然，这个例子并没有展示它有多大用处，只是展示了它的基本用法。</p>
+<p>让我们来试一个更有用的例子，<code>attr()</code>的一个极好的应用就是当用户打印页面时将页面链接显示出来。</p>
+            
+            
+        </div>
+    </div>
+
+    <div class="post-tags">
+        
+        <span class="icon">
+            <a-icon type="tags" theme="filled" />
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/CSS" style=color:#ff7d73>
+                CSS
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/前端" style=color:#ffa2c4>
+                前端
+            </a>
+        </span>
+        
+    </div>
+
+    <a href="/2021/06/03/CSS attr-counter-calc-使用技巧/ " class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+
+    <a href="/2021/05/13/CSS Motion-Path技术研究/">
+        <h2>
+            CSS Motion Path技术研究
+        </h2>
+    </a>
+
+    <div class="category-and-date">
+
+        
+        <span class="category">
+            <a href="/categories/技术分享">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" /></span>
+                技术分享
+            </a>
+        </span>
+        
+
+        <span class="date">
+            <span class="icon">
+                <a-icon type="calendar" theme="filled" />
+            </span>
+            2021/5/13
+        </span>
+
+    </div>
+
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <p>最近在看css3手册时忽然发现了新的动画属性css, 名叫Motion Path，利用Motion Path，我们可以控制元素按照特定的路径进行位置变换的动画。并且，这个路径可以是非常复杂的一条路径。</p>
+<p>CSS Motion Path 规范主要包含以下几个属性：</p>
+<ul>
+<li>offset-path：接收一个 SVG 路径（与 SVG 的path、CSS 中的 clip-path 类似），指定运动的几何路径</li>
+<li>offset-distance：控制当前元素基于 offset-path 运动的距离</li>
+<li>offset-position：指定 offset-path 的初始位置</li>
+<li>offset-anchor：定义沿 offset-path 定位的元素的锚点。 这个也算好理解，运动的元素可能不是一个点，那么就需要指定元素中的哪个点附着在路径上进行运动</li>
+<li>offset-rotate：定义沿 offset-path 定位时元素的方向，说人话就是运动过程中元素的角度朝向</li>
+</ul>
+            
+            
+        </div>
+    </div>
+
+    <div class="post-tags">
+        
+        <span class="icon">
+            <a-icon type="tags" theme="filled" />
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/CSS" style=color:#ff7d73>
+                CSS
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/前端" style=color:#00bcd4>
+                前端
+            </a>
+        </span>
+        
+    </div>
+
+    <a href="/2021/05/13/CSS Motion-Path技术研究/ " class="go-post">
         阅读全文
     </a>
 </div>
@@ -398,10 +914,28 @@
         </span>
 
         
+        <span>
+            <a href="/page/2/">
+                <span class="page-num">
+                    2
+                </span>
+            </a>
+            
+
+            
+
+        </span>
+        
 
     </div>
 
     <div class="next">
+        
+        <a href="/page/2/ ">
+            <span class="page-num">
+                <a-icon type="caret-right" theme="filled" />
+            </span>
+        </a>
         
     </div>
 
@@ -414,7 +948,7 @@
         <a-affix :offset-top="card_top">
     <a-card class="card-style" style="width: 300px">
         <div class="avatar">
-            <img src="images/gregory.png " alt="头像">
+            <img src="images/gregory.jpg " alt="头像">
         </div>
         <div class="name">
             Gregory Wu
@@ -443,6 +977,15 @@
             </span>
             
             <span class="icon-link">
+                <a target="_blank" rel="noopener" href="https://gitee.com/gregory_wu">
+
+                    
+                        <i class="iconfont icon-gitee-fill-round"></i>
+                    
+                </a>
+            </span>
+            
+            <span class="icon-link">
                 <a target="_blank" rel="noopener" href="https://weibo.com/u/5728660564">
 
                     
@@ -465,7 +1008,7 @@
         <div class="friend-links">
             
             <div class="friend-link">
-                <a target="_blank" rel="noopener" href="https://www.essr.vip/user">
+                <a target="_blank" rel="noopener" href="https://www.v2raya.vip">
                     加速器
                 </a>
             </div>
