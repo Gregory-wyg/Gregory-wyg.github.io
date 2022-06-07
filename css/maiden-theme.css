@@ -224,14 +224,24 @@ a {
   position: relative;
   display: flex;
   width: 100%;
-  background: #fff;
   z-index: 101;
   border-radius: 10px;
   margin: auto;
 }
+#fireworks {
+  z-index: 2147483700;
+}
+#fireworks,
+#background {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+}
 #home-posts {
   position: relative;
-  background: #fff;
   margin: auto;
 }
 #home-posts h2 {
