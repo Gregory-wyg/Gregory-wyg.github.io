@@ -159,14 +159,14 @@
 <link rel="stylesheet" href="/css/post-body.css">
 <div class="article">
     <div>
-        <h1>算法 数据结构 </h1>
+        <h1>Commit方式+CommitLint校验+Prettier格式化 </h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <a-icon type="calendar" theme="filled" />
             </span>
-            2020/7/5
+            2022/3/8
         </span>
 
         
@@ -189,15 +189,15 @@
             
             <span class="tag">
                 
-                <a href="/tags/前端" style=color:#03a9f4>
-                    前端
+                <a href="/tags/JavaScript" style=color:#03a9f4>
+                    JavaScript
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/算法" style=color:#00a596>
-                    算法
+                <a href="/tags/Git" style=color:#ff7d73>
+                    Git
                 </a>
             </span>
             
@@ -206,61 +206,155 @@
     </div>
 
     <div class="content" v-pre>
-        <h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><p><img src="/images/algorithm-dataStructure/1.png" alt="1"></p>
-<p>数组非常常用，它是一块连续的内存空间，因此可以根据下标直接访问，其查找效率为 O(1)。</p>
-<p>但数组的插入、删除效率较低，只有 O(n)，原因是为了保持数组的连续性，必须在插入或删除后对数组进行一些操作：比如插入第 K 个元素，需要将后面元素后移；而删除第 K 个元素，需要将后面元素前移。</p>
+        <h5 id="根据Angular团队的git-commit规范，简单说下常用的commit的方式："><a href="#根据Angular团队的git-commit规范，简单说下常用的commit的方式：" class="headerlink" title="根据Angular团队的git commit规范，简单说下常用的commit的方式："></a>根据Angular团队的git commit规范，简单说下常用的commit的方式：</h5><p>type 主要有一下几种：</p>
+<table>
+  <tr>
+    <th>type</th>
+    <th>作用描述</th>
+  </tr>
+  <tr>
+    <td>feat</td>
+    <td>新功能更新</td>
+  </tr>
+  <tr>
+    <td>fix</td>
+    <td>bug修复</td>
+  </tr>
+  <tr>
+    <td>style</td>
+    <td>改变代码格式，如删除空行、格式化代码、去除不必要的分号等等，不影响代码功能逻辑的操作</td>
+  </tr>
+  <tr>
+    <td>refactor</td>
+    <td>代码重构时使用，不是功能更新也不是 bug 修复的更改</td>
+  </tr>
+  <tr>
+    <td>perf</td>
+    <td>性能优化等</td>
+  </tr>
+  <tr>
+    <td>test</td>
+    <td>添加测试用例或者修改测试用例</td>
+  </tr>
+  <tr>
+    <td>build</td>
+    <td>由打包工具造成的改变（如gulp、webpack编译文件）</td>
+  </tr>
+  <tr>
+    <td>chore</td>
+    <td>更改构建过程、修改配置文件，添加/删除辅助工具或者库</td>
+  </tr>
+  <tr>
+    <td>revert</td>
+    <td>撤销之前的提交</td>
+  </tr>
+</table>
+
 <span id="more"></span>
-
-<h3 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h3><p><img src="/images/algorithm-dataStructure/2.png" alt="2"></p>
-<p>链表是为了解决数组问题而发明出来的，它提升了插入、删除效率，而牺牲了查找效率。</p>
-<p>链表的插入、删除效率是 O(1)，因为只要将对应位置元素断链、重连就可以完成插入、删除，而无需关心其他节点。</p>
-<p>相应的查找效率就低了，因为存储空间不是连续的，所以无法像数组一样通过下标直接查找，而需要通过指针不断搜索，所以查找效率为 O(n)。</p>
-<p>顺带一提，链表可以通过增加 <code>.prev</code> 属性改造为双向链表，也可以通过定义两个 <code>.next</code> 形成二叉树（<code>.left</code> <code>.right</code>）或者多叉树（N 个 <code>.next</code>）。</p>
-<p><img src="/images/algorithm-dataStructure/3.png" alt="3"></p>
-<h3 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h3><p><img src="/images/algorithm-dataStructure/4.png" alt="4"></p>
-<p>栈是一种先入后出的结构，可以用数组模拟。</p>
-<pre><code class="typescript">const stack: number[] = []
-
-// 入栈
-stack.push(1)
-// 出栈
-stack.pop()
-</code></pre>
-<h3 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h3><p><img src="/images/algorithm-dataStructure/5.png" alt="5"></p>
-<p>堆是一种特殊的完全二叉树，分为大顶堆与小顶堆。</p>
-<p>大顶堆指二叉树根节点是最大的数，小顶堆指二叉树根节点是最小的数。为了方便说明，以下以大顶堆举例，小顶堆的逻辑与之相反即可。</p>
-<p>大顶堆中，任意节点都比其叶子结点大，所以根节点是最大的节点。这种数据结构的优势是可以以 O(1) 效率找到最大值（小顶堆找最小值），因为直接取 <code>stack[0]</code> 就是根节点。</p>
-<p>这里稍微提一下二叉树与数组结构的映射，因为采用数组方式操作二叉数，无论操作还是空间都有优势：第一项存储的是节点总数，对于下标为 K 的节点，其父节点下标是 <code>floor(K / 2)</code>，其子节点下标分别是 <code>K * 2</code>、<code>K * 2 + 1</code>，所以可以快速定位父子位置。</p>
-<p>而利用这个特性，可以将插入、删除的效率达到 <code>O(logn)</code>，因为可以通过上下移动的方式调整其他节点顺序，而对于一个拥有 n 个节点的完全二叉树，树的深度为 <code>logn</code>。</p>
-<h3 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h3><p><img src="/images/algorithm-dataStructure/6.png" alt="6"></p>
-<p>哈希表就是所谓的 Map，不同 Map 实现方式不同，常见的有 HashMap、TreeMap、HashSet、TreeSet。</p>
-<p>其中 Map 和 Set 实现类似，所以以 Map 为例讲解。</p>
-<p>首先将要存储的字符求出其 ASCII 码值，再根据比如余数等方法，定位到一个数组的下标，同一个下标可能对应多个值，因此这个下标可能对应一个链表，根据链表进一步查找，这种方法称为拉链法。</p>
-<p>如果存储的值超过一定数量，链表的查询效率就会降低，可能会升级为红黑树存储，总之这样的增、删、查效率为 <code>O(1)</code>，但缺点是其内容是无序的。</p>
-<p>为了保证内容有序，可以使用树状结构存储，这种数据结构称为 HashTree，这样时间复杂度退化为 <code>O(logn)</code>，但好处是内容可以是有序的。</p>
-<h3 id="树-amp-二叉搜索树"><a href="#树-amp-二叉搜索树" class="headerlink" title="树 &amp; 二叉搜索树"></a>树 &amp; 二叉搜索树</h3><p><img src="/images/algorithm-dataStructure/7.png" alt="7"></p>
-<p>二叉搜索树是一种特殊二叉树，更复杂的还有红黑树，但这里就不深入了，只介绍二叉搜索树。</p>
-<p>二叉搜索树满足对于任意节点，<code>left 的所有节点 &lt; 根节点 &lt; right 的所有节点</code>，注意这里是所有节点，因此在判断时需要递归考虑所有情况。</p>
-<p>二叉搜索树的好处在于，访问、查找、插入、删除的时间复杂度均为 O(logn)，因为无论何种操作都可以通过二分方式进行。但在最坏的情况会降级为 O(n)，原因是多次操作后，二叉搜索树可能不再平衡，最后退化为一个链表，就变成了链表的时间复杂度。</p>
-<p>更好的方案有 AVL 树、红黑树等，像 JAVA、C++ 标准库实现的二叉搜索树都是红黑树。</p>
-<h3 id="字典树"><a href="#字典树" class="headerlink" title="字典树"></a>字典树</h3><p><img src="/images/algorithm-dataStructure/8.png" alt="8"></p>
-<p>字典树多用于单词搜索场景，只要给定一个单独开头，就可以快速查找到后面有几种推荐词。</p>
-<p>比如上面的例子，输入 “o”，就可以快速查找到后面有 “ok” 与 “ol” 两个单词。要注意的是，每个节点都要有一个属性 <code>isEndOfWord</code> 表示到当前为止是否为一个完整的单词：比如 <code>go</code> 与 <code>good</code> 两个都是完整的单词，但 <code>goo</code> 不是，因此第二个 <code>o</code> 与第四个 <code>d</code> 都有 <code>isEndOfWord</code> 标记，表示读到这里就查到一个完整的单词了，叶子结点的标记也可以省略。</p>
-<h3 id="并查集"><a href="#并查集" class="headerlink" title="并查集"></a>并查集</h3><p><img src="/images/algorithm-dataStructure/9.png" alt="9"></p>
-<p>并查集用来解决团伙问题，或者岛屿问题，即判断多个元素之间是属于某个集合。并查集的英文是 Union and Find，即归并与查找，因此并查集数据结构可以写成一个类，提供两个最基础的方法 <code>union</code> 与 <code>find</code>。</p>
-<p>其中 <code>union</code> 可以将任意两个元素放在一个集合，而 <code>find</code> 可以查找任意元素属于哪个根集合。</p>
-<p>并查集使用数组的数据结构，只是有以下特殊含义，设下标为 k：</p>
+<h5 id="scope-规则（选填）"><a href="#scope-规则（选填）" class="headerlink" title="scope 规则（选填）"></a>scope 规则（选填）</h5><p><code>scope</code> 代表本地 <code>commit</code> 的影响范围，例如文件<code>(index.js)</code>、文件夹<code>(/problem)</code></p>
+<h4 id="subject-规则（必填）"><a href="#subject-规则（必填）" class="headerlink" title="subject 规则（必填）"></a>subject 规则（必填）</h4><p>通过简短的话来描述本次修改的内容。</p>
+<p>例如：</p>
 <ul>
-<li><code>nums[k]</code> 表示其所属的集合，如果 <code>nums[k] === k</code> 表示它是这个集合的根节点。</li>
+<li>新增 <code>Problem</code> 页面</li>
+<li>新增 申诉组件</li>
+<li>删除 待办单<code>ui</code></li>
+<li>修复 登录账号报错</li>
+<li>修正 <code>css</code> 属性拼写问题</li>
 </ul>
-<p>如果要数一共有几个集合，只要数有多少满足 <code>nums[k] === k</code> 条件的数目即可，就像数有几个团伙，只要数有几个老大即可。</p>
-<p>并查集的实现不同，数据也会有微妙的不同，高效的并查集在插入时，会递归将元素的值尽量指向根老大，这样查找判断时计算的快一些，但即便指向的不是根老大，也可以通过递归的方式找到根老大。</p>
-<h3 id="布隆过滤器"><a href="#布隆过滤器" class="headerlink" title="布隆过滤器"></a>布隆过滤器</h3><p><img src="/images/algorithm-dataStructure/10.png" alt="10"></p>
-<p>Bloom Filter 只是一个过滤器，可以用远远超过其他算法的速度把未命中的数据排除掉，但未排除的也可能实际不存在，所以需要进一步查询。</p>
-<p>布隆过滤器是如何做到这一点的呢？就是通过二进制判断。</p>
-<p>如上图所示，我们先存储了 a、b 两个数据，将其转化为二进制，将对应为止改为 1，那么当我们再查询 a 或 b 时，因为映射关系相同，所以查到的结果肯定存在。</p>
-<p>但查询 c 时，发现有一项是 0，说明 c 一定不存在；但查询 d 时，恰好两个都查到是 1，但实际 d 是不存在的，这就是其产生误差的原因。</p>
-<p>布隆过滤器在比特币与分布式系统中使用广泛，比如比特币查询交易是否在某个节点上，就先利用布隆过滤器挡一下，以快速跳过不必要的搜索，而分布式系统计算比如 Map Reduce，也通过布隆过滤器快速过滤掉不在某个节点的计算。</p>
+<h4 id="body-规则（选填）"><a href="#body-规则（选填）" class="headerlink" title="body 规则（选填）"></a>body 规则（选填）</h4><p>当 <code>subject</code> 不能对 <code>commit</code> 进行清楚的描述，可以在 <code>body</code> 中进行补充说明。</p>
+<p>建议填写以下内容：</p>
+<ul>
+<li>为什么进行本次修改</li>
+<li>本次修改了哪些内容</li>
+<li>修改后的影响有哪些</li>
+</ul>
+<h4 id="footer-规则（选填）：根据我们现有项目，不需要填写这个"><a href="#footer-规则（选填）：根据我们现有项目，不需要填写这个" class="headerlink" title="footer 规则（选填）：根据我们现有项目，不需要填写这个"></a>footer 规则（选填）：根据我们现有项目，不需要填写这个</h4><p><code>footer</code> 中建议内容：</p>
+<ul>
+<li>该 <code>commit</code> 和某个bug或者某个任务/需求关联，提交后能关闭该<code>bug</code>/任务/需求。</li>
+<li>该 <code>commit</code> 有不兼容上个版本的代码，则以 重要修改: 开头填写不兼容信息。</li>
+</ul>
+<h3 id="husky-commitlint校验-prettier格式化"><a href="#husky-commitlint校验-prettier格式化" class="headerlink" title="husky + commitlint校验 + prettier格式化"></a>husky + commitlint校验 + prettier格式化</h3><h4 id="安装husky-commitlint"><a href="#安装husky-commitlint" class="headerlink" title="安装husky + commitlint"></a>安装husky + commitlint</h4><pre><code class="dos">npm install husky@4.3.0 @commitlint/config-conventional@16.2.1 @commitlint/cli@16.2.3 prettier-eslint-cli@5.0.0 lint-staged@9.5.0 -D
+</code></pre>
+<h5 id="在项目根目录创建-commitlint-config-js-文件，内容如下："><a href="#在项目根目录创建-commitlint-config-js-文件，内容如下：" class="headerlink" title="在项目根目录创建 commitlint.config.js 文件，内容如下："></a>在项目根目录创建 commitlint.config.js 文件，内容如下：</h5><pre><code class="javascript">// commitlint.config.js
+/**
+ * feat：新功能更新
+ * style：改变代码格式，如删除空行、格式化代码、去除不必要的分号等等，不影响代码功能逻辑的操作
+ * fix：修补某功能的bug
+ * refactor：代码重构时使用，不是功能更新也不是 bug 修复的更改
+ * perf: 性能优化等
+ * test: 添加测试用例或者修改测试用例
+ * build：由打包工具造成的改变（如gulp、webpack编译文件）
+ * chore：更改构建过程、修改配置文件，添加/删除辅助工具或者库
+ * revert：撤销之前的提交
+ */
+module.exports = &#123;
+  extends: [&#39;@commitlint/config-conventional&#39;],
+  rules: &#123;
+    &#39;type-enum&#39;: [2, &#39;always&#39;, [&#39;feat&#39;, &#39;fix&#39;, &#39;style&#39;, &#39;refactor&#39;, &#39;perf&#39;, &#39;test&#39;, &#39;build&#39;, &#39;chore&#39;, &#39;revert&#39;]],
+    &#39;subject-max-length&#39;: [1, &#39;always&#39;, 150], // subject建议150字以内
+  &#125;,
+&#125;;
+</code></pre>
+<h5 id="在项目根目录创建-prettierrc-js-文件，内容如下："><a href="#在项目根目录创建-prettierrc-js-文件，内容如下：" class="headerlink" title="在项目根目录创建 .prettierrc.js 文件，内容如下："></a>在项目根目录创建 .prettierrc.js 文件，内容如下：</h5><pre><code class="javascript">// .prettierrc.js
+module.exports = &#123;
+  printWidth: 120,
+  tabWidth: 2,
+  useTabs: false,
+  semi: true,
+  singleQuote: true,
+  trailingComma: &#39;es5&#39;,
+  bracketSpacing: true,
+  jsxBracketSameLine: true,
+  arrowParens: &#39;avoid&#39;,
+&#125;;
+</code></pre>
+<h5 id="在项目根目录创建-eslintrc-js-文件，内容如下："><a href="#在项目根目录创建-eslintrc-js-文件，内容如下：" class="headerlink" title="在项目根目录创建 .eslintrc.js 文件，内容如下："></a>在项目根目录创建 .eslintrc.js 文件，内容如下：</h5><pre><code class="javascript">// .eslintrc.js
+module.exports = &#123;
+  root: true,
+  env: &#123;
+    node: true,
+  &#125;,
+  extends: [&#39;plugin:vue/essential&#39;, &#39;eslint:recommended&#39;],
+  parserOptions: &#123;
+    parser: &#39;babel-eslint&#39;,
+  &#125;,
+  rules: &#123;
+    &#39;space-before-function-paren&#39;: 0,
+    &#39;no-console&#39;: process.env.NODE_ENV === &#39;production&#39; ? &#39;warn&#39; : &#39;off&#39;,
+    &#39;no-debugger&#39;: process.env.NODE_ENV === &#39;production&#39; ? &#39;warn&#39; : &#39;off&#39;,
+  &#125;,
+  globals: &#123;
+    ImagePreview: true,
+    Toast: true,
+    wx: true,
+    AMap: true,
+    Dialog: true,
+    dayjs: true,
+    WXInlinePlayer: true,
+  &#125;,
+&#125;;
+</code></pre>
+<ul>
+<li><p>prettier-eslint<a target="_blank" rel="noopener" href="https://github.com/prettier/prettier-eslint-cli#readme">更多配置</a></p>
+</li>
+<li><p>lint-staged<a target="_blank" rel="noopener" href="https://github.com/okonet/lint-staged">更多配置</a></p>
+</li>
+</ul>
+<p>更多其他配置可根据各项目实际情况来编辑。</p>
+<h5 id="package-json中添加lint配置："><a href="#package-json中添加lint配置：" class="headerlink" title="package.json中添加lint配置："></a>package.json中添加lint配置：</h5><pre><code class="javascript">&quot;lint-staged&quot;: &#123;
+  &quot;*.&#123;js,scss,md,vue&#125;&quot;: [
+    &quot;prettier-eslint --config=.prettierrc.js --eslint-config-path=.eslintrc.js --write&quot;,
+    &quot;git add .&quot;
+  ]
+&#125;,
+</code></pre>
+<h5 id="package-json-中添加-husky-配置："><a href="#package-json-中添加-husky-配置：" class="headerlink" title="package.json 中添加 husky 配置："></a>package.json 中添加 husky 配置：</h5><pre><code class="javascript">&quot;husky&quot;: &#123;
+  &quot;hooks&quot;: &#123;
+    &quot;pre-commit&quot;: &quot;lint-staged&quot;, //代码格式化
+    &quot;commit-msg&quot;: &quot;commitlint -E HUSKY_GIT_PARAMS&quot; //commit校验
+  &#125;
+&#125;
+</code></pre>
 
     </div>
 
