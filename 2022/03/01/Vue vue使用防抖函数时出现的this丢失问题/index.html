@@ -1,14 +1,14 @@
 
 <!DOCTYPE html>
-<html lang="cn ">
+<html lang="zh-CN">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gregory's blog</title>
     <meta name="author" content="Gregory Wu">
-    <meta name="description" content=" ">
-    <meta name="keywords" content=" ">
+    <meta name="description" content="小武的博客">
+    <meta name="keywords" content="vue,javascript,css,blog,Gregory">
     <link rel="icon" href="/../../images/gregory.jpg">
     <link rel="stylesheet" href="/css/antd.min.css">
     <link rel="stylesheet" href="/css/icon-font.css">
@@ -38,7 +38,7 @@
                 <div>
                     <h2>LOADING...</h2>
                     <div>
-                        <img src="/dancingkitty.gif" alt="loading">
+                        <img src="/runningDeer.gif" alt="loading" style="width: 70px;">
                     </div>
                 </div>
             </div>
@@ -196,7 +196,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/Vue" style=color:#00bcd4>
+                <a href="/tags/Vue" style=color:#ffa2c4>
                     Vue
                 </a>
             </span>
@@ -239,7 +239,7 @@ changeTimeline: debounce(function (e) &#123;
 &#125;, 500),
 </code></pre>
 <p>然而鼠标滚动时报了这个错：this丢失了</p>
-<img src="/images/vue使用防抖函数时出现的this丢失问题/1.png" style="margin:0"/>
+<img src="/images/vue使用防抖函数时出现的this丢失问题/1.png" style="margin:0" alt="图片"/>
 
 <p>在网上查找各种方法，发现下面这样写没问题：在<code>created()</code>里把<code>changeTimeline</code> 重新包装一下</p>
 <h5 id="解决方法一"><a href="#解决方法一" class="headerlink" title="解决方法一"></a>解决方法一</h5><pre><code class="javascript">created() &#123;
@@ -324,9 +324,8 @@ methods: &#123;
             card_top: 100
         },
         created: function () {
-            var that = this
-            window.onload = function () {
-                that.show_page = true
+            window.onload = () => {
+                this.show_page = true
                 document.getElementById("loadcontent").style.opacity = 0
                 setTimeout(function () {
                     document.getElementById("loadleft").style.width = 0
@@ -337,10 +336,9 @@ methods: &#123;
                 }, 600)
             }
         },
-        mounted: function () {
-            var that = this
-            window.addEventListener('scroll', function (e) {
-                that.menu_show = false
+        mounted() {
+            window.addEventListener('scroll', (e) => {
+                this.menu_show = false
             })
         },
         methods: {
@@ -349,26 +347,32 @@ methods: &#123;
                     top: window.innerHeight - 80,
                     behavior: "smooth",
                 });
+            },
+            goTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                });
             }
         }
     })
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script>
-    const gitalk = new Gitalk({
-        clientID: '',
-        clientSecret: '',
-        repo: 'Gregory-wyg.github.io',      // The repository of store comments,
-        owner: 'Gregory-wyg',
-        admin: ['Gregory-wyg'],
-        language: 'cn',
-        id: location.pathname,      // Ensure uniqueness and length less than 50
-        distractionFreeMode: true  // Facebook-like distraction free mode
-    })
-    gitalk.render('gitalk-container')
-</script>
-
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+    <script>
+        const gitalk = new Gitalk({
+            clientID: '',
+            clientSecret: '',
+            repo: 'Gregory-wyg.github.io',      // The repository of store comments,
+            owner: 'Gregory-wyg',
+            admin: ['Gregory-wyg'],
+            language: 'cn',
+            id: location.pathname,      // Ensure uniqueness and length less than 50
+            distractionFreeMode: true  // Facebook-like distraction free mode
+        })
+        gitalk.render('gitalk-container')
+    </script>
+    
 </body>
 
 </html>

@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'CascadiaCode';
-  src: url("../css/fonts/CascadiaCode.ttf");
+  src: url("../../css/fonts/CascadiaCode.ttf");
 }
 body {
   background: #f6f8fa;
@@ -178,6 +178,7 @@ a {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  user-select: none;
 }
 #home-head .home-info {
   position: relative;
@@ -194,7 +195,7 @@ a {
 }
 #home-head .home-info .loop:nth-child(1) {
   border-radius: 38% 62% 63% 37%/41% 44% 56% 59%;
-  background: #fff;
+  background: #5eb8ff;
   opacity: 0.3;
   transform: rotate(30deg);
   animation: loop1 10s linear infinite;
@@ -209,7 +210,7 @@ a {
 #home-head .home-info .loop:nth-child(3) {
   border-radius: 38% 62% 63% 37%/41% 44% 56% 59%;
   opacity: 0.3;
-  background: #fff;
+  background: #ffb2b2;
   transform: rotate(90deg);
   animation: loop3 10s linear infinite;
 }
@@ -219,6 +220,14 @@ a {
   background: #fff;
   transform: rotate(120deg);
   animation: loop4 15s linear infinite;
+}
+::selection {
+  background-color: #edf7ff;
+  color: #9dd1ff;
+}
+::-moz-selection {
+  background-color: #edf7ff;
+  color: #9dd1ff;
 }
 #home-posts-wrap {
   position: relative;
@@ -292,7 +301,7 @@ a {
   font-weight: bold;
 }
 #home-posts .post .go-post {
-  background: linear-gradient(120deg, #9abbf7 0%, #ffbbf4 100%);
+  background: linear-gradient(120deg, #acb6e5 0, #86fde8 100%);
   border: 0;
   padding: 10px 24px;
   color: #fff;
@@ -358,6 +367,7 @@ a {
   border-radius: 10px;
   text-align: center;
   border: none;
+  user-select: none;
 }
 #home-card .card-style .avatar {
   text-align: center;
@@ -417,7 +427,7 @@ a {
   border-radius: 15px;
 }
 #home-card .card-style .friend-links .friend-link a:hover {
-  background: linear-gradient(120deg, #96ceff 0, #ff9edb 100%);
+  background: linear-gradient(120deg, #acb6e5 0, #86fde8 100%);
   color: #fff;
 }
 @-moz-keyframes loop1 {
@@ -714,7 +724,7 @@ a {
   position: absolute;
   top: 0px;
   padding: 10px 15px;
-  background: linear-gradient(to right, #ed6ea0 0, #ec8c69 100%);
+  background: linear-gradient(to bottom, #ed6ea0 0, #ec8c69 100%);
   box-shadow: 1px 1px 0.75rem rgba(237,110,161,0.302);
   color: #fff;
   font-weight: bold;
@@ -1071,6 +1081,6 @@ footer .footer-icon {
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb {
-  background: #02b0c7;
+  background: #2c4e72;
   border-radius: 10px;
 }

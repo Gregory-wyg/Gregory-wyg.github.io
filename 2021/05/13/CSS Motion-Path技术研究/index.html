@@ -1,14 +1,14 @@
 
 <!DOCTYPE html>
-<html lang="cn ">
+<html lang="zh-CN">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gregory's blog</title>
     <meta name="author" content="Gregory Wu">
-    <meta name="description" content=" ">
-    <meta name="keywords" content=" ">
+    <meta name="description" content="小武的博客">
+    <meta name="keywords" content="vue,javascript,css,blog,Gregory">
     <link rel="icon" href="/../../images/gregory.jpg">
     <link rel="stylesheet" href="/css/antd.min.css">
     <link rel="stylesheet" href="/css/icon-font.css">
@@ -38,7 +38,7 @@
                 <div>
                     <h2>LOADING...</h2>
                     <div>
-                        <img src="/dancingkitty.gif" alt="loading">
+                        <img src="/runningDeer.gif" alt="loading" style="width: 70px;">
                     </div>
                 </div>
             </div>
@@ -189,14 +189,14 @@
             
             <span class="tag">
                 
-                <a href="/tags/CSS" style=color:#03a9f4>
-                    CSS
+                <a href="/tags/Css" style=color:#00bcd4>
+                    Css
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/前端" style=color:#00a596>
+                <a href="/tags/前端" style=color:#00bcd4>
                     前端
                 </a>
             </span>
@@ -236,7 +236,7 @@ div &#123;
   &#125;
 &#125;
 </code></pre>
-<p>offset-path 接收一个 SVG 的 path 路径，这里我们的路径内容是一条自定义路径 path(“M 0 0 L 100 100”)，翻译过来就是从 0 0 点运动到 100px 100px 点。<br>我们会得到如下结果：<br><img src="/images/CSS Motion Path技术研究/1.gif" style="margin:0"/></p>
+<p>offset-path 接收一个 SVG 的 path 路径，这里我们的路径内容是一条自定义路径 path(“M 0 0 L 100 100”)，翻译过来就是从 0 0 点运动到 100px 100px 点。<br>我们会得到如下结果：<br><img src="/images/CSS Motion Path技术研究/1.gif" style="margin:0" alt="图片"/></p>
 <p>通过控制元素的 offset-distance 从 0% 变化到 100% 进行元素的路径动画。<br>当然，上述的动画是最基本的，我可以充分利用 path 的特性，增加多个中间关键帧，稍微改造下上述代码：</p>
 <pre><code class="css">&lt;div&gt;&lt;/div&gt;
  
@@ -247,7 +247,7 @@ div &#123;
   offset-path: path(&quot;M 0 0 L 100 0 L 200 0 L 300 100 L 400 0 L 500 100 L 600 0 L 700 100 L 800 0&quot;);
 &#125;
 </code></pre>
-<p>这里最主要还是运用了 path 中的 L 指令，得到了如下图这样一条直线路径：<br><img src="/images/CSS Motion Path技术研究/2.gif" style="margin:0"/></p>
+<p>这里最主要还是运用了 path 中的 L 指令，得到了如下图这样一条直线路径：<br><img src="/images/CSS Motion Path技术研究/2.gif" style="margin:0" alt="图片"/></p>
 <h4 id="CSS-Motion-Path-实现曲线路径动画"><a href="#CSS-Motion-Path-实现曲线路径动画" class="headerlink" title="CSS Motion Path 实现曲线路径动画"></a>CSS Motion Path 实现曲线路径动画</h4><p>上面的运动轨迹都是由直线构成，下面我们看看如何使用 CSS Motion Path 实现曲线路径动画。</p>
 <p>其实原理还是一模一样，只需要在 offset-path: path() 中添加曲线相关的路径即可。</p>
 <p>在 SVG 的 Path 中，我们取其中一种绘制曲线的方法 – 贝塞尔曲线，譬如下述这条 path，其中的 path 为 d=”M 10 80 C 80 10, 130 10, 190 80 S 300 150, 360 80”：</p>
@@ -255,7 +255,7 @@ div &#123;
   &lt;path d=&quot;M 10 80 C 80 10, 130 10, 190 80 S 300 150, 360 80&quot; stroke=&quot;black&quot; fill=&quot;transparent&quot;/&gt;
 &lt;/svg&gt;
 </code></pre>
-<p>对应这样一条连续的贝塞尔曲线：<br><img src="/images/CSS Motion Path技术研究/3.png" style="margin:0"/></p>
+<p>对应这样一条连续的贝塞尔曲线：<br><img src="/images/CSS Motion Path技术研究/3.png" style="margin:0" alt="图片"/></p>
 <p>将对应的路径应用在 offset-path: path 中：</p>
 <pre><code class="css">&lt;div&gt;&lt;/div&gt;
 
@@ -279,7 +279,7 @@ div &#123;
   &#125;
 &#125;
 </code></pre>
-<p>可以得到如下运动效果：<br><img src="/images/CSS Motion Path技术研究/4.gif" style="margin:0"/></p>
+<p>可以得到如下运动效果：<br><img src="/images/CSS Motion Path技术研究/4.gif" style="margin:0" alt="图片"/></p>
 <p>可以看到，元素是沿着贝塞尔曲线的路径进行运动的，并且，由于这次没有限制死 offset-rotate，元素的朝向也是跟随路径的朝向一直变化的。（可以联想成开车的时候，车头一直跟随道路会进行变化的，带动整个车身的角度变化）</p>
 
     </div>
@@ -324,9 +324,8 @@ div &#123;
             card_top: 100
         },
         created: function () {
-            var that = this
-            window.onload = function () {
-                that.show_page = true
+            window.onload = () => {
+                this.show_page = true
                 document.getElementById("loadcontent").style.opacity = 0
                 setTimeout(function () {
                     document.getElementById("loadleft").style.width = 0
@@ -337,10 +336,9 @@ div &#123;
                 }, 600)
             }
         },
-        mounted: function () {
-            var that = this
-            window.addEventListener('scroll', function (e) {
-                that.menu_show = false
+        mounted() {
+            window.addEventListener('scroll', (e) => {
+                this.menu_show = false
             })
         },
         methods: {
@@ -349,26 +347,32 @@ div &#123;
                     top: window.innerHeight - 80,
                     behavior: "smooth",
                 });
+            },
+            goTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                });
             }
         }
     })
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script>
-    const gitalk = new Gitalk({
-        clientID: '',
-        clientSecret: '',
-        repo: 'Gregory-wyg.github.io',      // The repository of store comments,
-        owner: 'Gregory-wyg',
-        admin: ['Gregory-wyg'],
-        language: 'cn',
-        id: location.pathname,      // Ensure uniqueness and length less than 50
-        distractionFreeMode: true  // Facebook-like distraction free mode
-    })
-    gitalk.render('gitalk-container')
-</script>
-
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+    <script>
+        const gitalk = new Gitalk({
+            clientID: '',
+            clientSecret: '',
+            repo: 'Gregory-wyg.github.io',      // The repository of store comments,
+            owner: 'Gregory-wyg',
+            admin: ['Gregory-wyg'],
+            language: 'cn',
+            id: location.pathname,      // Ensure uniqueness and length less than 50
+            distractionFreeMode: true  // Facebook-like distraction free mode
+        })
+        gitalk.render('gitalk-container')
+    </script>
+    
 </body>
 
 </html>

@@ -1,14 +1,14 @@
 
 <!DOCTYPE html>
-<html lang="cn ">
+<html lang="zh-CN">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gregory's blog</title>
     <meta name="author" content="Gregory Wu">
-    <meta name="description" content=" ">
-    <meta name="keywords" content=" ">
+    <meta name="description" content="小武的博客">
+    <meta name="keywords" content="vue,javascript,css,blog,Gregory">
     <link rel="icon" href="/../../images/gregory.jpg">
     <link rel="stylesheet" href="/css/antd.min.css">
     <link rel="stylesheet" href="/css/icon-font.css">
@@ -38,7 +38,7 @@
                 <div>
                     <h2>LOADING...</h2>
                     <div>
-                        <img src="/dancingkitty.gif" alt="loading">
+                        <img src="/runningDeer.gif" alt="loading" style="width: 70px;">
                     </div>
                 </div>
             </div>
@@ -189,14 +189,14 @@
             
             <span class="tag">
                 
-                <a href="/tags/CSS" style=color:#00a596>
-                    CSS
+                <a href="/tags/Css" style=color:#ff7d73>
+                    Css
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/前端" style=color:#ffa2c4>
+                <a href="/tags/前端" style=color:#ff7d73>
                     前端
                 </a>
             </span>
@@ -247,37 +247,37 @@
     &lt;/div&gt;
 &lt;/body&gt;
 </code></pre>
-<h5 id="test1"><a href="#test1" class="headerlink" title="test1"></a>test1</h5><p>这个比较好理解，div的父元素是body，body第一个子元素，如果是div，则匹配<br><img src="/images/nth-child-n-和nth-of-type-n/1.png" style="margin:0"/></p>
+<h5 id="test1"><a href="#test1" class="headerlink" title="test1"></a>test1</h5><p>这个比较好理解，div的父元素是body，body第一个子元素，如果是div，则匹配<br><img src="/images/nth-child-n-和nth-of-type-n/1.png" style="margin:0" alt="图片"/></p>
 <pre><code class="css">div:nth-child(1)&#123;
     color: #ff9900;
 &#125;
 </code></pre>
-<h5 id="test2"><a href="#test2" class="headerlink" title="test2"></a>test2</h5><p>这里第一个span没有变色，是因为span的父元素div的第一个子元素不是span而是h4，无法匹配。<br><img src="/images/nth-child-n-和nth-of-type-n/2.png" style="margin:0"/></p>
+<h5 id="test2"><a href="#test2" class="headerlink" title="test2"></a>test2</h5><p>这里第一个span没有变色，是因为span的父元素div的第一个子元素不是span而是h4，无法匹配。<br><img src="/images/nth-child-n-和nth-of-type-n/2.png" style="margin:0" alt="图片"/></p>
 <pre><code class="css">span:nth-child(1)&#123;
     color: #ff9900;
 &#125;
 </code></pre>
-<h5 id="test3"><a href="#test3" class="headerlink" title="test3"></a>test3</h5><p>如果你希望wrap第一个span变色，需要使用 :nth-of-type，它只会计算该类型的元素。span的父元素div中所有的span子元素中的第一个匹配。<br><img src="/images/nth-child-n-和nth-of-type-n/3.png" style="margin:0"/></p>
+<h5 id="test3"><a href="#test3" class="headerlink" title="test3"></a>test3</h5><p>如果你希望wrap第一个span变色，需要使用 :nth-of-type，它只会计算该类型的元素。span的父元素div中所有的span子元素中的第一个匹配。<br><img src="/images/nth-child-n-和nth-of-type-n/3.png" style="margin:0" alt="图片"/></p>
 <pre><code class="css">span:nth-of-type(1) &#123;
     color:red;
 &#125;
 </code></pre>
-<h5 id="test4"><a href="#test4" class="headerlink" title="test4"></a>test4</h5><p>如果使用 .class，下面写法会匹配 .item 父元素div中的第一个元素。<br><img src="/images/nth-child-n-和nth-of-type-n/4.png" style="margin:0"/></p>
+<h5 id="test4"><a href="#test4" class="headerlink" title="test4"></a>test4</h5><p>如果使用 .class，下面写法会匹配 .item 父元素div中的第一个元素。<br><img src="/images/nth-child-n-和nth-of-type-n/4.png" style="margin:0" alt="图片"/></p>
 <pre><code class="css">.item1:nth-child(1) &#123;
     color: #ff9900;
 &#125;
 </code></pre>
-<h5 id="test5"><a href="#test5" class="headerlink" title="test5"></a>test5</h5><p>先查找item1所属标签 是h4和span，再匹配父元素div中第一个h4，和第一个span，都是 .item1。<br><img src="/images/nth-child-n-和nth-of-type-n/5.png" style="margin:0"/></p>
+<h5 id="test5"><a href="#test5" class="headerlink" title="test5"></a>test5</h5><p>先查找item1所属标签 是h4和span，再匹配父元素div中第一个h4，和第一个span，都是 .item1。<br><img src="/images/nth-child-n-和nth-of-type-n/5.png" style="margin:0" alt="图片"/></p>
 <pre><code class="css">.item1:nth-of-type(1) &#123;
     color:red;
 &#125;
 </code></pre>
-<h5 id="test6"><a href="#test6" class="headerlink" title="test6"></a>test6</h5><p>先查找item1所属标签 h4和span，再查找父元素div中第二个h4，和第二个span，h4没有第二个，第二个span不是 item1，都无法匹配<br><img src="/images/nth-child-n-和nth-of-type-n/6.png" style="margin:0"/></p>
+<h5 id="test6"><a href="#test6" class="headerlink" title="test6"></a>test6</h5><p>先查找item1所属标签 h4和span，再查找父元素div中第二个h4，和第二个span，h4没有第二个，第二个span不是 item1，都无法匹配<br><img src="/images/nth-child-n-和nth-of-type-n/6.png" style="margin:0" alt="图片"/></p>
 <pre><code class="css">.item1:nth-of-type(2) &#123;
     color:red;
 &#125;
 </code></pre>
-<h5 id="test7"><a href="#test7" class="headerlink" title="test7"></a>test7</h5><p>先查找item2所属标签为span，再查找父元素div中第二个span，检查它是不是 item2，是则匹配成功。但是和我们想象中不一样，我们更希望是第二个item2，也就是第三个item为红色。<br><img src="/images/nth-child-n-和nth-of-type-n/7.png" style="margin:0"/></p>
+<h5 id="test7"><a href="#test7" class="headerlink" title="test7"></a>test7</h5><p>先查找item2所属标签为span，再查找父元素div中第二个span，检查它是不是 item2，是则匹配成功。但是和我们想象中不一样，我们更希望是第二个item2，也就是第三个item为红色。<br><img src="/images/nth-child-n-和nth-of-type-n/7.png" style="margin:0" alt="图片"/></p>
 <pre><code class="css">.item2:nth-of-type(2) &#123;
     color:red;
 &#125;
@@ -326,9 +326,8 @@
             card_top: 100
         },
         created: function () {
-            var that = this
-            window.onload = function () {
-                that.show_page = true
+            window.onload = () => {
+                this.show_page = true
                 document.getElementById("loadcontent").style.opacity = 0
                 setTimeout(function () {
                     document.getElementById("loadleft").style.width = 0
@@ -339,10 +338,9 @@
                 }, 600)
             }
         },
-        mounted: function () {
-            var that = this
-            window.addEventListener('scroll', function (e) {
-                that.menu_show = false
+        mounted() {
+            window.addEventListener('scroll', (e) => {
+                this.menu_show = false
             })
         },
         methods: {
@@ -351,26 +349,32 @@
                     top: window.innerHeight - 80,
                     behavior: "smooth",
                 });
+            },
+            goTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                });
             }
         }
     })
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script>
-    const gitalk = new Gitalk({
-        clientID: '',
-        clientSecret: '',
-        repo: 'Gregory-wyg.github.io',      // The repository of store comments,
-        owner: 'Gregory-wyg',
-        admin: ['Gregory-wyg'],
-        language: 'cn',
-        id: location.pathname,      // Ensure uniqueness and length less than 50
-        distractionFreeMode: true  // Facebook-like distraction free mode
-    })
-    gitalk.render('gitalk-container')
-</script>
-
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+    <script>
+        const gitalk = new Gitalk({
+            clientID: '',
+            clientSecret: '',
+            repo: 'Gregory-wyg.github.io',      // The repository of store comments,
+            owner: 'Gregory-wyg',
+            admin: ['Gregory-wyg'],
+            language: 'cn',
+            id: location.pathname,      // Ensure uniqueness and length less than 50
+            distractionFreeMode: true  // Facebook-like distraction free mode
+        })
+        gitalk.render('gitalk-container')
+    </script>
+    
 </body>
 
 </html>

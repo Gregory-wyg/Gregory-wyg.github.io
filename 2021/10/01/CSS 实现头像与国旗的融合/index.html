@@ -1,14 +1,14 @@
 
 <!DOCTYPE html>
-<html lang="cn ">
+<html lang="zh-CN">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gregory's blog</title>
     <meta name="author" content="Gregory Wu">
-    <meta name="description" content=" ">
-    <meta name="keywords" content=" ">
+    <meta name="description" content="小武的博客">
+    <meta name="keywords" content="vue,javascript,css,blog,Gregory">
     <link rel="icon" href="/../../images/gregory.jpg">
     <link rel="stylesheet" href="/css/antd.min.css">
     <link rel="stylesheet" href="/css/icon-font.css">
@@ -38,7 +38,7 @@
                 <div>
                     <h2>LOADING...</h2>
                     <div>
-                        <img src="/dancingkitty.gif" alt="loading">
+                        <img src="/runningDeer.gif" alt="loading" style="width: 70px;">
                     </div>
                 </div>
             </div>
@@ -189,14 +189,14 @@
             
             <span class="tag">
                 
-                <a href="/tags/CSS" style=color:#00a596>
-                    CSS
+                <a href="/tags/Css" style=color:#03a9f4>
+                    Css
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/前端" style=color:#03a9f4>
+                <a href="/tags/前端" style=color:#00bcd4>
                     前端
                 </a>
             </span>
@@ -207,7 +207,7 @@
 
     <div class="content" v-pre>
         <p>到国庆，大家都急着给祖国母亲庆生。</p>
-<p>每年每到此时，微信朋友圈就会流行起给头像装饰上国旗，而今年又流行这款：<br><img src="/images/实现头像与国旗的融合/1.jpg" style="margin:0;"/></p>
+<p>每年每到此时，微信朋友圈就会流行起给头像装饰上国旗，而今年又流行这款：<br><img src="/images/实现头像与国旗的融合/1.jpg" style="margin:0;" alt="图片"/></p>
 <p>那么，将一张国旗图片与我们的头像，快速得到想要的头像，使用 CSS 如何简单实现呢？</p>
 <p>有人认为是改变其中一张图的透明度，实际上不是的。仔细观察合成后的头像，最左边的基本上只能看到红旗看不到原本的头像内容，而最右边基本只能看到头像而不再显示红旗的红色背景。</p>
 <span id="more"></span>
@@ -279,9 +279,8 @@
             card_top: 100
         },
         created: function () {
-            var that = this
-            window.onload = function () {
-                that.show_page = true
+            window.onload = () => {
+                this.show_page = true
                 document.getElementById("loadcontent").style.opacity = 0
                 setTimeout(function () {
                     document.getElementById("loadleft").style.width = 0
@@ -292,10 +291,9 @@
                 }, 600)
             }
         },
-        mounted: function () {
-            var that = this
-            window.addEventListener('scroll', function (e) {
-                that.menu_show = false
+        mounted() {
+            window.addEventListener('scroll', (e) => {
+                this.menu_show = false
             })
         },
         methods: {
@@ -304,26 +302,32 @@
                     top: window.innerHeight - 80,
                     behavior: "smooth",
                 });
+            },
+            goTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                });
             }
         }
     })
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script>
-    const gitalk = new Gitalk({
-        clientID: '',
-        clientSecret: '',
-        repo: 'Gregory-wyg.github.io',      // The repository of store comments,
-        owner: 'Gregory-wyg',
-        admin: ['Gregory-wyg'],
-        language: 'cn',
-        id: location.pathname,      // Ensure uniqueness and length less than 50
-        distractionFreeMode: true  // Facebook-like distraction free mode
-    })
-    gitalk.render('gitalk-container')
-</script>
-
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+    <script>
+        const gitalk = new Gitalk({
+            clientID: '',
+            clientSecret: '',
+            repo: 'Gregory-wyg.github.io',      // The repository of store comments,
+            owner: 'Gregory-wyg',
+            admin: ['Gregory-wyg'],
+            language: 'cn',
+            id: location.pathname,      // Ensure uniqueness and length less than 50
+            distractionFreeMode: true  // Facebook-like distraction free mode
+        })
+        gitalk.render('gitalk-container')
+    </script>
+    
 </body>
 
 </html>

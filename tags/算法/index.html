@@ -1,14 +1,14 @@
 
 <!DOCTYPE html>
-<html lang="cn ">
+<html lang="zh-CN">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gregory's blog</title>
     <meta name="author" content="Gregory Wu">
-    <meta name="description" content=" ">
-    <meta name="keywords" content=" ">
+    <meta name="description" content="小武的博客">
+    <meta name="keywords" content="vue,javascript,css,blog,Gregory">
     <link rel="icon" href="/../../images/gregory.jpg">
     <link rel="stylesheet" href="/css/antd.min.css">
     <link rel="stylesheet" href="/css/icon-font.css">
@@ -38,7 +38,7 @@
                 <div>
                     <h2>LOADING...</h2>
                     <div>
-                        <img src="/dancingkitty.gif" alt="loading">
+                        <img src="/runningDeer.gif" alt="loading" style="width: 70px;">
                     </div>
                 </div>
             </div>
@@ -162,11 +162,11 @@
         
         
         <span>
-            <a href="/tags/CSS/" style=background:#00bcd4>
+            <a href="/tags/Css/" style=background:#03a9f4>
                 <span class="icon">
                     <a-icon type="tag" theme="filled" />
                 </span>
-                CSS
+                Css
             </a>
         </span>
         
@@ -184,22 +184,22 @@
         
         
         <span>
-            <a href="/tags/SCSS/" style=background:#00bcd4>
+            <a href="/tags/Scss/" style=background:#00bcd4>
                 <span class="icon">
                     <a-icon type="tag" theme="filled" />
                 </span>
-                SCSS
+                Scss
             </a>
         </span>
         
         
         
         <span>
-            <a href="/tags/LESS/" style=background:#ffa2c4>
+            <a href="/tags/Less/" style=background:#00bcd4>
                 <span class="icon">
                     <a-icon type="tag" theme="filled" />
                 </span>
-                LESS
+                Less
             </a>
         </span>
         
@@ -217,7 +217,7 @@
         
         
         <span>
-            <a href="/tags/JavaScript/" style=background:#00a596>
+            <a href="/tags/JavaScript/" style=background:#03a9f4>
                 <span class="icon">
                     <a-icon type="tag" theme="filled" />
                 </span>
@@ -228,11 +228,22 @@
         
         
         <span>
-            <a href="/tags/Vue/" style=background:#ffa2c4>
+            <a href="/tags/Vue/" style=background:#ff7d73>
                 <span class="icon">
                     <a-icon type="tag" theme="filled" />
                 </span>
                 Vue
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/tags/Svg/" style=background:#ffa2c4>
+                <span class="icon">
+                    <a-icon type="tag" theme="filled" />
+                </span>
+                Svg
             </a>
         </span>
         
@@ -250,7 +261,7 @@
         
         
         <span>
-            <a href="/tags/TypeScript/" style=background:#00bcd4>
+            <a href="/tags/TypeScript/" style=background:#ffa2c4>
                 <span class="icon">
                     <a-icon type="tag" theme="filled" />
                 </span>
@@ -289,14 +300,14 @@
                             
                             <span class="tag">
                                 
-                                <a href="/tags/前端" style=color:#ff7d73>
+                                <a href="/tags/前端" style=color:#03a9f4>
                                     前端
                                 </a>
                             </span>
                             
                             <span class="tag">
                                 
-                                <a href="/tags/算法" style=color:#00a596>
+                                <a href="/tags/算法" style=color:#ff7d73>
                                     算法
                                 </a>
                             </span>
@@ -335,14 +346,14 @@
                             
                             <span class="tag">
                                 
-                                <a href="/tags/算法" style=color:#ffa2c4>
+                                <a href="/tags/算法" style=color:#03a9f4>
                                     算法
                                 </a>
                             </span>
                             
                             <span class="tag">
                                 
-                                <a href="/tags/TypeScript" style=color:#ff7d73>
+                                <a href="/tags/TypeScript" style=color:#03a9f4>
                                     TypeScript
                                 </a>
                             </span>
@@ -393,9 +404,8 @@
             card_top: 100
         },
         created: function () {
-            var that = this
-            window.onload = function () {
-                that.show_page = true
+            window.onload = () => {
+                this.show_page = true
                 document.getElementById("loadcontent").style.opacity = 0
                 setTimeout(function () {
                     document.getElementById("loadleft").style.width = 0
@@ -406,16 +416,21 @@
                 }, 600)
             }
         },
-        mounted: function () {
-            var that = this
-            window.addEventListener('scroll', function (e) {
-                that.menu_show = false
+        mounted() {
+            window.addEventListener('scroll', (e) => {
+                this.menu_show = false
             })
         },
         methods: {
             home_click: function () {
                 window.scrollTo({
                     top: window.innerHeight - 80,
+                    behavior: "smooth",
+                });
+            },
+            goTop() {
+                window.scrollTo({
+                    top: 0,
                     behavior: "smooth",
                 });
             }

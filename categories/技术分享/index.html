@@ -1,14 +1,14 @@
 
 <!DOCTYPE html>
-<html lang="cn ">
+<html lang="zh-CN">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gregory's blog</title>
     <meta name="author" content="Gregory Wu">
-    <meta name="description" content=" ">
-    <meta name="keywords" content=" ">
+    <meta name="description" content="小武的博客">
+    <meta name="keywords" content="vue,javascript,css,blog,Gregory">
     <link rel="icon" href="/../../images/gregory.jpg">
     <link rel="stylesheet" href="/css/antd.min.css">
     <link rel="stylesheet" href="/css/icon-font.css">
@@ -38,7 +38,7 @@
                 <div>
                     <h2>LOADING...</h2>
                     <div>
-                        <img src="/dancingkitty.gif" alt="loading">
+                        <img src="/runningDeer.gif" alt="loading" style="width: 70px;">
                     </div>
                 </div>
             </div>
@@ -210,8 +210,8 @@
                             
                             <span class="tag">
                                 
-                                <a href="/tags/CSS" style=color:#03a9f4>
-                                    CSS
+                                <a href="/tags/Css" style=color:#ffa2c4>
+                                    Css
                                 </a>
                             </span>
                             
@@ -256,8 +256,8 @@
                             
                             <span class="tag">
                                 
-                                <a href="/tags/CSS" style=color:#00a596>
-                                    CSS
+                                <a href="/tags/Css" style=color:#03a9f4>
+                                    Css
                                 </a>
                             </span>
                             
@@ -302,14 +302,14 @@
                             
                             <span class="tag">
                                 
-                                <a href="/tags/CSS" style=color:#ff7d73>
-                                    CSS
+                                <a href="/tags/Css" style=color:#00bcd4>
+                                    Css
                                 </a>
                             </span>
                             
                             <span class="tag">
                                 
-                                <a href="/tags/前端" style=color:#ff7d73>
+                                <a href="/tags/前端" style=color:#ffa2c4>
                                     前端
                                 </a>
                             </span>
@@ -348,29 +348,29 @@
                             
                             <span class="tag">
                                 
-                                <a href="/tags/CSS" style=color:#03a9f4>
-                                    CSS
+                                <a href="/tags/Css" style=color:#ffa2c4>
+                                    Css
                                 </a>
                             </span>
                             
                             <span class="tag">
                                 
-                                <a href="/tags/前端" style=color:#ff7d73>
+                                <a href="/tags/前端" style=color:#00a596>
                                     前端
                                 </a>
                             </span>
                             
                             <span class="tag">
                                 
-                                <a href="/tags/SCSS" style=color:#ffa2c4>
-                                    SCSS
+                                <a href="/tags/Scss" style=color:#ff7d73>
+                                    Scss
                                 </a>
                             </span>
                             
                             <span class="tag">
                                 
-                                <a href="/tags/LESS" style=color:#00bcd4>
-                                    LESS
+                                <a href="/tags/Less" style=color:#03a9f4>
+                                    Less
                                 </a>
                             </span>
                             
@@ -408,22 +408,22 @@
                             
                             <span class="tag">
                                 
-                                <a href="/tags/CSS" style=color:#ff7d73>
-                                    CSS
+                                <a href="/tags/Css" style=color:#00a596>
+                                    Css
                                 </a>
                             </span>
                             
                             <span class="tag">
                                 
-                                <a href="/tags/前端" style=color:#ffa2c4>
+                                <a href="/tags/前端" style=color:#03a9f4>
                                     前端
                                 </a>
                             </span>
                             
                             <span class="tag">
                                 
-                                <a href="/tags/SCSS" style=color:#ffa2c4>
-                                    SCSS
+                                <a href="/tags/Scss" style=color:#00a596>
+                                    Scss
                                 </a>
                             </span>
                             
@@ -461,14 +461,14 @@
                             
                             <span class="tag">
                                 
-                                <a href="/tags/CSS" style=color:#03a9f4>
-                                    CSS
+                                <a href="/tags/Css" style=color:#ffa2c4>
+                                    Css
                                 </a>
                             </span>
                             
                             <span class="tag">
                                 
-                                <a href="/tags/前端" style=color:#ff7d73>
+                                <a href="/tags/前端" style=color:#03a9f4>
                                     前端
                                 </a>
                             </span>
@@ -507,14 +507,14 @@
                             
                             <span class="tag">
                                 
-                                <a href="/tags/CSS" style=color:#03a9f4>
-                                    CSS
+                                <a href="/tags/Css" style=color:#00a596>
+                                    Css
                                 </a>
                             </span>
                             
                             <span class="tag">
                                 
-                                <a href="/tags/前端" style=color:#ffa2c4>
+                                <a href="/tags/前端" style=color:#03a9f4>
                                     前端
                                 </a>
                             </span>
@@ -565,9 +565,8 @@
             card_top: 100
         },
         created: function () {
-            var that = this
-            window.onload = function () {
-                that.show_page = true
+            window.onload = () => {
+                this.show_page = true
                 document.getElementById("loadcontent").style.opacity = 0
                 setTimeout(function () {
                     document.getElementById("loadleft").style.width = 0
@@ -578,16 +577,21 @@
                 }, 600)
             }
         },
-        mounted: function () {
-            var that = this
-            window.addEventListener('scroll', function (e) {
-                that.menu_show = false
+        mounted() {
+            window.addEventListener('scroll', (e) => {
+                this.menu_show = false
             })
         },
         methods: {
             home_click: function () {
                 window.scrollTo({
                     top: window.innerHeight - 80,
+                    behavior: "smooth",
+                });
+            },
+            goTop() {
+                window.scrollTo({
+                    top: 0,
                     behavior: "smooth",
                 });
             }

@@ -9,6 +9,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  user-select: none;
 }
 #home-head .home-info {
   position: relative;
@@ -25,7 +26,7 @@
 }
 #home-head .home-info .loop:nth-child(1) {
   border-radius: 38% 62% 63% 37%/41% 44% 56% 59%;
-  background: #fff;
+  background: #5eb8ff;
   opacity: 0.3;
   transform: rotate(30deg);
   animation: loop1 10s linear infinite;
@@ -40,7 +41,7 @@
 #home-head .home-info .loop:nth-child(3) {
   border-radius: 38% 62% 63% 37%/41% 44% 56% 59%;
   opacity: 0.3;
-  background: #fff;
+  background: #ffb2b2;
   transform: rotate(90deg);
   animation: loop3 10s linear infinite;
 }
@@ -50,6 +51,14 @@
   background: #fff;
   transform: rotate(120deg);
   animation: loop4 15s linear infinite;
+}
+::selection {
+  background-color: #edf7ff;
+  color: #9dd1ff;
+}
+::-moz-selection {
+  background-color: #edf7ff;
+  color: #9dd1ff;
 }
 #home-posts-wrap {
   position: relative;
@@ -189,6 +198,7 @@
   border-radius: 10px;
   text-align: center;
   border: none;
+  user-select: none;
 }
 #home-card .card-style .avatar {
   text-align: center;
