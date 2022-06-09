@@ -52,7 +52,7 @@
   margin: 5px;
 }
 #home-card .card-style .friend-links {
-  margin: 30px auto;
+  margin: 10px auto;
 }
 #home-card .card-style .friend-links .friend-link {
   margin: 5px auto;
@@ -69,4 +69,13 @@
 #home-card .card-style .friend-links .friend-link a:hover {
   background: side-card-button;
   color: #fff;
+}
+#home-card .card-style .go-top {
+  font-size: 18px;
+}
+#home-card .card-style .go-top i {
+  padding: 5px 20px;
+}
+#home-card .card-style .go-top i:hover {
+  color: default-link;
 }

@@ -412,7 +412,7 @@ a {
   margin: 5px;
 }
 #home-card .card-style .friend-links {
-  margin: 30px auto;
+  margin: 10px auto;
 }
 #home-card .card-style .friend-links .friend-link {
   margin: 5px auto;
@@ -429,6 +429,15 @@ a {
 #home-card .card-style .friend-links .friend-link a:hover {
   background: linear-gradient(120deg, #acb6e5 0, #86fde8 100%);
   color: #fff;
+}
+#home-card .card-style .go-top {
+  font-size: 18px;
+}
+#home-card .card-style .go-top i {
+  padding: 5px 20px;
+}
+#home-card .card-style .go-top i:hover {
+  color: #66afef;
 }
 @-moz-keyframes loop1 {
   0% {
