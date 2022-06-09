@@ -34,7 +34,7 @@
         <div
             style="position: fixed; height: 100vh; width: 100%;display: flex;justify-content: center;align-items: center;">
             <div id="loadcontent"
-                style="width:400px;height:400px;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px#a3ddfb; text-align:center;opacity:1;transition:opacity 0.3s ease-out;">
+                style="width:400px;height:400px;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px#a3ddfb; text-align:center;opacity:1;transition:opacity 0.3s ease-out;user-select:none;">
                 <div>
                     <h2>LOADING...</h2>
                     <div>
@@ -241,14 +241,14 @@
         
         <span class="tag">
             
-            <a href="/tags/Css" style=color:#00bcd4>
+            <a href="/tags/Css" style=color:#00a596>
                 Css
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/前端" style=color:#ff7d73>
+            <a href="/tags/前端" style=color:#00a596>
                 前端
             </a>
         </span>
@@ -410,14 +410,14 @@
         
         <span class="tag">
             
-            <a href="/tags/Css" style=color:#03a9f4>
+            <a href="/tags/Css" style=color:#ff7d73>
                 Css
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/前端" style=color:#ffa2c4>
+            <a href="/tags/前端" style=color:#03a9f4>
                 前端
             </a>
         </span>
@@ -495,21 +495,21 @@
         
         <span class="tag">
             
-            <a href="/tags/前端" style=color:#03a9f4>
+            <a href="/tags/前端" style=color:#ffa2c4>
                 前端
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/Scss" style=color:#03a9f4>
+            <a href="/tags/Scss" style=color:#00a596>
                 Scss
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/Less" style=color:#00bcd4>
+            <a href="/tags/Less" style=color:#00a596>
                 Less
             </a>
         </span>
@@ -517,6 +517,64 @@
     </div>
 
     <a href="/2021/03/25/CSS scss-less书写建议/ " class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+
+    <a href="/2021/01/07/Javascript Json.stringify九个特征/">
+        <h2>
+            Json.stringify九个特征
+        </h2>
+    </a>
+
+    <div class="category-and-date">
+
+        
+
+        <span class="date">
+            <span class="icon">
+                <a-icon type="calendar" theme="filled" />
+            </span>
+            2021/1/7
+        </span>
+
+    </div>
+
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h4 id="特性一"><a href="#特性一" class="headerlink" title="特性一"></a>特性一</h4><p><code>undefined</code>、任意的函数以及<code>symbol</code>值，出现在非数组对象的属性值中时在序列化过程中会被忽略<br><code>undefined</code>、任意的函数以及<code>symbol</code>值出现在数组中时会被转换成 <code>null</code><br><code>undefined</code>、任意的函数以及<code>symbol</code>值被单独转换时，会返回 <code>undefined</code></p>
+            
+            
+        </div>
+    </div>
+
+    <div class="post-tags">
+        
+        <span class="icon">
+            <a-icon type="tags" theme="filled" />
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/前端" style=color:#00a596>
+                前端
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/JavaScript" style=color:#00bcd4>
+                JavaScript
+            </a>
+        </span>
+        
+    </div>
+
+    <a href="/2021/01/07/Javascript Json.stringify九个特征/ " class="go-post">
         阅读全文
     </a>
 </div>
@@ -568,7 +626,7 @@
         
         <span class="tag">
             
-            <a href="/tags/Css" style=color:#03a9f4>
+            <a href="/tags/Css" style=color:#ff7d73>
                 Css
             </a>
         </span>
@@ -583,6 +641,75 @@
     </div>
 
     <a href="/2020/12/23/CSS 用css实现一个旋转的立方体/ " class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+
+    <a href="/2020/10/01/CSS 实现头像与国旗的融合/">
+        <h2>
+            头像与国旗的融合
+        </h2>
+    </a>
+
+    <div class="category-and-date">
+
+        
+        <span class="category">
+            <a href="/categories/技术分享">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" /></span>
+                技术分享
+            </a>
+        </span>
+        
+
+        <span class="date">
+            <span class="icon">
+                <a-icon type="calendar" theme="filled" />
+            </span>
+            2020/10/1
+        </span>
+
+    </div>
+
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <p>到国庆，大家都急着给祖国母亲庆生。</p>
+<p>每年每到此时，微信朋友圈就会流行起给头像装饰上国旗，而今年又流行这款：<br><img src="/images/实现头像与国旗的融合/1.jpg" style="margin:0;" alt="图片"/></p>
+<p>那么，将一张国旗图片与我们的头像，快速得到想要的头像，使用 CSS 如何简单实现呢？</p>
+<p>有人认为是改变其中一张图的透明度，实际上不是的。仔细观察合成后的头像，最左边的基本上只能看到红旗看不到原本的头像内容，而最右边基本只能看到头像而不再显示红旗的红色背景。</p>
+            
+            
+        </div>
+    </div>
+
+    <div class="post-tags">
+        
+        <span class="icon">
+            <a-icon type="tags" theme="filled" />
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/Css" style=color:#00bcd4>
+                Css
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/前端" style=color:#ff7d73>
+                前端
+            </a>
+        </span>
+        
+    </div>
+
+    <a href="/2020/10/01/CSS 实现头像与国旗的融合/ " class="go-post">
         阅读全文
     </a>
 </div>
@@ -636,21 +763,21 @@
         
         <span class="tag">
             
-            <a href="/tags/Css" style=color:#03a9f4>
+            <a href="/tags/Css" style=color:#ffa2c4>
                 Css
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/前端" style=color:#00bcd4>
+            <a href="/tags/前端" style=color:#03a9f4>
                 前端
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/H5" style=color:#ffa2c4>
+            <a href="/tags/H5" style=color:#00a596>
                 H5
             </a>
         </span>
@@ -711,14 +838,14 @@
         
         <span class="tag">
             
-            <a href="/tags/算法" style=color:#00a596>
+            <a href="/tags/算法" style=color:#ff7d73>
                 算法
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/TypeScript" style=color:#00a596>
+            <a href="/tags/TypeScript" style=color:#00bcd4>
                 TypeScript
             </a>
         </span>
@@ -779,7 +906,7 @@
         
         <span class="tag">
             
-            <a href="/tags/前端" style=color:#00a596>
+            <a href="/tags/前端" style=color:#ff7d73>
                 前端
             </a>
         </span>
