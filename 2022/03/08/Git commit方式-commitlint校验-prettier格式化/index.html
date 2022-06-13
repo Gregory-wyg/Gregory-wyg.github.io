@@ -18,6 +18,11 @@
     <script src="/js/vue.js"></script>
     <script src="/js/antd.min.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script type="text/javascript">
+      if (window !== top){ // 判断当前的window对象是否是top对象
+        top.location.href = window.location.href; // 如果不是，将top对象的网址自动导向被嵌入网页的网址
+      }
+    </script>
 <meta name="generator" content="Hexo 5.4.0"></head>
 
 <body>
@@ -189,14 +194,14 @@
             
             <span class="tag">
                 
-                <a href="/tags/JavaScript" style=color:#ffa2c4>
+                <a href="/tags/JavaScript" style=color:#ff7d73>
                     JavaScript
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/Git" style=color:#00bcd4>
+                <a href="/tags/Git" style=color:#03a9f4>
                     Git
                 </a>
             </span>
@@ -358,13 +363,7 @@ module.exports = &#123;
 
     </div>
 
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-    <div id="comment">
-        <div id="gitalk-container">
-        </div>
-    </div>
-    
+    <!--  -->
 </div>
                      
 <footer id="footer">
@@ -408,6 +407,14 @@ module.exports = &#123;
                 setTimeout(function () {
                     document.getElementById("loading").style = "display:none"
                 }, 600)
+                document.oncontextmenu = (e) => {
+                    e.preventDefault()
+                }
+                window.addEventListener('keydown', (e) => {
+                    if (e.keyCode === 123) {
+                        e.preventDefault();
+                    }
+                })
             }
         },
         mounted() {
@@ -431,22 +438,7 @@ module.exports = &#123;
         }
     })
 </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-    <script>
-        const gitalk = new Gitalk({
-            clientID: '',
-            clientSecret: '',
-            repo: 'Gregory-wyg.github.io',      // The repository of store comments,
-            owner: 'Gregory-wyg',
-            admin: ['Gregory-wyg'],
-            language: 'cn',
-            id: location.pathname,      // Ensure uniqueness and length less than 50
-            distractionFreeMode: true  // Facebook-like distraction free mode
-        })
-        gitalk.render('gitalk-container')
-    </script>
-    
+<!--  -->
 </body>
 
 </html>

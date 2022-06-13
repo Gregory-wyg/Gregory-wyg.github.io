@@ -18,6 +18,11 @@
     <script src="/js/vue.js"></script>
     <script src="/js/antd.min.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script type="text/javascript">
+      if (window !== top){ // 判断当前的window对象是否是top对象
+        top.location.href = window.location.href; // 如果不是，将top对象的网址自动导向被嵌入网页的网址
+      }
+    </script>
 <meta name="generator" content="Hexo 5.4.0"></head>
 
 <body>
@@ -162,7 +167,7 @@
         
         
         <span>
-            <a href="/tags/Css/" style=background:#ffa2c4>
+            <a href="/tags/Css/" style=background:#03a9f4>
                 <span class="icon">
                     <a-icon type="tag" theme="filled" />
                 </span>
@@ -184,7 +189,7 @@
         
         
         <span>
-            <a href="/tags/Scss/" style=background:#03a9f4>
+            <a href="/tags/Scss/" style=background:#ff7d73>
                 <span class="icon">
                     <a-icon type="tag" theme="filled" />
                 </span>
@@ -195,7 +200,7 @@
         
         
         <span>
-            <a href="/tags/Less/" style=background:#00a596>
+            <a href="/tags/Less/" style=background:#03a9f4>
                 <span class="icon">
                     <a-icon type="tag" theme="filled" />
                 </span>
@@ -206,7 +211,7 @@
         
         
         <span>
-            <a href="/tags/H5/" style=background:#ffa2c4>
+            <a href="/tags/H5/" style=background:#00bcd4>
                 <span class="icon">
                     <a-icon type="tag" theme="filled" />
                 </span>
@@ -217,7 +222,7 @@
         
         
         <span>
-            <a href="/tags/JavaScript/" style=background:#00a596>
+            <a href="/tags/JavaScript/" style=background:#00bcd4>
                 <span class="icon">
                     <a-icon type="tag" theme="filled" />
                 </span>
@@ -228,11 +233,22 @@
         
         
         <span>
-            <a href="/tags/Git/" style=background:#ffa2c4>
+            <a href="/tags/Git/" style=background:#03a9f4>
                 <span class="icon">
                     <a-icon type="tag" theme="filled" />
                 </span>
                 Git
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/tags/TypeScrip/" style=background:#ffa2c4>
+                <span class="icon">
+                    <a-icon type="tag" theme="filled" />
+                </span>
+                TypeScrip
             </a>
         </span>
         
@@ -250,7 +266,7 @@
         
         
         <span>
-            <a href="/tags/Svg/" style=background:#03a9f4>
+            <a href="/tags/Svg/" style=background:#ffa2c4>
                 <span class="icon">
                     <a-icon type="tag" theme="filled" />
                 </span>
@@ -272,7 +288,7 @@
         
         
         <span>
-            <a href="/tags/TypeScript/" style=background:#ffa2c4>
+            <a href="/tags/TypeScript/" style=background:#03a9f4>
                 <span class="icon">
                     <a-icon type="tag" theme="filled" />
                 </span>
@@ -311,7 +327,7 @@
                             
                             <span class="tag">
                                 
-                                <a href="/tags/JavaScript" style=color:#00bcd4>
+                                <a href="/tags/JavaScript" style=color:#03a9f4>
                                     JavaScript
                                 </a>
                             </span>
@@ -357,7 +373,7 @@
                             
                             <span class="tag">
                                 
-                                <a href="/tags/前端" style=color:#00a596>
+                                <a href="/tags/前端" style=color:#00bcd4>
                                     前端
                                 </a>
                             </span>
@@ -410,7 +426,7 @@
                             
                             <span class="tag">
                                 
-                                <a href="/tags/Svg" style=color:#ffa2c4>
+                                <a href="/tags/Svg" style=color:#00bcd4>
                                     Svg
                                 </a>
                             </span>
@@ -471,6 +487,14 @@
                 setTimeout(function () {
                     document.getElementById("loading").style = "display:none"
                 }, 600)
+                document.oncontextmenu = (e) => {
+                    e.preventDefault()
+                }
+                window.addEventListener('keydown', (e) => {
+                    if (e.keyCode === 123) {
+                        e.preventDefault();
+                    }
+                })
             }
         },
         mounted() {
@@ -494,7 +518,7 @@
         }
     })
 </script>
-
+<!--  -->
 </body>
 
 </html>
