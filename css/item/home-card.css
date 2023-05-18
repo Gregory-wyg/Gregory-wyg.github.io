@@ -21,6 +21,7 @@
   border-radius: 50%;
   width: 100px;
   height: 100px;
+  -webkit-user-drag: none;
 }
 #home-card .card-style .name {
   margin: 10px auto;

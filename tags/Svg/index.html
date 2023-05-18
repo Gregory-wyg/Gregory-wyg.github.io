@@ -9,7 +9,7 @@
     <meta name="author" content="Gregory Wu">
     <meta name="description" content="小武的博客">
     <meta name="keywords" content="vue,javascript,css,blog,Gregory">
-    <link rel="icon" href="/../../images/gregory.jpg">
+    <link rel="icon" href="/../../images/gregory.png">
     <link rel="stylesheet" href="/css/antd.min.css">
     <link rel="stylesheet" href="/css/icon-font.css">
     
@@ -68,13 +68,6 @@
             <span>首页</span>
         </a>
         
-        <a href="/about">
-            <span>
-                <a-icon type="idcard" theme="filled" />
-            </span>
-            <span>关于</span>
-        </a>
-        
         <a href="/archives">
             <span>
                 <a-icon type="folder" theme="filled" />
@@ -96,6 +89,13 @@
             <span>标签</span>
         </a>
         
+        <a href="/about">
+            <span>
+                <a-icon type="idcard" theme="filled" />
+            </span>
+            <span>关于</span>
+        </a>
+        
     </div>
 
     <div :class="'phone-menu ' + menu_show" id="phone-menu">
@@ -113,15 +113,6 @@
                         <a-icon type="home" theme="filled" />
                     </div>
                     <div style="min-width:100px;max-width: 150%;width: 20%;">首页</div>
-                </div>
-            </a>
-            
-            <a href="/about">
-                <div class="item">
-                    <div style="min-width:20px; max-width:50px; width: 10%">
-                        <a-icon type="idcard" theme="filled" />
-                    </div>
-                    <div style="min-width:100px;max-width: 150%;width: 20%;">关于</div>
                 </div>
             </a>
             
@@ -152,6 +143,15 @@
                 </div>
             </a>
             
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="idcard" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">关于</div>
+                </div>
+            </a>
+            
         </div>
         <div class="curtain" v-show="menu_show"></div>
     </div>
@@ -167,7 +167,7 @@
         
         
         <span>
-            <a href="/tags/Css/" style=background:#ffa2c4>
+            <a href="/tags/Css/" style=background:#00a596>
                 <span class="icon">
                     <a-icon type="tag" theme="filled" />
                 </span>
@@ -200,7 +200,7 @@
         
         
         <span>
-            <a href="/tags/Less/" style=background:#03a9f4>
+            <a href="/tags/Less/" style=background:#00bcd4>
                 <span class="icon">
                     <a-icon type="tag" theme="filled" />
                 </span>
@@ -222,7 +222,7 @@
         
         
         <span>
-            <a href="/tags/JavaScript/" style=background:#ffa2c4>
+            <a href="/tags/JavaScript/" style=background:#03a9f4>
                 <span class="icon">
                     <a-icon type="tag" theme="filled" />
                 </span>
@@ -233,7 +233,7 @@
         
         
         <span>
-            <a href="/tags/Git/" style=background:#00bcd4>
+            <a href="/tags/Git/" style=background:#ff7d73>
                 <span class="icon">
                     <a-icon type="tag" theme="filled" />
                 </span>
@@ -244,7 +244,7 @@
         
         
         <span>
-            <a href="/tags/TypeScrip/" style=background:#03a9f4>
+            <a href="/tags/TypeScrip/" style=background:#00a596>
                 <span class="icon">
                     <a-icon type="tag" theme="filled" />
                 </span>
@@ -255,7 +255,7 @@
         
         
         <span>
-            <a href="/tags/Vue/" style=background:#00a596>
+            <a href="/tags/Vue/" style=background:#00bcd4>
                 <span class="icon">
                     <a-icon type="tag" theme="filled" />
                 </span>
@@ -288,7 +288,7 @@
         
         
         <span>
-            <a href="/tags/TypeScript/" style=background:#ff7d73>
+            <a href="/tags/TypeScript/" style=background:#03a9f4>
                 <span class="icon">
                     <a-icon type="tag" theme="filled" />
                 </span>
@@ -327,14 +327,14 @@
                             
                             <span class="tag">
                                 
-                                <a href="/tags/Vue" style=color:#ffa2c4>
+                                <a href="/tags/Vue" style=color:#03a9f4>
                                     Vue
                                 </a>
                             </span>
                             
                             <span class="tag">
                                 
-                                <a href="/tags/Svg" style=color:#ff7d73>
+                                <a href="/tags/Svg" style=color:#03a9f4>
                                     Svg
                                 </a>
                             </span>
@@ -357,7 +357,7 @@
 <footer id="footer">
     <div class="footer-wrap">
         <div>
-            © 2020 - 2022 Gregory
+            © 2020 - 2023 Gregory
             <span class="footer-icon">
                 <a-icon type="flag" theme="filled" /></span>
             @Gregory Wu
@@ -386,18 +386,26 @@
         },
         created: function () {
             window.onload = () => {
-                this.show_page = true
-                document.getElementById("loadcontent").style.opacity = 0
+
+                this.show_page = true;
+
+                document.getElementById("loadcontent").style.opacity = 0;
+
                 setTimeout(function () {
-                    document.getElementById("loadleft").style.width = 0
-                    document.getElementById("loadright").style.width = 0
-                }, 300)
+                    document.getElementById("loadleft").style.width = 0;
+                    document.getElementById("loadright").style.width = 0;
+                }, 300);
+
                 setTimeout(function () {
                     document.getElementById("loading").style = "display:none"
-                }, 600)
-                document.oncontextmenu = (e) => {
-                    e.preventDefault()
+                }, 600);
+
+                // 禁用右键菜单
+                document.oncontextmenu = function (e) {
+                    e.preventDefault();
                 }
+
+                // 禁用f12
                 window.addEventListener('keydown', (e) => {
                     if (e.keyCode === 123) {
                         e.preventDefault();
