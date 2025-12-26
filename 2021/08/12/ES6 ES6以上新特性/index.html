@@ -1,0 +1,409 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gregory's blog</title>
+    <meta name="author" content="Gregory Wu">
+    <meta name="description" content="小武的博客">
+    <meta name="keywords" content="vue,javascript,css,blog,Gregory">
+    <link rel="icon" href="/../../images/gregory.png">
+    <link rel="stylesheet" href="/css/antd.min.css">
+    <link rel="stylesheet" href="/css/icon-font.css">
+    
+    <link rel="stylesheet" href="/css/full-theme.css">
+    
+    <script src="/js/vue.js"></script>
+    <script src="/js/antd.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script type="text/javascript">
+      if (window !== top){ // 判断当前的window对象是否是top对象
+        top.location.href = window.location.href; // 如果不是，将top对象的网址自动导向被嵌入网页的网址
+      }
+    </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <script>
+        if (!navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))
+            document.writeln(
+                `<canvas id="background"><\/canvas>\n<canvas id="fireworks"><\/canvas>\n<script src="/js\/background.js"><\/script>\n<script src="/js\/fireworks.js"><\/script>`
+            );
+    </script>  
+    <div id="loading"
+        style="height: 100vh; width: 100%; position: fixed;display: flex;z-index: 200; justify-content: space-between;">
+        <div id="loadleft" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div id="loadright" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div
+            style="position: fixed; height: 100vh; width: 100%;display: flex;justify-content: center;align-items: center;">
+            <div id="loadcontent"
+                style="width:400px;height:400px;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px#a3ddfb; text-align:center;opacity:1;transition:opacity 0.3s ease-out;user-select:none;">
+                <div>
+                    <h2>LOADING...</h2>
+                    <div>
+                        <img src="/runningDeer.gif" alt="loading" style="width: 70px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="layout">
+        <transition name="into">
+            <div v-show="show_page" style="display: none;">
+                <div id="menu_show">
+                     
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">Gregory</span>
+        </a>
+        
+        <a href="/">
+            <span>
+                <a-icon type="home" theme="filled" />
+            </span>
+            <span>首页</span>
+        </a>
+        
+        <a href="/archives">
+            <span>
+                <a-icon type="folder" theme="filled" />
+            </span>
+            <span>文章</span>
+        </a>
+        
+        <a href="/categories">
+            <span>
+                <a-icon type="book" theme="filled" />
+            </span>
+            <span>分类</span>
+        </a>
+        
+        <a href="/tags">
+            <span>
+                <a-icon type="tags" theme="filled" />
+            </span>
+            <span>标签</span>
+        </a>
+        
+        <a href="/about">
+            <span>
+                <a-icon type="idcard" theme="filled" />
+            </span>
+            <span>关于</span>
+        </a>
+        
+    </div>
+
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div :class="'title'" @click="menu_show=!menu_show">
+            <span style="margin-right: 10px;">
+                <a-icon type="appstore" theme="filled" />
+            </span>
+            <span>Gregory</span>
+        </div>
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="home" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">首页</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="folder" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">文章</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="book" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">分类</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="tags" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">标签</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="idcard" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">关于</div>
+                </div>
+            </a>
+            
+        </div>
+        <div class="curtain" v-show="menu_show"></div>
+    </div>
+
+</nav>
+                </div>
+
+                <div id="main">
+                     
+<link rel="stylesheet" href="/css/post-body.css">
+<div class="article">
+    <div>
+        <h1>ES6以上新特性 </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <a-icon type="calendar" theme="filled" />
+            </span>
+            2021/8/12
+        </span>
+
+        
+        <span class="category">
+            <a href="/categories/学习笔记">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" />
+                </span>
+                学习笔记
+            </a>
+        </span>
+        
+
+        
+
+        <span class="tags">
+            <span class="icon">
+                <a-icon type="tags" theme="filled" />
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/前端" style=color:#00a596>
+                    前端
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/JavaScript" style=color:#ff7d73>
+                    JavaScript
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+
+    <div class="content" v-pre>
+        <h4 id="ES7新特性"><a href="#ES7新特性" class="headerlink" title="ES7新特性"></a>ES7新特性</h4><h5 id="1-Array-prototype-includes-方法"><a href="#1-Array-prototype-includes-方法" class="headerlink" title="1.Array.prototype.includes()方法"></a>1.Array.prototype.includes()方法</h5><p>在 <code>ES6</code> 中我们有 <code>String.prototype.includes()</code> 可以查询给定字符串是否包含一个字符，而在 <code>ES7</code> 中，我们在数组中也可以用 <code>Array.prototype.includes</code> 方法来判断一个数组是否包含一个指定的值，根据情况，如果包含则返回<code>true</code>，否则返回<code>false</code>。</p>
+<span id="more"></span>
+
+<pre><code class="javascript">const arr = [1, 3, 5, 2, &#39;8&#39;, NaN, -0]
+arr.includes(1) // true
+arr.includes(1, 2) // false 该方法的第二个参数表示搜索的起始位置，默认为0
+arr.includes(&#39;1&#39;) // false
+arr.includes(NaN) // true
+arr.includes(+0) // true
+</code></pre>
+<p>在ES7之前想判断数组中是否包含一个元素，有如下两种方法, 但都不如includes来得直观：</p>
+<ol>
+<li>indexOf()<br><code>indexOf()</code>方法返回在数组中可以找到一个给定元素的第一个索引，如果不存在，则返回-1</li>
+</ol>
+<pre><code class="javascript">if (arr.indexOf(el) !== -1) &#123;
+  // ...
+&#125;
+</code></pre>
+<p>不过这种方法有两个缺点，一是不够语义化，要先找到参数值的第一个出现位置，所以要去比较是否不等于 - 1，表达起来不够直观。二是，它内部使用严格相等运算符（===）进行判断，这会导致对<code>NaN</code>的误判。</p>
+<pre><code class="javacript">[NaN].indexOf(NaN)// -1
+</code></pre>
+<ol start="2">
+<li>find() 和 findIndex()</li>
+</ol>
+<p>数组实例的<code>find</code>方法，用于找出第一个符合条件的数组成员。另外，这两个方法都可以发现<code>NaN</code>，弥补了数组的<code>indexOf</code>方法的不足。</p>
+<pre><code class="javascript">[1, 4, -5, 10].find((n) =&gt; n &lt; 0) // -5
+[1, 5, 10, 15].findIndex(function(value) &#123;
+  return value &gt; 9;
+&#125;) // 2
+[NaN].findIndex(y =&gt; Object.is(NaN, y)) // 0
+</code></pre>
+<h5 id="2-求幂运算符"><a href="#2-求幂运算符" class="headerlink" title="2.求幂运算符"></a>2.求幂运算符</h5><p>在<code>ES7</code>中引入了指数运算符，具有与<code>Math.pow()</code>等效的计算结果</p>
+<pre><code class="javascript">console.log(2**10);// 输出1024
+console.log(Math.pow(2, 10)) // 输出1024
+</code></pre>
+<h4 id="ES8新特性"><a href="#ES8新特性" class="headerlink" title="ES8新特性"></a>ES8新特性</h4><h5 id="1-Async-Await"><a href="#1-Async-Await" class="headerlink" title="1.Async / Await"></a>1.Async / Await</h5><p>我们都知道使用<code>Promise</code>能很好地解决回调地狱的问题，但如果处理流程比较复杂的话，那么整段代码将充斥着<code>then</code>，语义化不明显，代码不能很好地表示执行流程，那有没有比<code>Promise</code>更优雅的异步方式呢？</p>
+<p>假如有这样一个使用场景：需要先请求a链接，等返回信息之后，再请求b链接的另外一个资源。下面代码展示的是使用<code>fetch</code>来实现这样的需求，<code>fetch</code>被定义在<code>window</code>对象中，它返回的是一个<code>Promise</code>对象</p>
+<pre><code class="javascript">fetch(&#39;https://github.com/Gregory-wyg&#39;)
+  .then(response =&gt; &#123;
+    console.log(response)
+    return fetch(&#39;https://gitee.com/gregory_wu&#39;)
+  &#125;)
+  .then(response =&gt; &#123;
+    console.log(response)
+  &#125;)
+  .catch(error =&gt; &#123;
+    console.log(error)
+  &#125;)
+</code></pre>
+<p>虽然上述代码可以实现这个需求，但语义化不明显，代码不能很好地表示执行流程。基于这个原因，<code>ES8</code>引入了<code>async / await</code>，这是<code>JavaScript</code>异步编程的一个重大改进，提供了在不阻塞主线程的情况下使用同步代码实现异步访问资源的能力，并且使得代码逻辑更加清晰。</p>
+<pre><code class="javascript">async function foo () &#123;
+  try &#123;
+    let response1 = await fetch(&#39;https://github.com/Gregory-wyg&#39;)
+    console.log(response1)
+    let response2 = await fetch(&#39;https://gitee.com/gregory_wu&#39;)
+    console.log(response2)
+  &#125; catch (err) &#123;
+    console.error(err)
+  &#125;
+&#125;
+foo()
+</code></pre>
+<p>通过上面代码，你会发现整个异步处理的逻辑都是使用同步代码的方式来实现的，而且还支持<code>try catch</code>来捕获异常，这感觉就在写同步代码，所以是非常符合人的线性思维的。需要强调的是， <code>await</code> 不可以脱离 <code>async</code> 单独使用 <code>await</code> 后面一定是<code>Promise </code>对象，如果不是会自动包装成<code>Promise</code>对象。</p>
+<p>根据MDN定义， <code>async</code>是一个通过异步执行并隐式返回<code>Promise</code>作为结果的函数。</p>
+<pre><code class="javascript">async function foo () &#123;
+  return &#39;gregory&#39;
+&#125;
+foo().then(val =&gt; &#123;
+  console.log(val) // gregory
+&#125;)
+</code></pre>
+<p>上述代码，我们可以看到调用<code>async</code> 声明的<code>foo</code> 函数返回了一个<code>Promise</code>对象，等价于下面代码：</p>
+<pre><code class="javascript">async function foo () &#123;
+  return Promise.resolve(&#39;gregory&#39;)
+&#125;
+foo().then(val =&gt; &#123;
+  console.log(val) // gregory
+&#125;)
+</code></pre>
+<h5 id="2-Object-values-，Object-entries"><a href="#2-Object-values-，Object-entries" class="headerlink" title="2.Object.values() ，Object.entries()"></a>2.Object.values() ，Object.entries()</h5><p><code>ES5</code> 引入了<code>Object.keys</code>方法，返回一个数组，成员是参数对象自身的（不含继承的）所有可遍历（enumerable）属性的键名。ES8引入了跟<code>Object.keys</code>配套的<code>Object.values</code>和<code>Object.entries</code>，作为遍历一个对象的补充手段，供<code>for...of</code>循环使用。</p>
+<p><code>Object.values</code>方法返回一个数组，成员是参数对象自身的（不含继承的）所有可遍历（enumerable）属性的键值。</p>
+<pre><code class="javascript">const obj = &#123; foo: &#39;bar&#39;, baz: 42 &#125;;
+Object.values(obj) // [&quot;bar&quot;, 42]
+const obj = &#123; 100: &#39;a&#39;, 2: &#39;b&#39;, 7: &#39;c&#39; &#125;;
+Object.values(obj) // [&quot;b&quot;, &quot;c&quot;, &quot;a&quot;]
+</code></pre>
+<p>需要注意的是，如果属性名为数值的属性，是按照数值大小，从小到大遍历的，因此返回的顺序是b、c、a。<br><code>Object.entries()</code>方法返回一个数组，成员是参数对象自身的（不含继承的）所有可遍历（enumerable）属性的键值对数组。这个特性我们后面介绍<code>ES10</code>的<code>Object.fromEntries()</code>还会再提到。</p>
+<pre><code class="javascript">const obj = &#123; foo: &#39;bar&#39;, baz: 42 &#125;;
+Object.entries(obj) // [ [&quot;foo&quot;, &quot;bar&quot;], [&quot;baz&quot;, 42] ]
+const obj = &#123; 10: &#39;xxx&#39;, 1: &#39;yyy&#39;, 3: &#39;zzz&#39; &#125;;
+Object.entries(obj); // [[&#39;1&#39;, &#39;yyy&#39;], [&#39;3&#39;, &#39;zzz&#39;], [&#39;10&#39;: &#39;xxx&#39;]]
+</code></pre>
+<h5 id="3-String-padding"><a href="#3-String-padding" class="headerlink" title="3.String padding"></a>3.String padding</h5><p>在<code>ES8</code>中<code>String</code> 新增了两个实例函数 <code>String.prototype.padStart</code> 和 <code>String.prototype.padEnd</code>，允许将空字符串或其他字符串添加到原始字符串的开头或结尾。我们先看下使用语法：</p>
+<pre><code class="javascript">String.padStart(targetLength,[padString])
+</code></pre>
+<ul>
+<li><code>targetLength</code>(必填): 当前字符串需要填充到的目标长度。如果这个数值小于当前字符串的长度，则返回当前字符串本身。</li>
+<li><code>padString</code>(可选): 填充字符串。如果字符串太长，使填充后的字符串长度超过了目标长度，则只保留最左侧的部分，其他部分会被截断，此参数的缺省值为 “ “。</li>
+</ul>
+<pre><code class="javascript">&#39;x&#39;.padStart(4, &#39;ab&#39;) // &#39;abax&#39;
+&#39;x&#39;.padEnd(5, &#39;ab&#39;) // &#39;xabab&#39;
+</code></pre>
+<p>有时候我们处理日期、金额的时候经常要格式化，这个特性就派上用场：</p>
+<pre><code class="javascript">&#39;12&#39;.padStart(10, &#39;YYYY-MM-DD&#39;) // &quot;YYYY-MM-12&quot;
+&#39;09-12&#39;.padStart(10, &#39;YYYY-MM-DD&#39;) // &quot;YYYY-09-12&quot;
+</code></pre>
+
+    </div>
+
+    <!--  -->
+</div>
+                     
+<footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2020 - 2025 Gregory
+            <span class="footer-icon">
+                <a-icon type="flag" theme="filled" /></span>
+            @Gregory Wu
+        </div>
+        <div></div>
+        
+    </div>
+
+</footer>
+
+<script src="/js/highlight.min.js"></script>
+<script src="/js/particle.js"></script>
+                </div>
+            </div>
+        </transition>
+    </div>
+
+    <script>
+    new Vue({
+        el: "#layout",
+        data: {
+            show_page: false,
+            onload_menu: false,
+            menu_show: false,
+            card_top: 100
+        },
+        created: function () {
+            window.onload = () => {
+
+                this.show_page = true;
+
+                document.getElementById("loadcontent").style.opacity = 0;
+
+                setTimeout(function () {
+                    document.getElementById("loadleft").style.width = 0;
+                    document.getElementById("loadright").style.width = 0;
+                }, 300);
+
+                setTimeout(function () {
+                    document.getElementById("loading").style = "display:none"
+                }, 600);
+
+                // 禁用右键菜单
+                document.oncontextmenu = function (e) {
+                    e.preventDefault();
+                }
+
+                // 禁用f12
+                window.addEventListener('keydown', (e) => {
+                    if (e.keyCode === 123) {
+                        e.preventDefault();
+                    }
+                })
+            }
+        },
+        mounted() {
+            window.addEventListener('scroll', (e) => {
+                this.menu_show = false
+            })
+        },
+        methods: {
+            home_click: function () {
+                window.scrollTo({
+                    top: window.innerHeight - 80,
+                    behavior: "smooth",
+                });
+            },
+            goTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                });
+            }
+        }
+    })
+</script>
+<!--  -->
+</body>
+
+</html>

@@ -1,0 +1,360 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gregory's blog</title>
+    <meta name="author" content="Gregory Wu">
+    <meta name="description" content="小武的博客">
+    <meta name="keywords" content="vue,javascript,css,blog,Gregory">
+    <link rel="icon" href="/../../images/gregory.png">
+    <link rel="stylesheet" href="/css/antd.min.css">
+    <link rel="stylesheet" href="/css/icon-font.css">
+    
+    <link rel="stylesheet" href="/css/full-theme.css">
+    
+    <script src="/js/vue.js"></script>
+    <script src="/js/antd.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script type="text/javascript">
+      if (window !== top){ // 判断当前的window对象是否是top对象
+        top.location.href = window.location.href; // 如果不是，将top对象的网址自动导向被嵌入网页的网址
+      }
+    </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <script>
+        if (!navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))
+            document.writeln(
+                `<canvas id="background"><\/canvas>\n<canvas id="fireworks"><\/canvas>\n<script src="/js\/background.js"><\/script>\n<script src="/js\/fireworks.js"><\/script>`
+            );
+    </script>  
+    <div id="loading"
+        style="height: 100vh; width: 100%; position: fixed;display: flex;z-index: 200; justify-content: space-between;">
+        <div id="loadleft" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div id="loadright" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div
+            style="position: fixed; height: 100vh; width: 100%;display: flex;justify-content: center;align-items: center;">
+            <div id="loadcontent"
+                style="width:400px;height:400px;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px#a3ddfb; text-align:center;opacity:1;transition:opacity 0.3s ease-out;user-select:none;">
+                <div>
+                    <h2>LOADING...</h2>
+                    <div>
+                        <img src="/runningDeer.gif" alt="loading" style="width: 70px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="layout">
+        <transition name="into">
+            <div v-show="show_page" style="display: none;">
+                <div id="menu_show">
+                     
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">Gregory</span>
+        </a>
+        
+        <a href="/">
+            <span>
+                <a-icon type="home" theme="filled" />
+            </span>
+            <span>首页</span>
+        </a>
+        
+        <a href="/archives">
+            <span>
+                <a-icon type="folder" theme="filled" />
+            </span>
+            <span>文章</span>
+        </a>
+        
+        <a href="/categories">
+            <span>
+                <a-icon type="book" theme="filled" />
+            </span>
+            <span>分类</span>
+        </a>
+        
+        <a href="/tags">
+            <span>
+                <a-icon type="tags" theme="filled" />
+            </span>
+            <span>标签</span>
+        </a>
+        
+        <a href="/about">
+            <span>
+                <a-icon type="idcard" theme="filled" />
+            </span>
+            <span>关于</span>
+        </a>
+        
+    </div>
+
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div :class="'title'" @click="menu_show=!menu_show">
+            <span style="margin-right: 10px;">
+                <a-icon type="appstore" theme="filled" />
+            </span>
+            <span>Gregory</span>
+        </div>
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="home" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">首页</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="folder" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">文章</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="book" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">分类</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="tags" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">标签</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="idcard" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">关于</div>
+                </div>
+            </a>
+            
+        </div>
+        <div class="curtain" v-show="menu_show"></div>
+    </div>
+
+</nav>
+                </div>
+
+                <div id="main">
+                     
+<link rel="stylesheet" href="/css/post-body.css">
+<div class="article">
+    <div>
+        <h1>Map()方法的基本使用 </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <a-icon type="calendar" theme="filled" />
+            </span>
+            2021/7/12
+        </span>
+
+        
+        <span class="category">
+            <a href="/categories/学习笔记">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" />
+                </span>
+                学习笔记
+            </a>
+        </span>
+        
+
+        
+
+        <span class="tags">
+            <span class="icon">
+                <a-icon type="tags" theme="filled" />
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/前端" style=color:#00a596>
+                    前端
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/JavaScript" style=color:#00a596>
+                    JavaScript
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+
+    <div class="content" v-pre>
+        <p><code>JavaScript</code> 的对象（<code>Object</code>），本质上是键值对的集合（<code>Hash</code> 结构），但是传统上只能用字符串当作键。这给它的使用带来了很大的限制。</p>
+<pre><code class="javascript">const data = &#123;&#125;;
+const element = document.getElementById(&#39;myDiv&#39;);
+ 
+data[element] = &#39;metadata&#39;;
+data[&#39;[object HTMLDivElement]&#39;] // &quot;metadata&quot;
+</code></pre>
+<p>上面代码原意是将一个 <code>DOM</code> 节点作为对象<code>data</code>的键，但是由于对象只接受字符串作为键名，所以<code>element</code>被自动转为字符串<code>[object HTMLDivElement]</code>。</p>
+<h4 id="什么是Map"><a href="#什么是Map" class="headerlink" title="什么是Map"></a>什么是Map</h4><p>为了解决这个问题，<code>ES6</code> 提供了 <code>Map</code> 数据结构。它类似于对象，也是键值对的集合，但是“键”的范围不限于字符串，各种类型的值（包括对象）都可以当作键。<br>也就是说，<code>Object</code> 结构提供了“字符串—值”的对应，<code>Map</code> 结构提供了“值—值”的对应，是一种更完善的 <code>Hash</code> 结构实现。<br>如果你需要“键值对”的数据结构，<code>Map</code> 比 <code>Object</code> 更合适。</p>
+<span id="more"></span>
+<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><p><code>new Map([iterable])</code><br><code>Iterable</code> 可以是一个数组或者其他 <code>iterable</code> 对象，其元素为键值对(两个元素的数组，例如: <code>[[ 1, &#39;one&#39; ],[ 2, &#39;two&#39; ]]</code>。<br>每个键值对都会添加到新的 <code>Map</code>。<br><code>null</code> 会被当做 <code>undefined</code>。</p>
+<h4 id="Object-和-Map-的比较："><a href="#Object-和-Map-的比较：" class="headerlink" title="Object 和 Map 的比较："></a>Object 和 Map 的比较：</h4><p><code>Objects</code> 和 <code>Maps</code> 类似的是，它们都允许你按键存取一个值、删除键、检测一个键是否绑定了值。因此（并且也没有其他内建的替代方式了）过去我们一直都把对象当成 <code>Maps</code> 使用。不过 <code>Maps</code> 和 <code>Objects</code> 有一些重要的区别，在下列情况里使用 Map 会是更好的选择</p>
+<p>一个 <code>Object</code> 的键只能是字符串或者 <code>Symbols</code> ，但一个 <code>Map</code> 的键可以是任意值，包括函数、对象、基本类型。</p>
+<p><code>Map</code> 中的键值是有序的，而添加到对象中的键则不是。因此，当对它进行遍历时， <code>Map</code> 对象是按插入的顺序返回键值。</p>
+<p>你可以通过 <code>size</code> 属性直接获取一个 Map 的键值对个数，而 <code>Object</code> 的键值对个数只能手动计算。</p>
+<p><code>Map</code> 可直接进行迭代，而 <code>Object</code> 的迭代需要先 获取它的键数组，然后再进行迭代。</p>
+<p><code>Object</code> 都有自己的原型，原型链上的键名有可能和你自己在对象上的设置的键名产生冲突。虽然 <code>ES5</code> 开始可以用 <code>map = Object.create(null)</code> 来创建一个没有原型的对象，但是这种用法不太常见。</p>
+<p><code>Map</code> 在涉及频繁增删键值对的场景下会有些性能优势。</p>
+<h5 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h5><pre><code class="javascript">var myMap = new Map();
+  
+var keyObj = &#123;&#125;,
+    keyFunc = function () &#123;&#125;,
+    keyString = &quot;a string&quot;;
+  
+// 添加键
+myMap.set(keyString, &quot;和键&#39;a string&#39;关联的值&quot;);
+myMap.set(keyObj, &quot;和键keyObj关联的值&quot;);
+myMap.set(keyFunc, &quot;和键keyFunc关联的值&quot;);
+  
+myMap.size; // 3
+  
+// 读取值
+myMap.get(keyString);    // &quot;和键&#39;a string&#39;关联的值&quot;
+myMap.get(keyObj);       // &quot;和键keyObj关联的值&quot;
+myMap.get(keyFunc);      // &quot;和键keyFunc关联的值&quot;
+  
+myMap.get(&quot;a string&quot;);   // &quot;和键&#39;a string&#39;关联的值&quot;
+                         // 因为keyString === &#39;a string&#39;
+myMap.get(&#123;&#125;);           // undefined, 因为keyObj !== &#123;&#125;
+myMap.get(function() &#123;&#125;) // undefined, 因为keyFunc !== function () &#123;&#125;
+</code></pre>
+<h4 id="将-NaN-作为-Map-的键"><a href="#将-NaN-作为-Map-的键" class="headerlink" title="将 NaN 作为 Map 的键"></a>将 NaN 作为 Map 的键</h4><p><code>NaN</code> 也可以作为<code>Map</code>对象的键。虽然 <code>NaN</code> 和任何值甚至和自己都不相等<code>(NaN !== NaN 返回true)</code>，但下面的例子表明，<code>NaN</code>作为<code>Map</code>的键来说是没有区别的</p>
+<pre><code class="javascript">var myMap = new Map();
+myMap.set(NaN, &quot;not a number&quot;);
+ 
+myMap.get(NaN); // &quot;not a number&quot;
+ 
+var otherNaN = Number(&quot;foo&quot;);
+myMap.get(otherNaN); // &quot;not a number&quot;
+</code></pre>
+<h4 id="只有对同一个对象的引用，Map-结构才将其视为同一个键"><a href="#只有对同一个对象的引用，Map-结构才将其视为同一个键" class="headerlink" title="只有对同一个对象的引用，Map 结构才将其视为同一个键"></a>只有对同一个对象的引用，Map 结构才将其视为同一个键</h4><pre><code class="javascript">const map = new Map();
+ 
+map.set([&#39;a&#39;], 555);
+map.get([&#39;a&#39;]) // undefined
+</code></pre>
+<p>上面代码的<code>set</code>和<code>get</code>方法，表面是针对同一个键，但实际上这是两个不同的数组实例，内存地址是不一样的，因此<code>get</code>方法无法读取该键，返回<code>undefined</code>。</p>
+<p>同样的值的两个实例，在 <code>Map</code> 结构中被视为两个键。</p>
+
+    </div>
+
+    <!--  -->
+</div>
+                     
+<footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2020 - 2025 Gregory
+            <span class="footer-icon">
+                <a-icon type="flag" theme="filled" /></span>
+            @Gregory Wu
+        </div>
+        <div></div>
+        
+    </div>
+
+</footer>
+
+<script src="/js/highlight.min.js"></script>
+<script src="/js/particle.js"></script>
+                </div>
+            </div>
+        </transition>
+    </div>
+
+    <script>
+    new Vue({
+        el: "#layout",
+        data: {
+            show_page: false,
+            onload_menu: false,
+            menu_show: false,
+            card_top: 100
+        },
+        created: function () {
+            window.onload = () => {
+
+                this.show_page = true;
+
+                document.getElementById("loadcontent").style.opacity = 0;
+
+                setTimeout(function () {
+                    document.getElementById("loadleft").style.width = 0;
+                    document.getElementById("loadright").style.width = 0;
+                }, 300);
+
+                setTimeout(function () {
+                    document.getElementById("loading").style = "display:none"
+                }, 600);
+
+                // 禁用右键菜单
+                document.oncontextmenu = function (e) {
+                    e.preventDefault();
+                }
+
+                // 禁用f12
+                window.addEventListener('keydown', (e) => {
+                    if (e.keyCode === 123) {
+                        e.preventDefault();
+                    }
+                })
+            }
+        },
+        mounted() {
+            window.addEventListener('scroll', (e) => {
+                this.menu_show = false
+            })
+        },
+        methods: {
+            home_click: function () {
+                window.scrollTo({
+                    top: window.innerHeight - 80,
+                    behavior: "smooth",
+                });
+            },
+            goTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                });
+            }
+        }
+    })
+</script>
+<!--  -->
+</body>
+
+</html>

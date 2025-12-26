@@ -1,0 +1,380 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gregory's blog</title>
+    <meta name="author" content="Gregory Wu">
+    <meta name="description" content="小武的博客">
+    <meta name="keywords" content="vue,javascript,css,blog,Gregory">
+    <link rel="icon" href="/../../images/gregory.png">
+    <link rel="stylesheet" href="/css/antd.min.css">
+    <link rel="stylesheet" href="/css/icon-font.css">
+    
+    <link rel="stylesheet" href="/css/full-theme.css">
+    
+    <script src="/js/vue.js"></script>
+    <script src="/js/antd.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script type="text/javascript">
+      if (window !== top){ // 判断当前的window对象是否是top对象
+        top.location.href = window.location.href; // 如果不是，将top对象的网址自动导向被嵌入网页的网址
+      }
+    </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <script>
+        if (!navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))
+            document.writeln(
+                `<canvas id="background"><\/canvas>\n<canvas id="fireworks"><\/canvas>\n<script src="/js\/background.js"><\/script>\n<script src="/js\/fireworks.js"><\/script>`
+            );
+    </script>  
+    <div id="loading"
+        style="height: 100vh; width: 100%; position: fixed;display: flex;z-index: 200; justify-content: space-between;">
+        <div id="loadleft" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div id="loadright" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div
+            style="position: fixed; height: 100vh; width: 100%;display: flex;justify-content: center;align-items: center;">
+            <div id="loadcontent"
+                style="width:400px;height:400px;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px#a3ddfb; text-align:center;opacity:1;transition:opacity 0.3s ease-out;user-select:none;">
+                <div>
+                    <h2>LOADING...</h2>
+                    <div>
+                        <img src="/runningDeer.gif" alt="loading" style="width: 70px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="layout">
+        <transition name="into">
+            <div v-show="show_page" style="display: none;">
+                <div id="menu_show">
+                     
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">Gregory</span>
+        </a>
+        
+        <a href="/">
+            <span>
+                <a-icon type="home" theme="filled" />
+            </span>
+            <span>首页</span>
+        </a>
+        
+        <a href="/archives">
+            <span>
+                <a-icon type="folder" theme="filled" />
+            </span>
+            <span>文章</span>
+        </a>
+        
+        <a href="/categories">
+            <span>
+                <a-icon type="book" theme="filled" />
+            </span>
+            <span>分类</span>
+        </a>
+        
+        <a href="/tags">
+            <span>
+                <a-icon type="tags" theme="filled" />
+            </span>
+            <span>标签</span>
+        </a>
+        
+        <a href="/about">
+            <span>
+                <a-icon type="idcard" theme="filled" />
+            </span>
+            <span>关于</span>
+        </a>
+        
+    </div>
+
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div :class="'title'" @click="menu_show=!menu_show">
+            <span style="margin-right: 10px;">
+                <a-icon type="appstore" theme="filled" />
+            </span>
+            <span>Gregory</span>
+        </div>
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="home" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">首页</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="folder" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">文章</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="book" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">分类</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="tags" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">标签</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="idcard" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">关于</div>
+                </div>
+            </a>
+            
+        </div>
+        <div class="curtain" v-show="menu_show"></div>
+    </div>
+
+</nav>
+                </div>
+
+                <div id="main">
+                     
+<link rel="stylesheet" href="/css/post-body.css">
+<div class="article">
+    <div>
+        <h1>nth-child(n)和nth-of-type(n) </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <a-icon type="calendar" theme="filled" />
+            </span>
+            2021/4/20
+        </span>
+
+        
+        <span class="category">
+            <a href="/categories/学习笔记">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" />
+                </span>
+                学习笔记
+            </a>
+        </span>
+        
+
+        
+
+        <span class="tags">
+            <span class="icon">
+                <a-icon type="tags" theme="filled" />
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/Css" style=color:#00bcd4>
+                    Css
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/前端" style=color:#00bcd4>
+                    前端
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+
+    <div class="content" v-pre>
+        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><table>
+  <tr>
+    <td>:nth-child(n)</td>
+    <td>p:nth-child(2)</td>
+    <td>选择属于其父元素的第二个子元素的每个&lt;p&gt;标签</td>
+  </tr>
+  <tr>
+    <td>:nth-last-child(n)</td>
+    <td>p:nth-last-child(2)</td>
+    <td>同上，从最后一个元素开始计数</td>
+  </tr>
+  <tr>
+    <td>:nth-of-type(n)</td>
+    <td>p:nth-of-type(2)</td>
+    <td>选择属于其父元素的第二个&lt;p&gt;元素的每个&lt;p&gt;元素</td>
+  </tr>
+  <tr>
+    <td>:nth-last-of-type(n)</td>
+    <td>p:nth-last-of-type(2)</td>
+    <td>同上，但是从最后一个元素开始计数</td>
+  </tr>
+</table>
+
+<p>我们通常不会在标签后面，而是 .class后加上这类选择器，但是有时候无法得到我们想要的效果。</p>
+<p style="color:rgb(102, 175, 239)">
+.class:nth-child(n) 会直接在 .class 的父元素中找，如果第n个子元素是 .class 属性，则匹配成功。
+</p>
+<p style="color:rgb(102, 175, 239)">
+.class:nth-of-type(n) 会先判断 .class 是什么标签，再在父元素中查找该标签，如果第n个该标签的元素是 .class 属性，则匹配成功。
+</p>
+
+<span id="more"></span>
+<pre><code class="html">&lt;body&gt;
+    &lt;div class=&quot;wrap&quot; style=&quot;display:flex;flex-direction:column;&quot;&gt;
+        &lt;h4 class=&quot;item1&quot;&gt;test&lt;/h4&gt;
+        &lt;span class=&quot;item1&quot;&gt;第一个span&lt;span&gt;--------第一个span的子span&lt;/span&gt;&lt;/span&gt;
+        &lt;span class=&quot;item2&quot;&gt;第二个span&lt;/span&gt;
+        &lt;span class=&quot;item2&quot;&gt;第三个span&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+</code></pre>
+<h5 id="test1"><a href="#test1" class="headerlink" title="test1"></a>test1</h5><p>这个比较好理解，div的父元素是body，body第一个子元素，如果是div，则匹配<br><img src="/images/nth-child-n-和nth-of-type-n/1.png" style="margin:0" alt="图片"/></p>
+<pre><code class="css">div:nth-child(1)&#123;
+    color: #ff9900;
+&#125;
+</code></pre>
+<h5 id="test2"><a href="#test2" class="headerlink" title="test2"></a>test2</h5><p>这里第一个span没有变色，是因为span的父元素div的第一个子元素不是span而是h4，无法匹配。<br><img src="/images/nth-child-n-和nth-of-type-n/2.png" style="margin:0" alt="图片"/></p>
+<pre><code class="css">span:nth-child(1)&#123;
+    color: #ff9900;
+&#125;
+</code></pre>
+<h5 id="test3"><a href="#test3" class="headerlink" title="test3"></a>test3</h5><p>如果你希望wrap第一个span变色，需要使用 :nth-of-type，它只会计算该类型的元素。span的父元素div中所有的span子元素中的第一个匹配。<br><img src="/images/nth-child-n-和nth-of-type-n/3.png" style="margin:0" alt="图片"/></p>
+<pre><code class="css">span:nth-of-type(1) &#123;
+    color:red;
+&#125;
+</code></pre>
+<h5 id="test4"><a href="#test4" class="headerlink" title="test4"></a>test4</h5><p>如果使用 .class，下面写法会匹配 .item 父元素div中的第一个元素。<br><img src="/images/nth-child-n-和nth-of-type-n/4.png" style="margin:0" alt="图片"/></p>
+<pre><code class="css">.item1:nth-child(1) &#123;
+    color: #ff9900;
+&#125;
+</code></pre>
+<h5 id="test5"><a href="#test5" class="headerlink" title="test5"></a>test5</h5><p>先查找item1所属标签 是h4和span，再匹配父元素div中第一个h4，和第一个span，都是 .item1。<br><img src="/images/nth-child-n-和nth-of-type-n/5.png" style="margin:0" alt="图片"/></p>
+<pre><code class="css">.item1:nth-of-type(1) &#123;
+    color:red;
+&#125;
+</code></pre>
+<h5 id="test6"><a href="#test6" class="headerlink" title="test6"></a>test6</h5><p>先查找item1所属标签 h4和span，再查找父元素div中第二个h4，和第二个span，h4没有第二个，第二个span不是 item1，都无法匹配<br><img src="/images/nth-child-n-和nth-of-type-n/6.png" style="margin:0" alt="图片"/></p>
+<pre><code class="css">.item1:nth-of-type(2) &#123;
+    color:red;
+&#125;
+</code></pre>
+<h5 id="test7"><a href="#test7" class="headerlink" title="test7"></a>test7</h5><p>先查找item2所属标签为span，再查找父元素div中第二个span，检查它是不是 item2，是则匹配成功。但是和我们想象中不一样，我们更希望是第二个item2，也就是第三个item为红色。<br><img src="/images/nth-child-n-和nth-of-type-n/7.png" style="margin:0" alt="图片"/></p>
+<pre><code class="css">.item2:nth-of-type(2) &#123;
+    color:red;
+&#125;
+</code></pre>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>使用这类选择器时经常会得到和我们想象中不同的结果，需要多注意。</p>
+
+    </div>
+
+    <!--  -->
+</div>
+                     
+<footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2020 - 2025 Gregory
+            <span class="footer-icon">
+                <a-icon type="flag" theme="filled" /></span>
+            @Gregory Wu
+        </div>
+        <div></div>
+        
+    </div>
+
+</footer>
+
+<script src="/js/highlight.min.js"></script>
+<script src="/js/particle.js"></script>
+                </div>
+            </div>
+        </transition>
+    </div>
+
+    <script>
+    new Vue({
+        el: "#layout",
+        data: {
+            show_page: false,
+            onload_menu: false,
+            menu_show: false,
+            card_top: 100
+        },
+        created: function () {
+            window.onload = () => {
+
+                this.show_page = true;
+
+                document.getElementById("loadcontent").style.opacity = 0;
+
+                setTimeout(function () {
+                    document.getElementById("loadleft").style.width = 0;
+                    document.getElementById("loadright").style.width = 0;
+                }, 300);
+
+                setTimeout(function () {
+                    document.getElementById("loading").style = "display:none"
+                }, 600);
+
+                // 禁用右键菜单
+                document.oncontextmenu = function (e) {
+                    e.preventDefault();
+                }
+
+                // 禁用f12
+                window.addEventListener('keydown', (e) => {
+                    if (e.keyCode === 123) {
+                        e.preventDefault();
+                    }
+                })
+            }
+        },
+        mounted() {
+            window.addEventListener('scroll', (e) => {
+                this.menu_show = false
+            })
+        },
+        methods: {
+            home_click: function () {
+                window.scrollTo({
+                    top: window.innerHeight - 80,
+                    behavior: "smooth",
+                });
+            },
+            goTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                });
+            }
+        }
+    })
+</script>
+<!--  -->
+</body>
+
+</html>

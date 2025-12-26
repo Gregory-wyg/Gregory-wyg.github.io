@@ -1,0 +1,491 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gregory's blog</title>
+    <meta name="author" content="Gregory Wu">
+    <meta name="description" content="小武的博客">
+    <meta name="keywords" content="vue,javascript,css,blog,Gregory">
+    <link rel="icon" href="/../../images/gregory.png">
+    <link rel="stylesheet" href="/css/antd.min.css">
+    <link rel="stylesheet" href="/css/icon-font.css">
+    
+    <link rel="stylesheet" href="/css/full-theme.css">
+    
+    <script src="/js/vue.js"></script>
+    <script src="/js/antd.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script type="text/javascript">
+      if (window !== top){ // 判断当前的window对象是否是top对象
+        top.location.href = window.location.href; // 如果不是，将top对象的网址自动导向被嵌入网页的网址
+      }
+    </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <script>
+        if (!navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))
+            document.writeln(
+                `<canvas id="background"><\/canvas>\n<canvas id="fireworks"><\/canvas>\n<script src="/js\/background.js"><\/script>\n<script src="/js\/fireworks.js"><\/script>`
+            );
+    </script>  
+    <div id="loading"
+        style="height: 100vh; width: 100%; position: fixed;display: flex;z-index: 200; justify-content: space-between;">
+        <div id="loadleft" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div id="loadright" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div
+            style="position: fixed; height: 100vh; width: 100%;display: flex;justify-content: center;align-items: center;">
+            <div id="loadcontent"
+                style="width:400px;height:400px;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px#a3ddfb; text-align:center;opacity:1;transition:opacity 0.3s ease-out;user-select:none;">
+                <div>
+                    <h2>LOADING...</h2>
+                    <div>
+                        <img src="/runningDeer.gif" alt="loading" style="width: 70px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="layout">
+        <transition name="into">
+            <div v-show="show_page" style="display: none;">
+                <div id="menu_show">
+                     
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">Gregory</span>
+        </a>
+        
+        <a href="/">
+            <span>
+                <a-icon type="home" theme="filled" />
+            </span>
+            <span>首页</span>
+        </a>
+        
+        <a href="/archives">
+            <span>
+                <a-icon type="folder" theme="filled" />
+            </span>
+            <span>文章</span>
+        </a>
+        
+        <a href="/categories">
+            <span>
+                <a-icon type="book" theme="filled" />
+            </span>
+            <span>分类</span>
+        </a>
+        
+        <a href="/tags">
+            <span>
+                <a-icon type="tags" theme="filled" />
+            </span>
+            <span>标签</span>
+        </a>
+        
+        <a href="/about">
+            <span>
+                <a-icon type="idcard" theme="filled" />
+            </span>
+            <span>关于</span>
+        </a>
+        
+    </div>
+
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div :class="'title'" @click="menu_show=!menu_show">
+            <span style="margin-right: 10px;">
+                <a-icon type="appstore" theme="filled" />
+            </span>
+            <span>Gregory</span>
+        </div>
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="home" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">首页</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="folder" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">文章</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="book" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">分类</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="tags" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">标签</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="idcard" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">关于</div>
+                </div>
+            </a>
+            
+        </div>
+        <div class="curtain" v-show="menu_show"></div>
+    </div>
+
+</nav>
+                </div>
+
+                <div id="main">
+                     
+<link rel="stylesheet" href="/css/post-body.css">
+<div class="article">
+    <div>
+        <h1>算法 动态规划 </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <a-icon type="calendar" theme="filled" />
+            </span>
+            2020/7/10
+        </span>
+
+        
+        <span class="category">
+            <a href="/categories/学习笔记">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" />
+                </span>
+                学习笔记
+            </a>
+        </span>
+        
+
+        
+
+        <span class="tags">
+            <span class="icon">
+                <a-icon type="tags" theme="filled" />
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/算法" style=color:#00a596>
+                    算法
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/TypeScript" style=color:#ff7d73>
+                    TypeScript
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+
+    <div class="content" v-pre>
+        <h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><p>动态规划不是魔法，它也是通过暴力方法尝试答案，只是方式更加 “聪明”，使得实际上时间复杂度并不高。</p>
+<h3 id="动态规划与暴力、回溯算法的区别"><a href="#动态规划与暴力、回溯算法的区别" class="headerlink" title="动态规划与暴力、回溯算法的区别"></a>动态规划与暴力、回溯算法的区别</h3><p>上面这句话也说明了，所有动态规划问题都能通过暴力方法解决！是的，所有最优解问题都可以通过暴力方法尝试（以及回溯算法），最终找出最优的那个。<br>暴力算法几乎可以解决一切问题。回溯算法的特点是，通过暴力尝试不同分支，最终选择结果最优的线路。<br>而动态规划也有分支概念，但不用把每条分支尝试到终点，而是在走到分叉路口时，可以直接根据前面各分支的表现，直接推导出下一步的最优解！然而无论是直接推导，还是前面各分支判断，都是有条件的。动态规划可解问题需同时满足以下三个特点：</p>
+<p>1.存在最优子结构。<br>2.存在重复子问题。<br>3.无后效性。</p>
+<span id="more"></span>
+
+<h3 id="存在最优子结构"><a href="#存在最优子结构" class="headerlink" title="存在最优子结构"></a>存在最优子结构</h3><p>即子问题的最优解可以推导出全局最优解。</p>
+<p>什么是子问题？比如寻路算法中，走完前几步就是相对于走完全程的子问题，必须保证走完全程的最短路径可以通过走完前几步推导出来，才可以用动态规划。</p>
+<p>不要小看这第一条，动态规划就难在这里，你到底如何将最优子结构与全局最优解建立上关系？</p>
+<ul>
+<li>对于爬楼梯问题，由于每层台阶都是由前面台阶爬上来的，因此必然存在一个线性关系推导。</li>
+<li>如果变成二维平面寻路呢？那么就升级为二维问题，存在两个变量 <code>i,j</code> 与上一步之间关系了。</li>
+<li>如果是背包问题，同时存在物品数量 <code>i</code>、物品重量 <code>j</code> 和物品质量 <code>k</code> 三个变量呢？那就升级为三位问题，需要寻找三个之间的关系。</li>
+</ul>
+<p>依此类推，复杂度可以上升到 N 维，维度越高思考的复杂度就越高，空间复杂度就越需要优化。</p>
+<h3 id="存在重复子问题"><a href="#存在重复子问题" class="headerlink" title="存在重复子问题"></a>存在重复子问题</h3><p>即同一个子问题在不同场景下存在重复计算。</p>
+<p>比如寻路算法中，同样两条路线的计算中，有一段路线是公共的，是计算的必经之路，那么只算一次就好了，当计算下一条路时，遇到这个子路，直接拿第一次计算的缓存即可。典型例子是斐波那契数列，对于 <code>f(3)</code> 与 <code>f(4)</code>，都要计算 <code>f(1)</code> 与 <code>f(2)</code>，因为 <code>f(3) = f(2) + f(1)</code>，而 <code>f(4) = f(3) + f(2) = f(2) + f(1) + f(2)</code>。</p>
+<p>这个是动态规划与暴力解法的关键区别，动态规划之所以性能高，是因为 <strong>不会对重复子问题进行重复计算</strong>，算法上一般通过缓存计算结果或者自底向上迭代的方式解决，但核心是这个场景要存在重复子问题。</p>
+<p>当你觉得暴力解法可能很傻，存在大量重复计算时，就要想想是哪里存在重复子问题，是否可以用动态规划解决了。</p>
+<h3 id="无后效性"><a href="#无后效性" class="headerlink" title="无后效性"></a>无后效性</h3><p>即前面的选择不会影响后面的游戏规则。</p>
+<p>寻路算法中，不会因为前面走了 B 路线而对后面路线产生影响。斐波那契数列因为第 N 项与前面的项是确定关联，没有选择一说，所以也不存在后效性问题。</p>
+<p>什么场景存在后效性呢？比如你的人生是否能通过动态规划求最优解？其实是不行的，因为你今天的选择可能影响未来人生轨迹，比如你选择了计算机这个职业，会直接影响到工作的领域，接触到的人，后面的人生路线因此就完全变了，所以根本无法与选择了土木工程的你进行比较，因为人生赛道都变了。</p>
+<p>有同学可能觉得这样局限是不是很大？其实不然，无后效性的问题仍然很多，比如背包放哪件物品、当前走哪条路线、用了哪些零钱，都不会影响整个背包大小、整张地图的地形、以及你最重要付款的金额。</p>
+<h3 id="解法套路-状态转移方程"><a href="#解法套路-状态转移方程" class="headerlink" title="解法套路 - 状态转移方程"></a>解法套路 - 状态转移方程</h3><p>解决动态规划问题的核心就是写出状态转移方程，所谓状态转移，即通过某些之前步骤推导出未来步骤。</p>
+<p>状态转移方程一般写为 <code>dp(i) = 一系列 dp(j) 的计算</code>，其中 <code>j &lt; i</code>。</p>
+<p>其中 <code>i</code> 与 <code>dp(i)</code> 的含义很重要，一般 <code>dp(i)</code> 直接代表题目的答案，<code>i</code> 就有技巧了。比如斐波那契数列，<code>dp(i)</code> 表示的答案就是最终结果，<code>i</code> 表示下标，由于斐波那契数列直接把状态转移方程告诉你了 <code>f(x) = f(x-1) + f(x-2)</code>，那么根本连推导都不必了。</p>
+<p><strong>对于复杂问题，难在如何定义 <code>i</code> 的含义，以及下一步状态如何通过之前状态推导。</strong> 这个做多了题目就有体会，如果没有，那即便再如何解释也难以说明，所以后面还是直接看例子吧。</p>
+<p>先举一个最简单的动态规划例子 - 爬楼梯来说明问题。</p>
+<h3 id="爬楼梯问题"><a href="#爬楼梯问题" class="headerlink" title="爬楼梯问题"></a>爬楼梯问题</h3><p>爬楼梯是一道简单题，题目如下：</p>
+<pre><code>假设你正在爬楼梯。需要 n 阶你才能到达楼顶。每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？（给定 n 是一个正整数）
+</code></pre>
+<p>首先 <code>dp(i)</code> 就是问题的答案（解法套路，<code>dp(i)</code> 大部分情况就是答案，这样解题思路会最简化），即爬到第 <code>i</code> 阶台阶的方法数量，那么 <code>i</code> 自然就是要爬到第几阶台阶。</p>
+<p>我们首先看是否存在 <strong>最优子结构</strong>？因为只能往上爬，所以第 <code>i</code> 阶台阶有几种爬方完全取决于前面有几种爬方，<strong>而一次只能爬 1 或 2 个台阶，所以第 <code>i</code> 阶台阶只可能从第 <code>i-1</code> 或 <code>i-2</code> 个台阶爬上来的</strong>，所以第 <code>i</code> 个台阶的爬法就是 <code>i-1</code> 与 <code>i-2</code> 总爬法之和。所以显然有最优子结构，连状态转移方程都呼之欲出了。</p>
+<p>再看是否存在 <strong>存在重复子问题</strong>，其实爬楼梯和斐波那契数列类似，最终的状态转移方程是一样的，所以显然存在重复子问题。当然直观来看也容易分析出，10 阶台阶的爬法包含了 8、9 阶的爬法，而 9 阶台阶爬法包含了 8 阶的，所以存在重复子问题。</p>
+<p>最后看是否 <strong>无后效性</strong>？由于前面选择一次爬 1 个或 2 个台阶并不会影响总台阶数，也不会影响你下一次能爬的台阶数，所以无后效性。如果你爬了 2 个台阶，因为太累，下次只能爬 1 个台阶，就属于有后效性了。或者只要你一共爬了 3 次 2 阶，就会因为太累而放弃爬楼梯，直接下楼休息，那么问题提前结束，也属于有后效性。</p>
+<p>所以爬楼梯的状态转移方程为：</p>
+<ul>
+<li><code>dp(i) = dp(i-1) + dp(i-2)</code></li>
+<li><code>dp(1) = 1</code></li>
+<li><code>dp(2) = 2</code></li>
+</ul>
+<p>注意，因为 1、2 阶台阶无法应用通用状态转移方程，所以要特殊枚举。这种枚举思路在代码里其实就是 <strong>递归终结条件</strong>，也就是作为函数 <code>dp(i)</code> 不能无限递归，当 <code>i</code> 取值为 1 或 2 时直接返回枚举结果（对这道题而言）。所以在写递归时，一定要优先写上递归终结条件。</p>
+<p>然后我们考虑，对于第一阶台阶，只有一种爬法，这个没有争议吧。对于第二阶台阶，可以直接两步跨上来，也可以走两个一步，所以有两种爬法，也很容易理解，到这里此题得解。</p>
+<p>关于代码部分，仅这道题写一下，后面的题目如无特殊原因就不写代码了：</p>
+<pre><code class="typescript">function dp(i: number) &#123;
+  switch (i) &#123;
+    case 1:
+      return 1;
+    case 2:
+      return 2;
+    default:
+      return dp(i - 1) + dp(i - 2);
+  &#125;
+&#125;
+
+return dp(n);
+</code></pre>
+<p>当然这样写重复计算了子结构，所以我们不要每次傻傻的执行 <code>dp(i - 1)</code>（因为这样计算了超多重复子问题），我们需要用缓存兜底：</p>
+<pre><code class="typescript">const cache: number[] = [];
+
+function dp(i: number) &#123;
+  switch (i) &#123;
+    case 1:
+      cache[i] = 1;
+      break;
+    case 2:
+      cache[i] = 2;
+      break;
+    default:
+      cache[i] = cache[i - 1] + cache[i - 2];
+  &#125;
+
+  return cache[i];
+&#125;
+
+// 既然用了缓存，最好子底向上递归，这样前面的缓存才能优先算出来
+for (let i = 1; i &lt;= n; i++) &#123;
+  dp(i);
+&#125;
+
+return cache[n];
+</code></pre>
+<p>当然这只是简单的一维线性缓存，更高级的缓存模式还有 <strong>滚动缓存</strong>。我们观察发现，这道题缓存空间开销是 <code>O(n)</code>，但每次缓存只用了上两次的值，所以计算到 <code>dp(4)</code> 时，<code>cache[1]</code> 就可以扔掉了，或者说，我们可以滚动利用缓存，让 <code>cache[3]</code> 占用 <code>cache[1]</code> 的空间，那么整体空间复杂度可以降低到 <code>O(1)</code>，具体做法是：</p>
+<pre><code class="typescript">const cache: [number, number] = [];
+
+function dp(i: number) &#123;
+  switch (i) &#123;
+    case 1:
+      cache[i % 2] = 1;
+      break;
+    case 2:
+      cache[i % 2] = 2;
+      break;
+    default:
+      cache[i % 2] = cache[(i - 1) % 2] + cache[(i - 2) % 2];
+  &#125;
+
+  return cache[i % 2];
+&#125;
+
+for (let i = 1; i &lt;= n; i++) &#123;
+  dp(i);
+&#125;
+
+return cache[n % 2];
+</code></pre>
+<p>通过取余，巧妙的让缓存永远交替占用 <code>cache[0]</code> 与 <code>cache[1]</code>，达到空间利用最大化。当然，这道题因为状态转移方程是连续用了前两个，所以可以这么优化，如果遇到用到之前所有缓存的状态转移方程，就无法使用滚动缓存方案了。然而还有更高级的多维缓存，这个后面提到的时候再说。</p>
+<p>接下来看一个进阶题目，最大子序和。</p>
+<h3 id="最大子序和"><a href="#最大子序和" class="headerlink" title="最大子序和"></a>最大子序和</h3><p>最大子序和是一道简单题，题目如下：</p>
+<pre><code>给定一个整数数组 nums ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。
+</code></pre>
+<p>首先按照爬楼梯的套路，<code>dp(i)</code> 就表示最大和，由于整数数组可能存在负数，所以越多数相加，和不一定越大。</p>
+<p>接着看 <code>i</code>，对于数组问题，大部分 <code>i</code> 都可以代表以第 <code>i</code> 位结尾的字符串，那么 <code>dp(i)</code> 就表示以第 <code>i</code> 位结尾的字符串的最大和。</p>
+<p>可能你觉得以 <code>i</code> 结尾，就只能是 <code>[0-i]</code> 范围的值，那么 <code>[j-i]</code> 范围的字符串不就被忽略了？其实不然，<code>[j-i]</code> 如果是最大和，也会被包含在 <code>dp(i)</code> 里，因为我们状态转移方程可以选择不连上 <code>dp(i-1)</code>。</p>
+<p>现在开始解题：首先题目是最大和的连续子数组，一般连续的都比较简单，因为对于 <code>dp(i)</code>，要么和前面连上，要么和前面断掉，所以状态转移方程为：</p>
+<ul>
+<li><code>dp(i) = dp(i-1) + nums[i]</code> 如果 <code>dp(i-1) &gt; 0</code>。</li>
+<li><code>dp(i) = nums[i]</code> 如果 <code>dp(i-1) &lt;= 0</code>。</li>
+</ul>
+<p>怎么理解呢？就是第 <code>i</code> 个状态可以直接由第 <code>i-1</code> 个状态推导出来，既然 <code>dp(i)</code> 是指以第 <code>i</code> 个字符串结尾的最大和，那么 <code>dp(i-1)</code> 就是以第 <code>i-1</code> 个字符串结尾的最大和，而且此时 <code>dp(i-1)</code> 已经算出来了，那么 <code>dp(i)</code> 怎么推导就清楚了：</p>
+<p>因为字符串是连续的，所以 <code>dp(i)</code> 要么是 <code>dp(i-1)</code> + <code>nums[i]</code>，要么就直接是 <code>nums[i]</code>，所以选择哪种，取决于前面的 <code>dp(i-1)</code> 是否是正数，<strong>因为以 <code>i</code> 结尾一定包含 <code>nums[i]</code>，所以 <code>nums[i]</code> 不管是正还是负，都一定要带上。</strong> 所以容易得知，<code>dp(i-1)</code> 如果是正数就连起来，否则就不连。</p>
+<p>好了，经过这么详细的解释，相信你已经完全了解动态规划的解题套路，后面的题目解释方式我就不会这么啰嗦了！</p>
+<p>这道题如果再复杂一点，不连续怎么办呢？让我们看看最长递增子序列问题吧。</p>
+<h3 id="最长递增子序列"><a href="#最长递增子序列" class="headerlink" title="最长递增子序列"></a>最长递增子序列</h3><p>最长递增子序列是一道中等题，题目如下：</p>
+<pre><code>给你一个整数数组 nums ，找到其中最长严格递增子序列的长度。
+
+子序列是由数组派生而来的序列，删除（或不删除）数组中的元素而不改变其余元素的顺序。例如，[3,6,2,7] 是数组 [0,3,1,6,2,2,7] 的子序列。
+</code></pre>
+<p>这道题与上一道的区别就是，首先递增，其次不连续。</p>
+<p>按照套路，<code>dp(i)</code> 就表示以第 <code>i</code> 个字符串结尾的最长上升子序列长度，那么重点是，<code>dp(i)</code> 怎么通过之前的推导出来呢？</p>
+<p>由于是不连续的，因此不能只看 <code>dp(i-1)</code> 了，因为 <code>nums[i]</code> 项与 <code>dp(j)</code>（其中 <code>0 &lt;= j &lt; i</code>）组合后都可能达到最大长度，因此需要遍历所有 <code>j</code>，尝试其中最大长度的组合。</p>
+<p>所以状态转移方程为：</p>
+<p><code>dp[i] = max(dp[j]) + 1</code>，其中 <code>0&lt;=j&lt;i</code> 且 <code>num[j]&lt;num[i]</code>。</p>
+<p>这道题的出现，预示着较为复杂的状态转移方程的出现，即第 <code>i</code> 项不是简单由 <code>i-1</code> 推导，而是由之前所有 <code>dp(j)</code> 推导，其中 <code>0&lt;=j&lt;i</code>。</p>
+<p>除此之外，还有推导变种，即根据 <code>dp(dp(i))</code> 推导，即函数里套函数，这类问题由于加深了一层思考脑回路，所以相对更难。我们看一道这样的题目：最长有效括号。</p>
+<h3 id="最长有效括号"><a href="#最长有效括号" class="headerlink" title="最长有效括号"></a>最长有效括号</h3><p>最长有效括号是道困难题，题目如下：</p>
+<pre><code>给你一个只包含 &#39;(&#39; 和 &#39;)&#39; 的字符串，找出最长有效（格式正确且连续）括号子串的长度。
+</code></pre>
+<p>这道题之所以是困难题，就因为状态转移方程存在嵌套思维。</p>
+<p>我们首先按套路定义 <code>dp(i)</code> 为答案，即以第 <code>i</code> 下标结尾的字符串中最长有效括号长度。看出来了吗？一般字符串题目中，<code>i</code> 都是以字符串下标结尾来定义，很少有定义为开头或者别的定义行为。当然非字符串问题就不是这样了，这个在后面再说。</p>
+<p>我们继续题目，如果 <code>s[i]</code> 是 <code>(</code>，那么不可能组成有效括号，因为最右边一定不闭合，所以考虑 <code>s[i]</code> 为 <code>)</code> 的场景。</p>
+<p>如果 <code>s[i-1]</code> 为 <code>(</code>，那么构成了 <code>...()</code> 之势，最后两个自成合法闭合，所以只要看前面的即可，即 <code>dp(i-2)</code>，所以这种场景的状态转移方程为：</p>
+<pre><code class="javascript">dp(i) = dp(i-2) + 2
+</code></pre>
+<p>如果 <code>s[i-1]</code> 是 <code>)</code> 呢？构成了 <code>...))</code> 的状态，那么只有 <code>i-1</code> 是合法闭合的，且这个合法闭合段之前必须是 <code>(</code> 与第 <code>i</code> 项形成闭合，才构成此时最长有效括号长度，所以这种场景的状态转移方程为：</p>
+<p><code>dp(i) = dp(i-1) + dp(i - dp(i-1) - 2) + 2</code>，你可以结合下面的图来理解：<br><img src="/images/algorithm-dynamicProgramming" alt="1"></p>
+<p>可以看到，<code>dp(i-1)</code> 就是第二条横线的长度，然后如果红色括号匹配的话，长度又 +2，最后别忘了最左边如果有满足匹配的也要带上，这就是 <code>dp(i - dp(i-1) - 2)</code>，所以加到一起就是这种场景的括号最大长度。</p>
+<p>到这里，一维动态规划问题深度基本上探索完了，在进入多维动态规划问题前，还有一类一维动态规划问题，属于表达式不难，也没有这题这么复杂的嵌套 DP，但是思维复杂度极高，<strong>你一定不要盯着全流程看，那样复杂度太高，你需要充分认可 dp(i-x) 已经算出来部分的含义，进行高度抽象的思考。</strong></p>
+<h3 id="栅栏涂色"><a href="#栅栏涂色" class="headerlink" title="栅栏涂色"></a>栅栏涂色</h3><p>栅栏涂色是一道困难题，题目如下：</p>
+<pre><code>有 k 种颜色的涂料和一个包含 n 个栅栏柱的栅栏，每个栅栏柱可以用其中一种颜色进行上色。
+
+你需要给所有栅栏柱上色，并且保证其中相邻的栅栏柱 最多连续两个 颜色相同。然后，返回所有有效涂色的方案数。
+</code></pre>
+<p>这道题 <code>k</code> 和 <code>n</code> 都非常巨大，常规暴力解法甚至普通 DP 都会超时。选择 <code>i</code> 的含义也很重要，这里 <code>i</code> 到底代表用几种颜色还是几个栅栏呢？选择栅栏会好做一些，因为栅栏是上色的主体。这样 <code>dp(i)</code> 就表示上色前 <code>i</code> 个栅栏的所有涂色方案。</p>
+<p>首先看下递归终止条件。由于最多连续两个颜色相同，因此 <code>dp(0)</code> 与 <code>dp(1)</code> 分别是 <code>k</code> 与 <code>k*k</code>，因为每个栅栏随便刷颜色，自由组合。那么 <code>dp(2)</code> 有三个栅栏，非法情况是三个栅栏全同色，所以用所有可能减掉非法即可，非法场景只有 <code>k</code> 中，所以结果是 <code>k*k*k - k</code>。</p>
+<p>那么考虑一般情况，对于 <code>dp(i)</code> 有几种涂色方案呢？直接思考情况太多，我们把情况一分为二，考虑 <code>i</code> 与 <code>i-1</code> 颜色相同与不同两种情况考虑。</p>
+<p>如果 <code>i</code> 与 <code>i-1</code> 颜色相同，那么为了合法，<code>i-1</code> 肯定不能与 <code>i-2</code> 颜色相同了，否则就三个同色，这样的话，不管 <code>i-2</code> 是什么颜色，<code>i-1</code> 与 <code>i</code> 都只能少取一种颜色，少取的颜色就是 <code>i-2</code> 的颜色，因此 <code>[i-1,i]</code> 这个区间有 <code>k-1</code> 中取色方案，前面有 <code>dp(i-2)</code> 种取色方案，相乘就是最终方案数：<code>dp(i-2) * (k-1)</code>。</p>
+<p><strong>这背后其实存在动态思维，即每种场景的 <code>k-1</code> 都是不同的颜色组合，只是无论前面 <code>dp(i-2)</code> 是何种组合，后面两个栅栏一定有 <code>k-1</code> 种取法，虽然颜色组合的色值不同，但颜色组合数量是不变的，所以可以统一计算。理解这一点非常关键。</strong></p>
+<p>如果 <code>i</code> 与 <code>i-1</code> 颜色不同，那么第 <code>i</code> 项只有 <code>k-1</code> 种取法，一样也是动态的，因为永远不能和 <code>i-1</code> 颜色相同。最后乘上 <code>dp(i-1)</code> 的取色方案，就是总方案数：<code>dp(i-1) * (k-1)</code>。</p>
+<p>所以最后总方案数就是两者之和，即 <code>dp(i) = dp(i-2) * (k-1) + dp(i-1) * (k-1)</code>。</p>
+<p>这道题的不同之处在于，变化太多，任何一个栅栏取的颜色都会影响后面栅栏要取的颜色，<strong>乍一看觉得是个有后效性的题目，无法用动态规划解决</strong>。但实际上，虽然有后效性，但如果进行合理的拆解，后面栅栏的总可能性 <code>k-1</code> 是不变的，<strong>所以考虑总可能性数量，是无后效性的</strong>，因此站在方案总数上进行抽象思考，才可能破解此题。</p>
+<p>接下来介绍多维动态规划，从二维开始。二维动态规划就是用两个变量表示 DP，即 <code>dp(i,j)</code>，一般在二维数组场景出现较多，当然也有一些两个数组之间的关系，也属于二维动态规划，为了继续探讨字符串问题，我选择了字符串问题的二维动态规划范例，编辑距离这道题来说明。</p>
+<h3 id="编辑距离"><a href="#编辑距离" class="headerlink" title="编辑距离"></a>编辑距离</h3><p>编辑距离是一道困难题，题目如下：</p>
+<pre><code>给你两个单词 word1 和 word2，请你计算出将 word1 转换成 word2 所使用的最少操作数。
+
+你可以对一个单词进行如下三种操作：
+
+插入一个字符
+删除一个字符
+替换一个字符
+</code></pre>
+<p>只要是字符串问题，基本上 <code>i</code> 都表示以第 <code>i</code> 项结尾的字符串，但这道题有两个单词字符串，<strong>为了考虑任意匹配场景，必须用两个变量表示，即 <code>i</code> <code>j</code> 分别表示 <code>word1</code> 与 <code>word2</code> 结尾下标时，最少操作次数。</strong></p>
+<p>那么对于 <code>dp(i,j)</code> 考虑 <code>word1[i]</code> 与 <code>word2[j]</code> 是否相同，最后通过双重递归，先递归 <code>i</code>，在递归内再递归 <code>j</code>，答案就出来了。</p>
+<p>假设最后一个字符相同，即 <code>word1[i] === word2[j]</code> 时，<strong>由于最后一个字符不用改就相同了，所以操作次数就等价于考虑到前一个字符</strong>，即 <code>dp(i,j) = dp(i-1,j-1)</code></p>
+<p>假设最后一个字符不同，那么 <strong>最后一步</strong> 有三种模式可以得到：</p>
+<ol>
+<li>假设是替换，即 <code>dp(i,j) = dp(i-1,j-1) + 1</code>，因为替换最后一个字符只要一步，并且和前面字符没什么关系，所以前面的最小操作次数直接加过来。</li>
+<li>假设是插入，即 <code>word1</code> 插入一个字符变成 <code>word2</code>，那么只要变换到这一步再 +1 插入操作就行了，变换到这一步由于插入一个就行了，因此 <code>word1</code> 比 <code>word2</code> 少一个单词，其它都一样，要变换到这一步，就要进行 <code>dp(i,j-1)</code> 的变换，因此 <code>dp(i,j) = dp(i,j-1) + 1</code>。。</li>
+<li>假设是删除，即 <code>word1</code> 删除一个字符变成 <code>word2</code>，同理，要进行 <code>dp(i-1,j)</code> 的变化后多一步删除，因此 <code>dp(i,j) = dp(i-1,j) + 1</code>。</li>
+</ol>
+<p>由于题目取操作最少次数，所以这三种情况取最小即可，即 <code>dp(i,j) = min(dp(i-1,j-1), dp(i,j-1), dp(i-1,j)) + 1</code>。</p>
+<p>所以同时考虑了最后一个字符是否相同后，合并了的状态转移方程就是最终答案。</p>
+<p>我们再考虑终止条件，即 <code>i</code> 或 <code>j</code> 为 -1 时的情况，因为状态转移方程 <code>i</code> 和 <code>j</code> 不断减小，肯定会减少到 0 或 -1，因为 0 是字符串还有一个字符，相对比如考虑 -1 字符串为空时方便，因此我们考虑 -1 时作为边界条件。</p>
+<p>当 <code>i</code> 为 -1 时，即 <code>word1</code> 为空，此时要变换为 <code>word2</code> 很显然，只有插入 <code>j</code> 次是最小操作次数，因此此时 <code>dp(i,j) = j</code>；同理，当 <code>j</code> 为 -1 时，即 <code>word2</code> 为空，此时要删除 <code>i</code> 次，因此操作次数为 <code>i</code>，所以 <code>dp(i,j) = i</code>。</p>
+<h3 id="非字符串问题"><a href="#非字符串问题" class="headerlink" title="非字符串问题"></a>非字符串问题</h3><p>说到这，相信你在字符串动规问题上已经如鱼得水了，我们再看看非字符串场景的动规问题。非字符串场景的动规比较经典的有三个，第一是矩形路径最小距离，或者最大收益；第二是背包问题以及变种；第三是打家劫舍问题。</p>
+<p>这些问题解决方式都一样，只是对于 <code>dp(i)</code> 的定义略有区别，比如对于矩形问题来说，<code>dp(i,j)</code> 表示走到 <code>i,j</code> 格子时的最小路径；对于背包问题，<code>dp(i,j)</code> 表示装了第 <code>i</code> 个物品时，背包还剩 <code>j</code> 空间时最大价格；对于打家劫舍问题，<code>dp(i)</code> 表示打劫到第 <code>i</code> 个房间时最大收益。</p>
+<p>因为篇幅问题这里就不一详细介绍了，只简单说明一下矩形问题于打家劫舍问题。</p>
+<p>对于矩形问题，状态转移方程重点看上个状态是如何转移过来的，一般矩形只能向右或者向下移动，路途可能有一些障碍物不能走，我们要做分支判断，然后选择一条符合题目最值要求的路线作为当前 <code>dp(i)</code> 的转移方程即可。</p>
+<p>对于打家劫舍问题，由于不能同时打劫相邻的房屋，所以对于 <code>dp(i)</code>，要么为了打劫 <code>i-1</code> 而不打劫第 <code>i</code> 间，或者打劫 <code>i-2</code> 于第 <code>i</code> 间，取这两种终态的收益最大值即可，即 <code>dp(i) = max(dp(i-1), dp(i-2) + coins[i])</code>。</p>
+
+    </div>
+
+    <!--  -->
+</div>
+                     
+<footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2020 - 2025 Gregory
+            <span class="footer-icon">
+                <a-icon type="flag" theme="filled" /></span>
+            @Gregory Wu
+        </div>
+        <div></div>
+        
+    </div>
+
+</footer>
+
+<script src="/js/highlight.min.js"></script>
+<script src="/js/particle.js"></script>
+                </div>
+            </div>
+        </transition>
+    </div>
+
+    <script>
+    new Vue({
+        el: "#layout",
+        data: {
+            show_page: false,
+            onload_menu: false,
+            menu_show: false,
+            card_top: 100
+        },
+        created: function () {
+            window.onload = () => {
+
+                this.show_page = true;
+
+                document.getElementById("loadcontent").style.opacity = 0;
+
+                setTimeout(function () {
+                    document.getElementById("loadleft").style.width = 0;
+                    document.getElementById("loadright").style.width = 0;
+                }, 300);
+
+                setTimeout(function () {
+                    document.getElementById("loading").style = "display:none"
+                }, 600);
+
+                // 禁用右键菜单
+                document.oncontextmenu = function (e) {
+                    e.preventDefault();
+                }
+
+                // 禁用f12
+                window.addEventListener('keydown', (e) => {
+                    if (e.keyCode === 123) {
+                        e.preventDefault();
+                    }
+                })
+            }
+        },
+        mounted() {
+            window.addEventListener('scroll', (e) => {
+                this.menu_show = false
+            })
+        },
+        methods: {
+            home_click: function () {
+                window.scrollTo({
+                    top: window.innerHeight - 80,
+                    behavior: "smooth",
+                });
+            },
+            goTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                });
+            }
+        }
+    })
+</script>
+<!--  -->
+</body>
+
+</html>

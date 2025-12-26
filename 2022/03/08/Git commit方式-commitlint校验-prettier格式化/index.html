@@ -1,0 +1,452 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gregory's blog</title>
+    <meta name="author" content="Gregory Wu">
+    <meta name="description" content="小武的博客">
+    <meta name="keywords" content="vue,javascript,css,blog,Gregory">
+    <link rel="icon" href="/../../images/gregory.png">
+    <link rel="stylesheet" href="/css/antd.min.css">
+    <link rel="stylesheet" href="/css/icon-font.css">
+    
+    <link rel="stylesheet" href="/css/full-theme.css">
+    
+    <script src="/js/vue.js"></script>
+    <script src="/js/antd.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script type="text/javascript">
+      if (window !== top){ // 判断当前的window对象是否是top对象
+        top.location.href = window.location.href; // 如果不是，将top对象的网址自动导向被嵌入网页的网址
+      }
+    </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <script>
+        if (!navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))
+            document.writeln(
+                `<canvas id="background"><\/canvas>\n<canvas id="fireworks"><\/canvas>\n<script src="/js\/background.js"><\/script>\n<script src="/js\/fireworks.js"><\/script>`
+            );
+    </script>  
+    <div id="loading"
+        style="height: 100vh; width: 100%; position: fixed;display: flex;z-index: 200; justify-content: space-between;">
+        <div id="loadleft" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div id="loadright" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div
+            style="position: fixed; height: 100vh; width: 100%;display: flex;justify-content: center;align-items: center;">
+            <div id="loadcontent"
+                style="width:400px;height:400px;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px#a3ddfb; text-align:center;opacity:1;transition:opacity 0.3s ease-out;user-select:none;">
+                <div>
+                    <h2>LOADING...</h2>
+                    <div>
+                        <img src="/runningDeer.gif" alt="loading" style="width: 70px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="layout">
+        <transition name="into">
+            <div v-show="show_page" style="display: none;">
+                <div id="menu_show">
+                     
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">Gregory</span>
+        </a>
+        
+        <a href="/">
+            <span>
+                <a-icon type="home" theme="filled" />
+            </span>
+            <span>首页</span>
+        </a>
+        
+        <a href="/archives">
+            <span>
+                <a-icon type="folder" theme="filled" />
+            </span>
+            <span>文章</span>
+        </a>
+        
+        <a href="/categories">
+            <span>
+                <a-icon type="book" theme="filled" />
+            </span>
+            <span>分类</span>
+        </a>
+        
+        <a href="/tags">
+            <span>
+                <a-icon type="tags" theme="filled" />
+            </span>
+            <span>标签</span>
+        </a>
+        
+        <a href="/about">
+            <span>
+                <a-icon type="idcard" theme="filled" />
+            </span>
+            <span>关于</span>
+        </a>
+        
+    </div>
+
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div :class="'title'" @click="menu_show=!menu_show">
+            <span style="margin-right: 10px;">
+                <a-icon type="appstore" theme="filled" />
+            </span>
+            <span>Gregory</span>
+        </div>
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="home" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">首页</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="folder" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">文章</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="book" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">分类</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="tags" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">标签</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="idcard" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">关于</div>
+                </div>
+            </a>
+            
+        </div>
+        <div class="curtain" v-show="menu_show"></div>
+    </div>
+
+</nav>
+                </div>
+
+                <div id="main">
+                     
+<link rel="stylesheet" href="/css/post-body.css">
+<div class="article">
+    <div>
+        <h1>Commit方式+CommitLint校验+Prettier格式化 </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <a-icon type="calendar" theme="filled" />
+            </span>
+            2022/3/8
+        </span>
+
+        
+        <span class="category">
+            <a href="/categories/学习笔记">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" />
+                </span>
+                学习笔记
+            </a>
+        </span>
+        
+
+        
+
+        <span class="tags">
+            <span class="icon">
+                <a-icon type="tags" theme="filled" />
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/JavaScript" style=color:#00bcd4>
+                    JavaScript
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/Git" style=color:#ff7d73>
+                    Git
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+
+    <div class="content" v-pre>
+        <h5 id="根据Angular团队的git-commit规范，简单说下常用的commit的方式："><a href="#根据Angular团队的git-commit规范，简单说下常用的commit的方式：" class="headerlink" title="根据Angular团队的git commit规范，简单说下常用的commit的方式："></a>根据Angular团队的git commit规范，简单说下常用的commit的方式：</h5><p>type 主要有一下几种：</p>
+<table>
+  <tr>
+    <th>type</th>
+    <th>作用描述</th>
+  </tr>
+  <tr>
+    <td>feat</td>
+    <td>新功能更新</td>
+  </tr>
+  <tr>
+    <td>fix</td>
+    <td>bug修复</td>
+  </tr>
+  <tr>
+    <td>style</td>
+    <td>改变代码格式，如删除空行、格式化代码、去除不必要的分号等等，不影响代码功能逻辑的操作</td>
+  </tr>
+  <tr>
+    <td>refactor</td>
+    <td>代码重构时使用，不是功能更新也不是 bug 修复的更改</td>
+  </tr>
+  <tr>
+    <td>perf</td>
+    <td>性能优化等</td>
+  </tr>
+  <tr>
+    <td>test</td>
+    <td>添加测试用例或者修改测试用例</td>
+  </tr>
+  <tr>
+    <td>build</td>
+    <td>由打包工具造成的改变（如gulp、webpack编译文件）</td>
+  </tr>
+  <tr>
+    <td>chore</td>
+    <td>更改构建过程、修改配置文件，添加/删除辅助工具或者库</td>
+  </tr>
+  <tr>
+    <td>revert</td>
+    <td>撤销之前的提交</td>
+  </tr>
+</table>
+
+<span id="more"></span>
+<h5 id="scope-规则（选填）"><a href="#scope-规则（选填）" class="headerlink" title="scope 规则（选填）"></a>scope 规则（选填）</h5><p><code>scope</code> 代表本地 <code>commit</code> 的影响范围，例如文件<code>(index.js)</code>、文件夹<code>(/problem)</code></p>
+<h4 id="subject-规则（必填）"><a href="#subject-规则（必填）" class="headerlink" title="subject 规则（必填）"></a>subject 规则（必填）</h4><p>通过简短的话来描述本次修改的内容。</p>
+<p>例如：</p>
+<ul>
+<li>新增 <code>Problem</code> 页面</li>
+<li>新增 申诉组件</li>
+<li>删除 待办单<code>ui</code></li>
+<li>修复 登录账号报错</li>
+<li>修正 <code>css</code> 属性拼写问题</li>
+</ul>
+<h4 id="body-规则（选填）"><a href="#body-规则（选填）" class="headerlink" title="body 规则（选填）"></a>body 规则（选填）</h4><p>当 <code>subject</code> 不能对 <code>commit</code> 进行清楚的描述，可以在 <code>body</code> 中进行补充说明。</p>
+<p>建议填写以下内容：</p>
+<ul>
+<li>为什么进行本次修改</li>
+<li>本次修改了哪些内容</li>
+<li>修改后的影响有哪些</li>
+</ul>
+<h4 id="footer-规则（选填）：根据我们现有项目，不需要填写这个"><a href="#footer-规则（选填）：根据我们现有项目，不需要填写这个" class="headerlink" title="footer 规则（选填）：根据我们现有项目，不需要填写这个"></a>footer 规则（选填）：根据我们现有项目，不需要填写这个</h4><p><code>footer</code> 中建议内容：</p>
+<ul>
+<li>该 <code>commit</code> 和某个bug或者某个任务/需求关联，提交后能关闭该<code>bug</code>/任务/需求。</li>
+<li>该 <code>commit</code> 有不兼容上个版本的代码，则以 重要修改: 开头填写不兼容信息。</li>
+</ul>
+<h3 id="husky-commitlint校验-prettier格式化"><a href="#husky-commitlint校验-prettier格式化" class="headerlink" title="husky + commitlint校验 + prettier格式化"></a>husky + commitlint校验 + prettier格式化</h3><h4 id="安装husky-commitlint"><a href="#安装husky-commitlint" class="headerlink" title="安装husky + commitlint"></a>安装husky + commitlint</h4><pre><code class="dos">npm install husky@4.3.0 @commitlint/config-conventional@16.2.1 @commitlint/cli@16.2.3 prettier-eslint-cli@5.0.0 lint-staged@9.5.0 -D
+</code></pre>
+<h5 id="在项目根目录创建-commitlint-config-js-文件，内容如下："><a href="#在项目根目录创建-commitlint-config-js-文件，内容如下：" class="headerlink" title="在项目根目录创建 commitlint.config.js 文件，内容如下："></a>在项目根目录创建 commitlint.config.js 文件，内容如下：</h5><pre><code class="javascript">// commitlint.config.js
+/**
+ * feat：新功能更新
+ * style：改变代码格式，如删除空行、格式化代码、去除不必要的分号等等，不影响代码功能逻辑的操作
+ * fix：修补某功能的bug
+ * refactor：代码重构时使用，不是功能更新也不是 bug 修复的更改
+ * perf: 性能优化等
+ * test: 添加测试用例或者修改测试用例
+ * build：由打包工具造成的改变（如gulp、webpack编译文件）
+ * chore：更改构建过程、修改配置文件，添加/删除辅助工具或者库
+ * revert：撤销之前的提交
+ */
+module.exports = &#123;
+  extends: [&#39;@commitlint/config-conventional&#39;],
+  rules: &#123;
+    &#39;type-enum&#39;: [2, &#39;always&#39;, [&#39;feat&#39;, &#39;fix&#39;, &#39;style&#39;, &#39;refactor&#39;, &#39;perf&#39;, &#39;test&#39;, &#39;build&#39;, &#39;chore&#39;, &#39;revert&#39;]],
+    &#39;subject-max-length&#39;: [1, &#39;always&#39;, 150], // subject建议150字以内
+  &#125;,
+&#125;;
+</code></pre>
+<h5 id="在项目根目录创建-prettierrc-js-文件，内容如下："><a href="#在项目根目录创建-prettierrc-js-文件，内容如下：" class="headerlink" title="在项目根目录创建 .prettierrc.js 文件，内容如下："></a>在项目根目录创建 .prettierrc.js 文件，内容如下：</h5><pre><code class="javascript">// .prettierrc.js
+module.exports = &#123;
+  printWidth: 120,
+  tabWidth: 2,
+  useTabs: false,
+  semi: true,
+  singleQuote: true,
+  trailingComma: &#39;es5&#39;,
+  bracketSpacing: true,
+  jsxBracketSameLine: true,
+  arrowParens: &#39;avoid&#39;,
+&#125;;
+</code></pre>
+<h5 id="在项目根目录创建-eslintrc-js-文件，内容如下："><a href="#在项目根目录创建-eslintrc-js-文件，内容如下：" class="headerlink" title="在项目根目录创建 .eslintrc.js 文件，内容如下："></a>在项目根目录创建 .eslintrc.js 文件，内容如下：</h5><pre><code class="javascript">// .eslintrc.js
+module.exports = &#123;
+  root: true,
+  env: &#123;
+    node: true,
+  &#125;,
+  extends: [&#39;plugin:vue/essential&#39;, &#39;eslint:recommended&#39;],
+  parserOptions: &#123;
+    parser: &#39;babel-eslint&#39;,
+  &#125;,
+  rules: &#123;
+    &#39;space-before-function-paren&#39;: 0,
+    &#39;no-console&#39;: process.env.NODE_ENV === &#39;production&#39; ? &#39;warn&#39; : &#39;off&#39;,
+    &#39;no-debugger&#39;: process.env.NODE_ENV === &#39;production&#39; ? &#39;warn&#39; : &#39;off&#39;,
+  &#125;,
+  globals: &#123;
+    ImagePreview: true,
+    Toast: true,
+    wx: true,
+    AMap: true,
+    Dialog: true,
+    dayjs: true,
+    WXInlinePlayer: true,
+  &#125;,
+&#125;;
+</code></pre>
+<ul>
+<li><p>prettier-eslint<a target="_blank" rel="noopener" href="https://github.com/prettier/prettier-eslint-cli#readme">更多配置</a></p>
+</li>
+<li><p>lint-staged<a target="_blank" rel="noopener" href="https://github.com/okonet/lint-staged">更多配置</a></p>
+</li>
+</ul>
+<p>更多其他配置可根据各项目实际情况来编辑。</p>
+<h5 id="package-json中添加lint配置："><a href="#package-json中添加lint配置：" class="headerlink" title="package.json中添加lint配置："></a>package.json中添加lint配置：</h5><pre><code class="javascript">&quot;lint-staged&quot;: &#123;
+  &quot;*.&#123;js,scss,md,vue&#125;&quot;: [
+    &quot;prettier-eslint --config=.prettierrc.js --eslint-config-path=.eslintrc.js --write&quot;,
+    &quot;git add .&quot;
+  ]
+&#125;,
+</code></pre>
+<h5 id="package-json-中添加-husky-配置："><a href="#package-json-中添加-husky-配置：" class="headerlink" title="package.json 中添加 husky 配置："></a>package.json 中添加 husky 配置：</h5><pre><code class="javascript">&quot;husky&quot;: &#123;
+  &quot;hooks&quot;: &#123;
+    &quot;pre-commit&quot;: &quot;lint-staged&quot;, //代码格式化
+    &quot;commit-msg&quot;: &quot;commitlint -E HUSKY_GIT_PARAMS&quot; //commit校验
+  &#125;
+&#125;
+</code></pre>
+
+    </div>
+
+    <!--  -->
+</div>
+                     
+<footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2020 - 2025 Gregory
+            <span class="footer-icon">
+                <a-icon type="flag" theme="filled" /></span>
+            @Gregory Wu
+        </div>
+        <div></div>
+        
+    </div>
+
+</footer>
+
+<script src="/js/highlight.min.js"></script>
+<script src="/js/particle.js"></script>
+                </div>
+            </div>
+        </transition>
+    </div>
+
+    <script>
+    new Vue({
+        el: "#layout",
+        data: {
+            show_page: false,
+            onload_menu: false,
+            menu_show: false,
+            card_top: 100
+        },
+        created: function () {
+            window.onload = () => {
+
+                this.show_page = true;
+
+                document.getElementById("loadcontent").style.opacity = 0;
+
+                setTimeout(function () {
+                    document.getElementById("loadleft").style.width = 0;
+                    document.getElementById("loadright").style.width = 0;
+                }, 300);
+
+                setTimeout(function () {
+                    document.getElementById("loading").style = "display:none"
+                }, 600);
+
+                // 禁用右键菜单
+                document.oncontextmenu = function (e) {
+                    e.preventDefault();
+                }
+
+                // 禁用f12
+                window.addEventListener('keydown', (e) => {
+                    if (e.keyCode === 123) {
+                        e.preventDefault();
+                    }
+                })
+            }
+        },
+        mounted() {
+            window.addEventListener('scroll', (e) => {
+                this.menu_show = false
+            })
+        },
+        methods: {
+            home_click: function () {
+                window.scrollTo({
+                    top: window.innerHeight - 80,
+                    behavior: "smooth",
+                });
+            },
+            goTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                });
+            }
+        }
+    })
+</script>
+<!--  -->
+</body>
+
+</html>

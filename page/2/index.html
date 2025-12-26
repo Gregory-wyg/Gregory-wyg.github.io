@@ -1,0 +1,1207 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gregory's blog</title>
+    <meta name="author" content="Gregory Wu">
+    <meta name="description" content="小武的博客">
+    <meta name="keywords" content="vue,javascript,css,blog,Gregory">
+    <link rel="icon" href="/../../images/gregory.png">
+    <link rel="stylesheet" href="/css/antd.min.css">
+    <link rel="stylesheet" href="/css/icon-font.css">
+    
+    <link rel="stylesheet" href="/css/full-theme.css">
+    
+    <script src="/js/vue.js"></script>
+    <script src="/js/antd.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script type="text/javascript">
+      if (window !== top){ // 判断当前的window对象是否是top对象
+        top.location.href = window.location.href; // 如果不是，将top对象的网址自动导向被嵌入网页的网址
+      }
+    </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <script>
+        if (!navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))
+            document.writeln(
+                `<canvas id="background"><\/canvas>\n<canvas id="fireworks"><\/canvas>\n<script src="/js\/background.js"><\/script>\n<script src="/js\/fireworks.js"><\/script>`
+            );
+    </script>  
+    <div id="loading"
+        style="height: 100vh; width: 100%; position: fixed;display: flex;z-index: 200; justify-content: space-between;">
+        <div id="loadleft" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div id="loadright" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div
+            style="position: fixed; height: 100vh; width: 100%;display: flex;justify-content: center;align-items: center;">
+            <div id="loadcontent"
+                style="width:400px;height:400px;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px#a3ddfb; text-align:center;opacity:1;transition:opacity 0.3s ease-out;user-select:none;">
+                <div>
+                    <h2>LOADING...</h2>
+                    <div>
+                        <img src="/runningDeer.gif" alt="loading" style="width: 70px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="layout">
+        <transition name="into">
+            <div v-show="show_page" style="display: none;">
+                <div id="menu_show">
+                     
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">Gregory</span>
+        </a>
+        
+        <a href="/">
+            <span>
+                <a-icon type="home" theme="filled" />
+            </span>
+            <span>首页</span>
+        </a>
+        
+        <a href="/archives">
+            <span>
+                <a-icon type="folder" theme="filled" />
+            </span>
+            <span>文章</span>
+        </a>
+        
+        <a href="/categories">
+            <span>
+                <a-icon type="book" theme="filled" />
+            </span>
+            <span>分类</span>
+        </a>
+        
+        <a href="/tags">
+            <span>
+                <a-icon type="tags" theme="filled" />
+            </span>
+            <span>标签</span>
+        </a>
+        
+        <a href="/about">
+            <span>
+                <a-icon type="idcard" theme="filled" />
+            </span>
+            <span>关于</span>
+        </a>
+        
+    </div>
+
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div :class="'title'" @click="menu_show=!menu_show">
+            <span style="margin-right: 10px;">
+                <a-icon type="appstore" theme="filled" />
+            </span>
+            <span>Gregory</span>
+        </div>
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="home" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">首页</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="folder" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">文章</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="book" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">分类</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="tags" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">标签</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="idcard" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">关于</div>
+                </div>
+            </a>
+            
+        </div>
+        <div class="curtain" v-show="menu_show"></div>
+    </div>
+
+</nav>
+                </div>
+
+                <div id="main">
+                    <div id="home-head" style=background-image:url('/home.png')>
+    <script>
+        var menu = document.getElementById("menu")
+        menu.className += " menu-color"
+    </script>
+     
+    <div id="home-info" class="home-info" @click="home_click">
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="info">
+            <div class="wrap">
+                <h1>Gregory</h1>
+                <h3>因为热爱 旦暮复兮</h3>
+                <!-- <h5>小武的博客</h5> -->
+            </div>
+        </span>
+    </div>
+     
+</div>
+
+
+
+<div id="home-posts-wrap" class=>
+    <div id="home-posts">
+
+        <div id="posts">
+            
+
+<div class="post">
+
+    <a href="/2021/06/14/Typescript TypeScript类(class)/">
+        <h2>
+            TypeScript类(class)
+        </h2>
+    </a>
+
+    <div class="category-and-date">
+
+        
+        <span class="category">
+            <a href="/categories/学习笔记">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" /></span>
+                学习笔记
+            </a>
+        </span>
+        
+
+        <span class="date">
+            <span class="icon">
+                <a-icon type="calendar" theme="filled" />
+            </span>
+            2021/6/14
+        </span>
+
+    </div>
+
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            
+            <h4 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h4><p>抽象类做为其它派生类的基类使用,它们一般不会直接被实例化,抽象类可以包含成员的实现细节。</p>
+<p><code>abstract</code> 关键字是用于定义抽象类和在抽象类内部定义抽象方法。</p>
+<p>比如我们创建一个 <code>Animal</code> 抽象类:</p>
+<pre><code class="typescript">abstract class Animal &#123;
+    abstract makeSound(): void;
+    move(): void &#123;
+        console.log(&#39;roaming the earch...&#39;);
+    &#125;
+&#125;
+</code></pre>
+<p>我在实例化此抽象类会报错：</p>
+<img src="/images/TypeScript类/1.png" style="margin:0" alt="图片"/>
+
+<p>我们不能直接实例化抽象类，通常需要我们创建子类继承基类,然后可以实例化子类。</p>
+<pre><code class="typescript">class Pig extends Animal &#123;
+ 
+    makeSound() &#123;
+        console.log(&#39;heng heng&#39;)
+    &#125;
+&#125;
+ 
+const pig = new Pig()
+ 
+pig.makeSound()
+pig.move()
+</code></pre>
+<h4 id="访问限定符"><a href="#访问限定符" class="headerlink" title="访问限定符"></a>访问限定符</h4><p>传统面向对象语言通常都有访问限定符，<code>TypeScript</code> 中有三类访问限定符，分别是: <code>public</code>、<code>private</code>、<code>protected</code>。</p>
+<h5 id="public"><a href="#public" class="headerlink" title="public"></a>public</h5><p>在 TypeScript 的类中，成员都默认为 public, 被此限定符修饰的成员是可以被外部访问。</p>
+<pre><code class="typescript">class Car &#123;
+    public run() &#123;
+        console.log(&#39;启动...&#39;)
+    &#125;
+&#125;
+ 
+const car = new Car()
+ 
+car.run()
+</code></pre>
+<h5 id="private"><a href="#private" class="headerlink" title="private"></a>private</h5><p>当成员被设置为 <code>private</code> 之后, 被此限定符修饰的成员是只可以被类的内部访问。</p>
+<img src="/images/TypeScript类/2.png" style="margin:0" alt="图片"/>
+
+<h5 id="protected"><a href="#protected" class="headerlink" title="protected"></a>protected</h5><p>当成员被设置为 <code>protected</code> 之后, 被此限定符修饰的成员是只可以被类的内部以及类的子类访问。</p>
+<pre><code class="typescript">class Car &#123;
+    protected run() &#123;
+        console.log(&#39;启动...&#39;)
+    &#125;
+&#125;
+ 
+class GTR extends Car &#123;
+    init() &#123;
+        this.run()
+    &#125;
+&#125;
+ 
+const car = new Car()
+const gtr = new GTR()
+ 
+car.run() // [ts] 属性“run”受保护，只能在类“Car”及其子类中访问。
+gtr.init() // 启动...
+gtr.run() // [ts] 属性“run”受保护，只能在类“Car”及其子类中访问。
+</code></pre>
+
+            
+        </div>
+    </div>
+
+    <div class="post-tags">
+        
+        <span class="icon">
+            <a-icon type="tags" theme="filled" />
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/前端" style=color:#ffa2c4>
+                前端
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/TypeScrip" style=color:#ffa2c4>
+                TypeScrip
+            </a>
+        </span>
+        
+    </div>
+
+    <a href="/2021/06/14/Typescript TypeScript类(class)/ " class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+
+    <a href="/2021/06/12/Typescript TypeScript方法(function)/">
+        <h2>
+            TypeScript方法(function)
+        </h2>
+    </a>
+
+    <div class="category-and-date">
+
+        
+        <span class="category">
+            <a href="/categories/学习笔记">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" /></span>
+                学习笔记
+            </a>
+        </span>
+        
+
+        <span class="date">
+            <span class="icon">
+                <a-icon type="calendar" theme="filled" />
+            </span>
+            2021/6/12
+        </span>
+
+    </div>
+
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h4 id="定义函数类型"><a href="#定义函数类型" class="headerlink" title="定义函数类型"></a>定义函数类型</h4><p>我们在 <code>TypeScript</code> 中的函数并不需要刻意去定义，比如我们实现一个加法函数：</p>
+<pre><code class="typescript">const add = (a: number, b: number) =&gt; a + b
+</code></pre>
+<p>实际上我们只定义了函数的两个参数类型，这个时候整个函数虽然没有被显式定义，但是实际上 <code>TypeScript</code> 编译器是能知道到这个函数的类型的:</p>
+<img src="/images/TypeScript方法/1.png" style="margin:0" alt="图片"/>
+
+<p><code>VSCode</code> <code>的类型提示看到，TypeScript</code> 已经推断出了整个函数的类型，虽然我们并没有显式定义出来，这就是所谓的 类型推断。</p>
+            
+            
+        </div>
+    </div>
+
+    <div class="post-tags">
+        
+        <span class="icon">
+            <a-icon type="tags" theme="filled" />
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/前端" style=color:#00bcd4>
+                前端
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/TypeScrip" style=color:#00bcd4>
+                TypeScrip
+            </a>
+        </span>
+        
+    </div>
+
+    <a href="/2021/06/12/Typescript TypeScript方法(function)/ " class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+
+    <a href="/2021/06/10/Typescript TypeScript接口(interface)/">
+        <h2>
+            TypeScript接口(interface)
+        </h2>
+    </a>
+
+    <div class="category-and-date">
+
+        
+        <span class="category">
+            <a href="/categories/学习笔记">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" /></span>
+                学习笔记
+            </a>
+        </span>
+        
+
+        <span class="date">
+            <span class="icon">
+                <a-icon type="calendar" theme="filled" />
+            </span>
+            2021/6/10
+        </span>
+
+    </div>
+
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <p>接口（<code>interface</code>）是一个非常强大的代码类型定义描述</p>
+<h4 id="接口的使用"><a href="#接口的使用" class="headerlink" title="接口的使用"></a>接口的使用</h4><p>有一个函数，这个函数接受一个 <code>User</code> 对象，然后返回这个 <code>User</code> 对象的 <code>name</code> 属性：</p>
+<pre><code class="typescript">const getUserName = (user) =&gt; user.name
+</code></pre>
+            
+            
+        </div>
+    </div>
+
+    <div class="post-tags">
+        
+        <span class="icon">
+            <a-icon type="tags" theme="filled" />
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/前端" style=color:#00a596>
+                前端
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/TypeScrip" style=color:#ff7d73>
+                TypeScrip
+            </a>
+        </span>
+        
+    </div>
+
+    <a href="/2021/06/10/Typescript TypeScript接口(interface)/ " class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+
+    <a href="/2021/06/03/CSS attr-counter-calc-使用技巧/">
+        <h2>
+            attr counter calc使用技巧
+        </h2>
+    </a>
+
+    <div class="category-and-date">
+
+        
+        <span class="category">
+            <a href="/categories/技术分享">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" /></span>
+                技术分享
+            </a>
+        </span>
+        
+
+        <span class="date">
+            <span class="icon">
+                <a-icon type="calendar" theme="filled" />
+            </span>
+            2021/6/3
+        </span>
+
+    </div>
+
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h4 id="在CSS中用attr-显示HTML属性值"><a href="#在CSS中用attr-显示HTML属性值" class="headerlink" title="在CSS中用attr()显示HTML属性值"></a>在CSS中用attr()显示HTML属性值</h4><p><code>attr()</code>功能早在CSS 2.1标准中就已经出现，但现在才开始普遍流行。它提供了一个巧妙的方法在CSS中使用HTML标签上的属性，在很多情况下都能帮你省去了以往需要Javascript处理的过程。要想使用这个功能，你需要用到三种元素：一个<code>:before</code> 或 <code>:after</code> CSS伪类样式，<code>content</code>属性，和一个带有你想使用的HTML属性名称的<code>attr()</code>表达式。</p>
+<p>例如，想去显示&lt;h3&gt;标题上的<code>data-prefix</code>属性的值，你可以写成这样：</p>
+<pre><code class="css">h3:before&#123;
+  content: attr(data-prefix) &quot;&quot;
+&#125;
+
+&lt;h3 (data-prefix=&quot;Custom prefix&quot;&gt;标题&lt;/h3&gt;
+</code></pre>
+<p>显然，这个例子并没有展示它有多大用处，只是展示了它的基本用法。</p>
+<p>让我们来试一个更有用的例子，<code>attr()</code>的一个极好的应用就是当用户打印页面时将页面链接显示出来。</p>
+            
+            
+        </div>
+    </div>
+
+    <div class="post-tags">
+        
+        <span class="icon">
+            <a-icon type="tags" theme="filled" />
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/Css" style=color:#ff7d73>
+                Css
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/前端" style=color:#03a9f4>
+                前端
+            </a>
+        </span>
+        
+    </div>
+
+    <a href="/2021/06/03/CSS attr-counter-calc-使用技巧/ " class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+
+    <a href="/2021/05/13/CSS Motion-Path技术研究/">
+        <h2>
+            CSS Motion Path技术研究
+        </h2>
+    </a>
+
+    <div class="category-and-date">
+
+        
+        <span class="category">
+            <a href="/categories/技术分享">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" /></span>
+                技术分享
+            </a>
+        </span>
+        
+
+        <span class="date">
+            <span class="icon">
+                <a-icon type="calendar" theme="filled" />
+            </span>
+            2021/5/13
+        </span>
+
+    </div>
+
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <p>最近在看css3手册时忽然发现了新的动画属性css, 名叫Motion Path，利用Motion Path，我们可以控制元素按照特定的路径进行位置变换的动画。并且，这个路径可以是非常复杂的一条路径。</p>
+<p>CSS Motion Path 规范主要包含以下几个属性：</p>
+<ul>
+<li>offset-path：接收一个 SVG 路径（与 SVG 的path、CSS 中的 clip-path 类似），指定运动的几何路径</li>
+<li>offset-distance：控制当前元素基于 offset-path 运动的距离</li>
+<li>offset-position：指定 offset-path 的初始位置</li>
+<li>offset-anchor：定义沿 offset-path 定位的元素的锚点。 这个也算好理解，运动的元素可能不是一个点，那么就需要指定元素中的哪个点附着在路径上进行运动</li>
+<li>offset-rotate：定义沿 offset-path 定位时元素的方向，说人话就是运动过程中元素的角度朝向</li>
+</ul>
+            
+            
+        </div>
+    </div>
+
+    <div class="post-tags">
+        
+        <span class="icon">
+            <a-icon type="tags" theme="filled" />
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/Css" style=color:#ff7d73>
+                Css
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/前端" style=color:#00bcd4>
+                前端
+            </a>
+        </span>
+        
+    </div>
+
+    <a href="/2021/05/13/CSS Motion-Path技术研究/ " class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+
+    <a href="/2021/04/20/CSS nth-child-n-和nth-of-type-n/">
+        <h2>
+            nth-child(n)和nth-of-type(n)
+        </h2>
+    </a>
+
+    <div class="category-and-date">
+
+        
+        <span class="category">
+            <a href="/categories/学习笔记">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" /></span>
+                学习笔记
+            </a>
+        </span>
+        
+
+        <span class="date">
+            <span class="icon">
+                <a-icon type="calendar" theme="filled" />
+            </span>
+            2021/4/20
+        </span>
+
+    </div>
+
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><table>
+  <tr>
+    <td>:nth-child(n)</td>
+    <td>p:nth-child(2)</td>
+    <td>选择属于其父元素的第二个子元素的每个&lt;p&gt;标签</td>
+  </tr>
+  <tr>
+    <td>:nth-last-child(n)</td>
+    <td>p:nth-last-child(2)</td>
+    <td>同上，从最后一个元素开始计数</td>
+  </tr>
+  <tr>
+    <td>:nth-of-type(n)</td>
+    <td>p:nth-of-type(2)</td>
+    <td>选择属于其父元素的第二个&lt;p&gt;元素的每个&lt;p&gt;元素</td>
+  </tr>
+  <tr>
+    <td>:nth-last-of-type(n)</td>
+    <td>p:nth-last-of-type(2)</td>
+    <td>同上，但是从最后一个元素开始计数</td>
+  </tr>
+</table>
+
+<p>我们通常不会在标签后面，而是 .class后加上这类选择器，但是有时候无法得到我们想要的效果。</p>
+<p style="color:rgb(102, 175, 239)">
+.class:nth-child(n) 会直接在 .class 的父元素中找，如果第n个子元素是 .class 属性，则匹配成功。
+</p>
+<p style="color:rgb(102, 175, 239)">
+.class:nth-of-type(n) 会先判断 .class 是什么标签，再在父元素中查找该标签，如果第n个该标签的元素是 .class 属性，则匹配成功。
+</p>
+            
+            
+        </div>
+    </div>
+
+    <div class="post-tags">
+        
+        <span class="icon">
+            <a-icon type="tags" theme="filled" />
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/Css" style=color:#ffa2c4>
+                Css
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/前端" style=color:#ff7d73>
+                前端
+            </a>
+        </span>
+        
+    </div>
+
+    <a href="/2021/04/20/CSS nth-child-n-和nth-of-type-n/ " class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+
+    <a href="/2021/03/25/CSS scss-less书写建议/">
+        <h2>
+            scss/less书写建议
+        </h2>
+    </a>
+
+    <div class="category-and-date">
+
+        
+        <span class="category">
+            <a href="/categories/技术分享">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" /></span>
+                技术分享
+            </a>
+        </span>
+        
+
+        <span class="date">
+            <span class="icon">
+                <a-icon type="calendar" theme="filled" />
+            </span>
+            2021/3/25
+        </span>
+
+    </div>
+
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h3 id="属性书写顺序"><a href="#属性书写顺序" class="headerlink" title="属性书写顺序"></a>属性书写顺序</h3><ol>
+<li><p>位置属性(position, top, right, z-index, display, float等)</p>
+</li>
+<li><p>大小(width, height, padding, margin)</p>
+</li>
+<li><p>文字系列(font, line-height, letter-spacing, color- text-align等)</p>
+</li>
+<li><p>背景(background, border等)</p>
+</li>
+<li><p>其他(animation, transition等)</p>
+</li>
+</ol>
+<p>总结: 建议遵循 布局定位属性–&gt;自身属性–&gt;文本属性–&gt;其他属性</p>
+            
+            
+        </div>
+    </div>
+
+    <div class="post-tags">
+        
+        <span class="icon">
+            <a-icon type="tags" theme="filled" />
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/Css" style=color:#03a9f4>
+                Css
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/前端" style=color:#ffa2c4>
+                前端
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/Scss" style=color:#00bcd4>
+                Scss
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/Less" style=color:#03a9f4>
+                Less
+            </a>
+        </span>
+        
+    </div>
+
+    <a href="/2021/03/25/CSS scss-less书写建议/ " class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+
+    <a href="/2021/01/07/Javascript Json.stringify九个特征/">
+        <h2>
+            Json.stringify九个特征
+        </h2>
+    </a>
+
+    <div class="category-and-date">
+
+        
+
+        <span class="date">
+            <span class="icon">
+                <a-icon type="calendar" theme="filled" />
+            </span>
+            2021/1/7
+        </span>
+
+    </div>
+
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h4 id="特性一"><a href="#特性一" class="headerlink" title="特性一"></a>特性一</h4><p><code>undefined</code>、任意的函数以及<code>symbol</code>值，出现在非数组对象的属性值中时在序列化过程中会被忽略<br><code>undefined</code>、任意的函数以及<code>symbol</code>值出现在数组中时会被转换成 <code>null</code><br><code>undefined</code>、任意的函数以及<code>symbol</code>值被单独转换时，会返回 <code>undefined</code></p>
+            
+            
+        </div>
+    </div>
+
+    <div class="post-tags">
+        
+        <span class="icon">
+            <a-icon type="tags" theme="filled" />
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/前端" style=color:#ffa2c4>
+                前端
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/JavaScript" style=color:#ff7d73>
+                JavaScript
+            </a>
+        </span>
+        
+    </div>
+
+    <a href="/2021/01/07/Javascript Json.stringify九个特征/ " class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+
+    <a href="/2020/12/23/CSS 用css实现一个旋转的立方体/">
+        <h2>
+            用css实现一个旋转的立方体
+        </h2>
+    </a>
+
+    <div class="category-and-date">
+
+        
+        <span class="category">
+            <a href="/categories/技术分享">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" /></span>
+                技术分享
+            </a>
+        </span>
+        
+
+        <span class="date">
+            <span class="icon">
+                <a-icon type="calendar" theme="filled" />
+            </span>
+            2020/12/23
+        </span>
+
+    </div>
+
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><h4 id="从perspective说起"><a href="#从perspective说起" class="headerlink" title="从perspective说起"></a>从perspective说起</h4><p>perspective作为一个css样式，表示了从屏幕视角出发，与3D元素容器的距离。值越大，透过屏幕看过去，与3D元素距离越远。</p>
+            
+            
+        </div>
+    </div>
+
+    <div class="post-tags">
+        
+        <span class="icon">
+            <a-icon type="tags" theme="filled" />
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/Css" style=color:#ffa2c4>
+                Css
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/前端" style=color:#00a596>
+                前端
+            </a>
+        </span>
+        
+    </div>
+
+    <a href="/2020/12/23/CSS 用css实现一个旋转的立方体/ " class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+
+    <a href="/2020/10/01/CSS 实现头像与国旗的融合/">
+        <h2>
+            头像与国旗的融合
+        </h2>
+    </a>
+
+    <div class="category-and-date">
+
+        
+        <span class="category">
+            <a href="/categories/技术分享">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" /></span>
+                技术分享
+            </a>
+        </span>
+        
+
+        <span class="date">
+            <span class="icon">
+                <a-icon type="calendar" theme="filled" />
+            </span>
+            2020/10/1
+        </span>
+
+    </div>
+
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <p>到国庆，大家都急着给祖国母亲庆生。</p>
+<p>每年每到此时，微信朋友圈就会流行起给头像装饰上国旗，而今年又流行这款：<br><img src="/images/实现头像与国旗的融合/1.jpg" style="margin:0;" alt="图片"/></p>
+<p>那么，将一张国旗图片与我们的头像，快速得到想要的头像，使用 CSS 如何简单实现呢？</p>
+<p>有人认为是改变其中一张图的透明度，实际上不是的。仔细观察合成后的头像，最左边的基本上只能看到红旗看不到原本的头像内容，而最右边基本只能看到头像而不再显示红旗的红色背景。</p>
+            
+            
+        </div>
+    </div>
+
+    <div class="post-tags">
+        
+        <span class="icon">
+            <a-icon type="tags" theme="filled" />
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/Css" style=color:#ff7d73>
+                Css
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/前端" style=color:#03a9f4>
+                前端
+            </a>
+        </span>
+        
+    </div>
+
+    <a href="/2020/10/01/CSS 实现头像与国旗的融合/ " class="go-post">
+        阅读全文
+    </a>
+</div>
+
+
+             
+<div class="page-current">
+
+    <div class="prev">
+        
+        <a href="/">
+            <span class="page-num">
+                <a-icon type="caret-left" theme="filled" />
+            </span>
+        </a>
+        
+    </div>
+
+    <div class="page-index">
+
+        
+        <span>
+
+            
+
+            
+            <a href="/">
+                <span class="page-num">
+                    1
+                </span>
+            </a>
+        </span>
+        
+
+        <span class="current">
+            2
+        </span>
+
+        
+        <span>
+            <a href="/page/3/">
+                <span class="page-num">
+                    3
+                </span>
+            </a>
+            
+
+            
+
+        </span>
+        
+
+    </div>
+
+    <div class="next">
+        
+        <a href="/page/3/ ">
+            <span class="page-num">
+                <a-icon type="caret-right" theme="filled" />
+            </span>
+        </a>
+        
+    </div>
+
+</div>
+
+        </div>
+    </div>
+    
+    <div id="home-card">
+        <a-affix :offset-top="card_top">
+    <a-card class="card-style" style="width: 300px">
+        <div class="avatar">
+            <img src="../../images/gregory.jpg " alt="头像">
+        </div>
+        <div class="name">
+            Gregory Wu
+        </div>
+        <div class="descriptions">
+            
+            <div class="description">
+                
+            </div>
+            
+            <div class="description">
+                陌上花开 可缓缓归矣
+            </div>
+            
+        </div>
+        <div class="icon-links">
+            
+            <span class="icon-link">
+                <a target="_blank" rel="noopener" href="https://github.com/Gregory-wyg">
+
+                    
+                    <a-icon type="github"
+                        theme="filled" />
+                    
+                </a>
+            </span>
+            
+            <span class="icon-link">
+                <a target="_blank" rel="noopener" href="https://gitee.com/gregory_wu">
+
+                    
+                        <i class="iconfont icon-gitee-fill-round"></i>
+                    
+                </a>
+            </span>
+            
+            <span class="icon-link">
+                <a target="_blank" rel="noopener" href="https://space.bilibili.com/188447132/">
+
+                    
+                        <i class="iconfont icon-bilibili-fill"></i>
+                    
+                </a>
+            </span>
+            
+        </div>
+        <div class="friend-links">
+            
+            <div class="friend-link">
+                <a target="_blank" rel="noopener" href="https://juejin.cn/user/1354207012071015">
+                    博主掘金
+                </a>
+            </div>
+            
+        </div>
+        <div class="go-top">
+            <a-icon type="arrow-up" @click="goTop"/>
+        </div>
+    </a-card>
+</a-affix>
+    </div>
+    
+</div>
+                     
+<footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2020 - 2025 Gregory
+            <span class="footer-icon">
+                <a-icon type="flag" theme="filled" /></span>
+            @Gregory Wu
+        </div>
+        <div></div>
+        
+    </div>
+
+</footer>
+
+<script src="/js/highlight.min.js"></script>
+<script src="/js/particle.js"></script>
+                </div>
+            </div>
+        </transition>
+    </div>
+
+    <script>
+    new Vue({
+        el: "#layout",
+        data: {
+            show_page: false,
+            onload_menu: false,
+            menu_show: false,
+            card_top: 100
+        },
+        created: function () {
+            window.onload = () => {
+
+                this.show_page = true;
+
+                document.getElementById("loadcontent").style.opacity = 0;
+
+                setTimeout(function () {
+                    document.getElementById("loadleft").style.width = 0;
+                    document.getElementById("loadright").style.width = 0;
+                }, 300);
+
+                setTimeout(function () {
+                    document.getElementById("loading").style = "display:none"
+                }, 600);
+
+                // 禁用右键菜单
+                document.oncontextmenu = function (e) {
+                    e.preventDefault();
+                }
+
+                // 禁用f12
+                window.addEventListener('keydown', (e) => {
+                    if (e.keyCode === 123) {
+                        e.preventDefault();
+                    }
+                })
+            }
+        },
+        mounted() {
+            window.addEventListener('scroll', (e) => {
+                this.menu_show = false
+            })
+        },
+        methods: {
+            home_click: function () {
+                window.scrollTo({
+                    top: window.innerHeight - 80,
+                    behavior: "smooth",
+                });
+            },
+            goTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                });
+            }
+        }
+    })
+</script>
+<!--  -->
+</body>
+
+</html>

@@ -1,0 +1,371 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gregory's blog</title>
+    <meta name="author" content="Gregory Wu">
+    <meta name="description" content="小武的博客">
+    <meta name="keywords" content="vue,javascript,css,blog,Gregory">
+    <link rel="icon" href="/../../images/gregory.png">
+    <link rel="stylesheet" href="/css/antd.min.css">
+    <link rel="stylesheet" href="/css/icon-font.css">
+    
+    <link rel="stylesheet" href="/css/full-theme.css">
+    
+    <script src="/js/vue.js"></script>
+    <script src="/js/antd.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script type="text/javascript">
+      if (window !== top){ // 判断当前的window对象是否是top对象
+        top.location.href = window.location.href; // 如果不是，将top对象的网址自动导向被嵌入网页的网址
+      }
+    </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <script>
+        if (!navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))
+            document.writeln(
+                `<canvas id="background"><\/canvas>\n<canvas id="fireworks"><\/canvas>\n<script src="/js\/background.js"><\/script>\n<script src="/js\/fireworks.js"><\/script>`
+            );
+    </script>  
+    <div id="loading"
+        style="height: 100vh; width: 100%; position: fixed;display: flex;z-index: 200; justify-content: space-between;">
+        <div id="loadleft" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div id="loadright" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div
+            style="position: fixed; height: 100vh; width: 100%;display: flex;justify-content: center;align-items: center;">
+            <div id="loadcontent"
+                style="width:400px;height:400px;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px#a3ddfb; text-align:center;opacity:1;transition:opacity 0.3s ease-out;user-select:none;">
+                <div>
+                    <h2>LOADING...</h2>
+                    <div>
+                        <img src="/runningDeer.gif" alt="loading" style="width: 70px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="layout">
+        <transition name="into">
+            <div v-show="show_page" style="display: none;">
+                <div id="menu_show">
+                     
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">Gregory</span>
+        </a>
+        
+        <a href="/">
+            <span>
+                <a-icon type="home" theme="filled" />
+            </span>
+            <span>首页</span>
+        </a>
+        
+        <a href="/archives">
+            <span>
+                <a-icon type="folder" theme="filled" />
+            </span>
+            <span>文章</span>
+        </a>
+        
+        <a href="/categories">
+            <span>
+                <a-icon type="book" theme="filled" />
+            </span>
+            <span>分类</span>
+        </a>
+        
+        <a href="/tags">
+            <span>
+                <a-icon type="tags" theme="filled" />
+            </span>
+            <span>标签</span>
+        </a>
+        
+        <a href="/about">
+            <span>
+                <a-icon type="idcard" theme="filled" />
+            </span>
+            <span>关于</span>
+        </a>
+        
+    </div>
+
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div :class="'title'" @click="menu_show=!menu_show">
+            <span style="margin-right: 10px;">
+                <a-icon type="appstore" theme="filled" />
+            </span>
+            <span>Gregory</span>
+        </div>
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="home" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">首页</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="folder" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">文章</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="book" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">分类</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="tags" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">标签</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="idcard" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">关于</div>
+                </div>
+            </a>
+            
+        </div>
+        <div class="curtain" v-show="menu_show"></div>
+    </div>
+
+</nav>
+                </div>
+
+                <div id="main">
+                     
+<link rel="stylesheet" href="/css/post-body.css">
+<div class="article">
+    <div>
+        <h1>使用Prettier+Husky强制格式化代码 </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <a-icon type="calendar" theme="filled" />
+            </span>
+            2022/3/12
+        </span>
+
+        
+        <span class="category">
+            <a href="/categories/学习笔记">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" />
+                </span>
+                学习笔记
+            </a>
+        </span>
+        
+
+        
+
+        <span class="tags">
+            <span class="icon">
+                <a-icon type="tags" theme="filled" />
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/前端" style=color:#ff7d73>
+                    前端
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/JavaScript" style=color:#ff7d73>
+                    JavaScript
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+
+    <div class="content" v-pre>
+        <h4 id="一、格式化痛点"><a href="#一、格式化痛点" class="headerlink" title="一、格式化痛点"></a>一、格式化痛点</h4><p>虽然我们团队制定了代码规范，但是平时大家写代码的时候还是各有各的风格，遇上紧急的需求或者bug，规范基本是没有的。</p>
+<p>而且目前团队不建议使用编辑器自带的格式化插件，所以多人开发的项目通常是越来越乱。</p>
+<p>关于代码格式化的插件，大家不喜欢的原因是，</p>
+<p>第一，团队有人用<code>WebStorm</code>，有人用<code>VScode</code>，格式化风格可能不一样；</p>
+<p>第二，例如<code>VScode</code>的插件<code>Prettier</code>和<code>Vetur</code>，它们都有格式化的功能，可能会有冲突；</p>
+<p>第三，有时格式化后的代码很奇怪，例如下面这种，总之就是看着不舒服。</p>
+<span id="more"></span>
+
+<p>我个人是很喜欢自动格式化的。但格式化后的代码确实不好看，怎么办呢？</p>
+<h4 id="二、配置prettier"><a href="#二、配置prettier" class="headerlink" title="二、配置prettier"></a>二、配置prettier</h4><p>为了符合团队代码规范，可以去自己设置插件中的配置项，这是<code>Vetur</code>自带的格式化工具。</p>
+<p>也可以自定义一个 <code>.prettierrc.js</code> 文件，这样<code>Vetur</code>会按照文件中的配置来格式化。</p>
+<pre><code class="javascript">module.exports = &#123;
+    printWidth: 100, // 单行代码的最大宽度
+    tabWidth: 2, // 缩进
+    useTabs: false, // 使用tab还是空格
+    semi: true, // 分号
+    singleQuote: true, // 单引号
+    trailingComma: &#39;none&#39;, // 尾随逗号
+    bracketSpacing: true, // 括号间距&#123; foo: bar &#125;
+    jsxBracketSameLine: false, // 将 &gt; 多行 JSX 元素放在最后一行的末尾，而不是单独放在下一行
+    arrowParens: &#39;avoid&#39;, // 箭头函数圆括号
+&#125;;
+</code></pre>
+<h4 id="三、安装Prettier"><a href="#三、安装Prettier" class="headerlink" title="三、安装Prettier"></a>三、安装Prettier</h4><p>如果不使用格式化插件，但仍然想保证代码规范，就需要使用 <code>Eslint+Prettier+Husky</code>来强制格式化。</p>
+<p>项目新建时可以选择 <code>ESLint+Prettier</code>。然后再安装 <code>prettier-eslint-cli</code>。</p>
+<img src="/images/使用Prettier+Husky强制格式化代码/1.png" style="margin:0" alt="图片"/>
+
+<p>如果想在已有的项目中使用Prettier，</p>
+<ol>
+<li> 需要安装以下几个插件</li>
+</ol>
+<pre><code class="dos">npm i -D prettier eslint-plugin-prettier eslint-config-prettier prettier-eslint-cli
+</code></pre>
+<p><code>prettier</code>：<code>prettier</code>插件的核心代码</p>
+<p><code>eslint-plugin-prettier</code>：将<code>prettier</code>作为<code>ESLint</code>规范来使用</p>
+<p><code>eslint-config-prettier</code>：解决<code>ESLint</code>中的样式规范和<code>prettier</code>中样式规范的冲突，以<code>prettier</code>的样式规范为准，使<code>ESLint</code>中的样式规范自动失效</p>
+<p><code>prettier-eslint-cli</code>：允许你对多个文件用<code>prettier-eslint</code>进行格式化</p>
+<ol start="2">
+<li><p>按照上面的方式创建 <code>.prettierrc.js。</code></p>
+</li>
+<li><p>在 <code>.eslintrc.js</code> 中添加 <code>extends</code></p>
+</li>
+</ol>
+<img src="/images/使用Prettier+Husky强制格式化代码/2.png" style="margin:0" alt="图片"/>
+
+<h4 id="四、安装Husky"><a href="#四、安装Husky" class="headerlink" title="四、安装Husky"></a>四、安装Husky</h4><p>这样就能够按照代码规范来格式化代码。那如何强制执行呢？需要用到<code>husky</code>和<code>lint-staged</code></p>
+<pre><code class="dos">npm install husky lint-staged --save-dev
+</code></pre>
+<p><code>husky</code>：在项目中添加<code>git</code>钩子，这里主要用到 <code>pre-commit</code>这个 <code>hook</code>，在执行 <code>commit</code> 之前，运行一些自定义操作</p>
+<p><code>lint-staged</code>：用于对 <code>Git</code> 暂存区中的文件执行代码检测</p>
+<p><code>在package.json</code>中添加以下代码，这样在我们提交代码时，<code>npm</code>会先执行<code>prettier-eslint</code>，<code>git add</code>，再<code>commit</code>。</p>
+<pre><code class="javascript">&quot;scripts&quot;: &#123;
+  &quot;format&quot;: &quot;prettier-eslint \&quot;src/**/*.&#123;js,vue,scss&#125;\&quot; --write&quot;
+&#125;,
+&quot;husky&quot;: &#123;
+  &quot;hooks&quot;: &#123;
+    &quot;pre-commit&quot;: &quot;lint-staged&quot;
+  &#125;
+&#125;,
+&quot;lint-staged&quot;: &#123;
+  &quot;*.&#123;js,vue,scss,json&#125;&quot;: [
+    &quot;prettier-eslint --write&quot;,
+    &quot;git add&quot;
+  ]
+&#125;,
+</code></pre>
+<p>安装成功后会生成一个<code>.husky</code>文件夹，包含了<code>pre-commit</code>脚本，里面有配置的<code>lint-staged</code>命令。</p>
+<p>现在在执行<code>commit</code>命令前能强制执行代码格式化，并把格式化后的代码也加入暂存区，然后再提交到本地仓库。</p>
+
+    </div>
+
+    <!--  -->
+</div>
+                     
+<footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2020 - 2025 Gregory
+            <span class="footer-icon">
+                <a-icon type="flag" theme="filled" /></span>
+            @Gregory Wu
+        </div>
+        <div></div>
+        
+    </div>
+
+</footer>
+
+<script src="/js/highlight.min.js"></script>
+<script src="/js/particle.js"></script>
+                </div>
+            </div>
+        </transition>
+    </div>
+
+    <script>
+    new Vue({
+        el: "#layout",
+        data: {
+            show_page: false,
+            onload_menu: false,
+            menu_show: false,
+            card_top: 100
+        },
+        created: function () {
+            window.onload = () => {
+
+                this.show_page = true;
+
+                document.getElementById("loadcontent").style.opacity = 0;
+
+                setTimeout(function () {
+                    document.getElementById("loadleft").style.width = 0;
+                    document.getElementById("loadright").style.width = 0;
+                }, 300);
+
+                setTimeout(function () {
+                    document.getElementById("loading").style = "display:none"
+                }, 600);
+
+                // 禁用右键菜单
+                document.oncontextmenu = function (e) {
+                    e.preventDefault();
+                }
+
+                // 禁用f12
+                window.addEventListener('keydown', (e) => {
+                    if (e.keyCode === 123) {
+                        e.preventDefault();
+                    }
+                })
+            }
+        },
+        mounted() {
+            window.addEventListener('scroll', (e) => {
+                this.menu_show = false
+            })
+        },
+        methods: {
+            home_click: function () {
+                window.scrollTo({
+                    top: window.innerHeight - 80,
+                    behavior: "smooth",
+                });
+            },
+            goTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                });
+            }
+        }
+    })
+</script>
+<!--  -->
+</body>
+
+</html>

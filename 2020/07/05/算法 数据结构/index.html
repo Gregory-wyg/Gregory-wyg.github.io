@@ -1,0 +1,358 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gregory's blog</title>
+    <meta name="author" content="Gregory Wu">
+    <meta name="description" content="小武的博客">
+    <meta name="keywords" content="vue,javascript,css,blog,Gregory">
+    <link rel="icon" href="/../../images/gregory.png">
+    <link rel="stylesheet" href="/css/antd.min.css">
+    <link rel="stylesheet" href="/css/icon-font.css">
+    
+    <link rel="stylesheet" href="/css/full-theme.css">
+    
+    <script src="/js/vue.js"></script>
+    <script src="/js/antd.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script type="text/javascript">
+      if (window !== top){ // 判断当前的window对象是否是top对象
+        top.location.href = window.location.href; // 如果不是，将top对象的网址自动导向被嵌入网页的网址
+      }
+    </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <script>
+        if (!navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))
+            document.writeln(
+                `<canvas id="background"><\/canvas>\n<canvas id="fireworks"><\/canvas>\n<script src="/js\/background.js"><\/script>\n<script src="/js\/fireworks.js"><\/script>`
+            );
+    </script>  
+    <div id="loading"
+        style="height: 100vh; width: 100%; position: fixed;display: flex;z-index: 200; justify-content: space-between;">
+        <div id="loadleft" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div id="loadright" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div
+            style="position: fixed; height: 100vh; width: 100%;display: flex;justify-content: center;align-items: center;">
+            <div id="loadcontent"
+                style="width:400px;height:400px;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px#a3ddfb; text-align:center;opacity:1;transition:opacity 0.3s ease-out;user-select:none;">
+                <div>
+                    <h2>LOADING...</h2>
+                    <div>
+                        <img src="/runningDeer.gif" alt="loading" style="width: 70px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="layout">
+        <transition name="into">
+            <div v-show="show_page" style="display: none;">
+                <div id="menu_show">
+                     
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">Gregory</span>
+        </a>
+        
+        <a href="/">
+            <span>
+                <a-icon type="home" theme="filled" />
+            </span>
+            <span>首页</span>
+        </a>
+        
+        <a href="/archives">
+            <span>
+                <a-icon type="folder" theme="filled" />
+            </span>
+            <span>文章</span>
+        </a>
+        
+        <a href="/categories">
+            <span>
+                <a-icon type="book" theme="filled" />
+            </span>
+            <span>分类</span>
+        </a>
+        
+        <a href="/tags">
+            <span>
+                <a-icon type="tags" theme="filled" />
+            </span>
+            <span>标签</span>
+        </a>
+        
+        <a href="/about">
+            <span>
+                <a-icon type="idcard" theme="filled" />
+            </span>
+            <span>关于</span>
+        </a>
+        
+    </div>
+
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div :class="'title'" @click="menu_show=!menu_show">
+            <span style="margin-right: 10px;">
+                <a-icon type="appstore" theme="filled" />
+            </span>
+            <span>Gregory</span>
+        </div>
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="home" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">首页</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="folder" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">文章</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="book" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">分类</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="tags" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">标签</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="idcard" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">关于</div>
+                </div>
+            </a>
+            
+        </div>
+        <div class="curtain" v-show="menu_show"></div>
+    </div>
+
+</nav>
+                </div>
+
+                <div id="main">
+                     
+<link rel="stylesheet" href="/css/post-body.css">
+<div class="article">
+    <div>
+        <h1>算法 数据结构 </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <a-icon type="calendar" theme="filled" />
+            </span>
+            2020/7/5
+        </span>
+
+        
+        <span class="category">
+            <a href="/categories/学习笔记">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" />
+                </span>
+                学习笔记
+            </a>
+        </span>
+        
+
+        
+
+        <span class="tags">
+            <span class="icon">
+                <a-icon type="tags" theme="filled" />
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/前端" style=color:#03a9f4>
+                    前端
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/算法" style=color:#00a596>
+                    算法
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+
+    <div class="content" v-pre>
+        <h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><p><img src="/images/algorithm-dataStructure/1.png" alt="1"></p>
+<p>数组非常常用，它是一块连续的内存空间，因此可以根据下标直接访问，其查找效率为 O(1)。</p>
+<p>但数组的插入、删除效率较低，只有 O(n)，原因是为了保持数组的连续性，必须在插入或删除后对数组进行一些操作：比如插入第 K 个元素，需要将后面元素后移；而删除第 K 个元素，需要将后面元素前移。</p>
+<span id="more"></span>
+
+<h3 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h3><p><img src="/images/algorithm-dataStructure/2.png" alt="2"></p>
+<p>链表是为了解决数组问题而发明出来的，它提升了插入、删除效率，而牺牲了查找效率。</p>
+<p>链表的插入、删除效率是 O(1)，因为只要将对应位置元素断链、重连就可以完成插入、删除，而无需关心其他节点。</p>
+<p>相应的查找效率就低了，因为存储空间不是连续的，所以无法像数组一样通过下标直接查找，而需要通过指针不断搜索，所以查找效率为 O(n)。</p>
+<p>顺带一提，链表可以通过增加 <code>.prev</code> 属性改造为双向链表，也可以通过定义两个 <code>.next</code> 形成二叉树（<code>.left</code> <code>.right</code>）或者多叉树（N 个 <code>.next</code>）。</p>
+<p><img src="/images/algorithm-dataStructure/3.png" alt="3"></p>
+<h3 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h3><p><img src="/images/algorithm-dataStructure/4.png" alt="4"></p>
+<p>栈是一种先入后出的结构，可以用数组模拟。</p>
+<pre><code class="typescript">const stack: number[] = []
+
+// 入栈
+stack.push(1)
+// 出栈
+stack.pop()
+</code></pre>
+<h3 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h3><p><img src="/images/algorithm-dataStructure/5.png" alt="5"></p>
+<p>堆是一种特殊的完全二叉树，分为大顶堆与小顶堆。</p>
+<p>大顶堆指二叉树根节点是最大的数，小顶堆指二叉树根节点是最小的数。为了方便说明，以下以大顶堆举例，小顶堆的逻辑与之相反即可。</p>
+<p>大顶堆中，任意节点都比其叶子结点大，所以根节点是最大的节点。这种数据结构的优势是可以以 O(1) 效率找到最大值（小顶堆找最小值），因为直接取 <code>stack[0]</code> 就是根节点。</p>
+<p>这里稍微提一下二叉树与数组结构的映射，因为采用数组方式操作二叉数，无论操作还是空间都有优势：第一项存储的是节点总数，对于下标为 K 的节点，其父节点下标是 <code>floor(K / 2)</code>，其子节点下标分别是 <code>K * 2</code>、<code>K * 2 + 1</code>，所以可以快速定位父子位置。</p>
+<p>而利用这个特性，可以将插入、删除的效率达到 <code>O(logn)</code>，因为可以通过上下移动的方式调整其他节点顺序，而对于一个拥有 n 个节点的完全二叉树，树的深度为 <code>logn</code>。</p>
+<h3 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h3><p><img src="/images/algorithm-dataStructure/6.png" alt="6"></p>
+<p>哈希表就是所谓的 Map，不同 Map 实现方式不同，常见的有 HashMap、TreeMap、HashSet、TreeSet。</p>
+<p>其中 Map 和 Set 实现类似，所以以 Map 为例讲解。</p>
+<p>首先将要存储的字符求出其 ASCII 码值，再根据比如余数等方法，定位到一个数组的下标，同一个下标可能对应多个值，因此这个下标可能对应一个链表，根据链表进一步查找，这种方法称为拉链法。</p>
+<p>如果存储的值超过一定数量，链表的查询效率就会降低，可能会升级为红黑树存储，总之这样的增、删、查效率为 <code>O(1)</code>，但缺点是其内容是无序的。</p>
+<p>为了保证内容有序，可以使用树状结构存储，这种数据结构称为 HashTree，这样时间复杂度退化为 <code>O(logn)</code>，但好处是内容可以是有序的。</p>
+<h3 id="树-amp-二叉搜索树"><a href="#树-amp-二叉搜索树" class="headerlink" title="树 &amp; 二叉搜索树"></a>树 &amp; 二叉搜索树</h3><p><img src="/images/algorithm-dataStructure/7.png" alt="7"></p>
+<p>二叉搜索树是一种特殊二叉树，更复杂的还有红黑树，但这里就不深入了，只介绍二叉搜索树。</p>
+<p>二叉搜索树满足对于任意节点，<code>left 的所有节点 &lt; 根节点 &lt; right 的所有节点</code>，注意这里是所有节点，因此在判断时需要递归考虑所有情况。</p>
+<p>二叉搜索树的好处在于，访问、查找、插入、删除的时间复杂度均为 O(logn)，因为无论何种操作都可以通过二分方式进行。但在最坏的情况会降级为 O(n)，原因是多次操作后，二叉搜索树可能不再平衡，最后退化为一个链表，就变成了链表的时间复杂度。</p>
+<p>更好的方案有 AVL 树、红黑树等，像 JAVA、C++ 标准库实现的二叉搜索树都是红黑树。</p>
+<h3 id="字典树"><a href="#字典树" class="headerlink" title="字典树"></a>字典树</h3><p><img src="/images/algorithm-dataStructure/8.png" alt="8"></p>
+<p>字典树多用于单词搜索场景，只要给定一个单独开头，就可以快速查找到后面有几种推荐词。</p>
+<p>比如上面的例子，输入 “o”，就可以快速查找到后面有 “ok” 与 “ol” 两个单词。要注意的是，每个节点都要有一个属性 <code>isEndOfWord</code> 表示到当前为止是否为一个完整的单词：比如 <code>go</code> 与 <code>good</code> 两个都是完整的单词，但 <code>goo</code> 不是，因此第二个 <code>o</code> 与第四个 <code>d</code> 都有 <code>isEndOfWord</code> 标记，表示读到这里就查到一个完整的单词了，叶子结点的标记也可以省略。</p>
+<h3 id="并查集"><a href="#并查集" class="headerlink" title="并查集"></a>并查集</h3><p><img src="/images/algorithm-dataStructure/9.png" alt="9"></p>
+<p>并查集用来解决团伙问题，或者岛屿问题，即判断多个元素之间是属于某个集合。并查集的英文是 Union and Find，即归并与查找，因此并查集数据结构可以写成一个类，提供两个最基础的方法 <code>union</code> 与 <code>find</code>。</p>
+<p>其中 <code>union</code> 可以将任意两个元素放在一个集合，而 <code>find</code> 可以查找任意元素属于哪个根集合。</p>
+<p>并查集使用数组的数据结构，只是有以下特殊含义，设下标为 k：</p>
+<ul>
+<li><code>nums[k]</code> 表示其所属的集合，如果 <code>nums[k] === k</code> 表示它是这个集合的根节点。</li>
+</ul>
+<p>如果要数一共有几个集合，只要数有多少满足 <code>nums[k] === k</code> 条件的数目即可，就像数有几个团伙，只要数有几个老大即可。</p>
+<p>并查集的实现不同，数据也会有微妙的不同，高效的并查集在插入时，会递归将元素的值尽量指向根老大，这样查找判断时计算的快一些，但即便指向的不是根老大，也可以通过递归的方式找到根老大。</p>
+<h3 id="布隆过滤器"><a href="#布隆过滤器" class="headerlink" title="布隆过滤器"></a>布隆过滤器</h3><p><img src="/images/algorithm-dataStructure/10.png" alt="10"></p>
+<p>Bloom Filter 只是一个过滤器，可以用远远超过其他算法的速度把未命中的数据排除掉，但未排除的也可能实际不存在，所以需要进一步查询。</p>
+<p>布隆过滤器是如何做到这一点的呢？就是通过二进制判断。</p>
+<p>如上图所示，我们先存储了 a、b 两个数据，将其转化为二进制，将对应为止改为 1，那么当我们再查询 a 或 b 时，因为映射关系相同，所以查到的结果肯定存在。</p>
+<p>但查询 c 时，发现有一项是 0，说明 c 一定不存在；但查询 d 时，恰好两个都查到是 1，但实际 d 是不存在的，这就是其产生误差的原因。</p>
+<p>布隆过滤器在比特币与分布式系统中使用广泛，比如比特币查询交易是否在某个节点上，就先利用布隆过滤器挡一下，以快速跳过不必要的搜索，而分布式系统计算比如 Map Reduce，也通过布隆过滤器快速过滤掉不在某个节点的计算。</p>
+
+    </div>
+
+    <!--  -->
+</div>
+                     
+<footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2020 - 2025 Gregory
+            <span class="footer-icon">
+                <a-icon type="flag" theme="filled" /></span>
+            @Gregory Wu
+        </div>
+        <div></div>
+        
+    </div>
+
+</footer>
+
+<script src="/js/highlight.min.js"></script>
+<script src="/js/particle.js"></script>
+                </div>
+            </div>
+        </transition>
+    </div>
+
+    <script>
+    new Vue({
+        el: "#layout",
+        data: {
+            show_page: false,
+            onload_menu: false,
+            menu_show: false,
+            card_top: 100
+        },
+        created: function () {
+            window.onload = () => {
+
+                this.show_page = true;
+
+                document.getElementById("loadcontent").style.opacity = 0;
+
+                setTimeout(function () {
+                    document.getElementById("loadleft").style.width = 0;
+                    document.getElementById("loadright").style.width = 0;
+                }, 300);
+
+                setTimeout(function () {
+                    document.getElementById("loading").style = "display:none"
+                }, 600);
+
+                // 禁用右键菜单
+                document.oncontextmenu = function (e) {
+                    e.preventDefault();
+                }
+
+                // 禁用f12
+                window.addEventListener('keydown', (e) => {
+                    if (e.keyCode === 123) {
+                        e.preventDefault();
+                    }
+                })
+            }
+        },
+        mounted() {
+            window.addEventListener('scroll', (e) => {
+                this.menu_show = false
+            })
+        },
+        methods: {
+            home_click: function () {
+                window.scrollTo({
+                    top: window.innerHeight - 80,
+                    behavior: "smooth",
+                });
+            },
+            goTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                });
+            }
+        }
+    })
+</script>
+<!--  -->
+</body>
+
+</html>

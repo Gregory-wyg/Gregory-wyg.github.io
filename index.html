@@ -1,0 +1,1187 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gregory's blog</title>
+    <meta name="author" content="Gregory Wu">
+    <meta name="description" content="小武的博客">
+    <meta name="keywords" content="vue,javascript,css,blog,Gregory">
+    <link rel="icon" href="/../../images/gregory.png">
+    <link rel="stylesheet" href="/css/antd.min.css">
+    <link rel="stylesheet" href="/css/icon-font.css">
+    
+    <link rel="stylesheet" href="/css/full-theme.css">
+    
+    <script src="/js/vue.js"></script>
+    <script src="/js/antd.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script type="text/javascript">
+      if (window !== top){ // 判断当前的window对象是否是top对象
+        top.location.href = window.location.href; // 如果不是，将top对象的网址自动导向被嵌入网页的网址
+      }
+    </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <script>
+        if (!navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))
+            document.writeln(
+                `<canvas id="background"><\/canvas>\n<canvas id="fireworks"><\/canvas>\n<script src="/js\/background.js"><\/script>\n<script src="/js\/fireworks.js"><\/script>`
+            );
+    </script>  
+    <div id="loading"
+        style="height: 100vh; width: 100%; position: fixed;display: flex;z-index: 200; justify-content: space-between;">
+        <div id="loadleft" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div id="loadright" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div
+            style="position: fixed; height: 100vh; width: 100%;display: flex;justify-content: center;align-items: center;">
+            <div id="loadcontent"
+                style="width:400px;height:400px;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px#a3ddfb; text-align:center;opacity:1;transition:opacity 0.3s ease-out;user-select:none;">
+                <div>
+                    <h2>LOADING...</h2>
+                    <div>
+                        <img src="/runningDeer.gif" alt="loading" style="width: 70px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="layout">
+        <transition name="into">
+            <div v-show="show_page" style="display: none;">
+                <div id="menu_show">
+                     
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">Gregory</span>
+        </a>
+        
+        <a href="/">
+            <span>
+                <a-icon type="home" theme="filled" />
+            </span>
+            <span>首页</span>
+        </a>
+        
+        <a href="/archives">
+            <span>
+                <a-icon type="folder" theme="filled" />
+            </span>
+            <span>文章</span>
+        </a>
+        
+        <a href="/categories">
+            <span>
+                <a-icon type="book" theme="filled" />
+            </span>
+            <span>分类</span>
+        </a>
+        
+        <a href="/tags">
+            <span>
+                <a-icon type="tags" theme="filled" />
+            </span>
+            <span>标签</span>
+        </a>
+        
+        <a href="/about">
+            <span>
+                <a-icon type="idcard" theme="filled" />
+            </span>
+            <span>关于</span>
+        </a>
+        
+    </div>
+
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div :class="'title'" @click="menu_show=!menu_show">
+            <span style="margin-right: 10px;">
+                <a-icon type="appstore" theme="filled" />
+            </span>
+            <span>Gregory</span>
+        </div>
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="home" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">首页</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="folder" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">文章</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="book" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">分类</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="tags" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">标签</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="idcard" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">关于</div>
+                </div>
+            </a>
+            
+        </div>
+        <div class="curtain" v-show="menu_show"></div>
+    </div>
+
+</nav>
+                </div>
+
+                <div id="main">
+                    <div id="home-head" style=background-image:url('/home.png')>
+    <script>
+        var menu = document.getElementById("menu")
+        menu.className += " menu-color"
+    </script>
+     
+    <div id="home-info" class="home-info" @click="home_click">
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="info">
+            <div class="wrap">
+                <h1>Gregory</h1>
+                <h3>因为热爱 旦暮复兮</h3>
+                <!-- <h5>小武的博客</h5> -->
+            </div>
+        </span>
+    </div>
+     
+</div>
+
+
+
+<div id="home-posts-wrap" class=>
+    <div id="home-posts">
+
+        <div id="posts">
+            
+
+<div class="post">
+
+    <a href="/2022/04/03/Vue 在Vue中使用Svg/">
+        <h2>
+            在Vue中使用Svg
+        </h2>
+    </a>
+
+    <div class="category-and-date">
+
+        
+        <span class="category">
+            <a href="/categories/学习笔记">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" /></span>
+                学习笔记
+            </a>
+        </span>
+        
+
+        <span class="date">
+            <span class="icon">
+                <a-icon type="calendar" theme="filled" />
+            </span>
+            2022/4/3
+        </span>
+
+    </div>
+
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h5 id="一般我们在项目中使用的图片都是png，jpeg，或者iconfont-相比之下，SVG图有以下这些优势："><a href="#一般我们在项目中使用的图片都是png，jpeg，或者iconfont-相比之下，SVG图有以下这些优势：" class="headerlink" title="一般我们在项目中使用的图片都是png，jpeg，或者iconfont 相比之下，SVG图有以下这些优势："></a>一般我们在项目中使用的图片都是png，jpeg，或者iconfont 相比之下，SVG图有以下这些优势：</h5><ul>
+<li><p><code>SVG</code>是可缩放的矢量图，无论怎样缩放都很清晰。</p>
+</li>
+<li><p>可以通过文本编辑器创建和修改，所以可以改变颜色。</p>
+</li>
+<li><p><code>SVG</code> 与 <code>JPEG</code> 和 <code>GIF</code> 图像比起来，尺寸更小，且可压缩性更强。</p>
+</li>
+<li><p><code>SVG</code>图片有<code>title</code>和<code>desc</code>标签，有利于<code>SEO</code>搜索。</p>
+</li>
+</ul>
+            
+            
+        </div>
+    </div>
+
+    <div class="post-tags">
+        
+        <span class="icon">
+            <a-icon type="tags" theme="filled" />
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/Vue" style=color:#00bcd4>
+                Vue
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/Svg" style=color:#00bcd4>
+                Svg
+            </a>
+        </span>
+        
+    </div>
+
+    <a href="/2022/04/03/Vue 在Vue中使用Svg/ " class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+
+    <a href="/2022/03/12/Javascript 使用Prettier-Husky强制格式化代码/">
+        <h2>
+            使用Prettier+Husky强制格式化代码
+        </h2>
+    </a>
+
+    <div class="category-and-date">
+
+        
+        <span class="category">
+            <a href="/categories/学习笔记">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" /></span>
+                学习笔记
+            </a>
+        </span>
+        
+
+        <span class="date">
+            <span class="icon">
+                <a-icon type="calendar" theme="filled" />
+            </span>
+            2022/3/12
+        </span>
+
+    </div>
+
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h4 id="一、格式化痛点"><a href="#一、格式化痛点" class="headerlink" title="一、格式化痛点"></a>一、格式化痛点</h4><p>虽然我们团队制定了代码规范，但是平时大家写代码的时候还是各有各的风格，遇上紧急的需求或者bug，规范基本是没有的。</p>
+<p>而且目前团队不建议使用编辑器自带的格式化插件，所以多人开发的项目通常是越来越乱。</p>
+<p>关于代码格式化的插件，大家不喜欢的原因是，</p>
+<p>第一，团队有人用<code>WebStorm</code>，有人用<code>VScode</code>，格式化风格可能不一样；</p>
+<p>第二，例如<code>VScode</code>的插件<code>Prettier</code>和<code>Vetur</code>，它们都有格式化的功能，可能会有冲突；</p>
+<p>第三，有时格式化后的代码很奇怪，例如下面这种，总之就是看着不舒服。</p>
+            
+            
+        </div>
+    </div>
+
+    <div class="post-tags">
+        
+        <span class="icon">
+            <a-icon type="tags" theme="filled" />
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/前端" style=color:#03a9f4>
+                前端
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/JavaScript" style=color:#03a9f4>
+                JavaScript
+            </a>
+        </span>
+        
+    </div>
+
+    <a href="/2022/03/12/Javascript 使用Prettier-Husky强制格式化代码/ " class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+
+    <a href="/2022/03/08/Git commit方式-commitlint校验-prettier格式化/">
+        <h2>
+            Commit方式+CommitLint校验+Prettier格式化
+        </h2>
+    </a>
+
+    <div class="category-and-date">
+
+        
+        <span class="category">
+            <a href="/categories/学习笔记">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" /></span>
+                学习笔记
+            </a>
+        </span>
+        
+
+        <span class="date">
+            <span class="icon">
+                <a-icon type="calendar" theme="filled" />
+            </span>
+            2022/3/8
+        </span>
+
+    </div>
+
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h5 id="根据Angular团队的git-commit规范，简单说下常用的commit的方式："><a href="#根据Angular团队的git-commit规范，简单说下常用的commit的方式：" class="headerlink" title="根据Angular团队的git commit规范，简单说下常用的commit的方式："></a>根据Angular团队的git commit规范，简单说下常用的commit的方式：</h5><p>type 主要有一下几种：</p>
+<table>
+  <tr>
+    <th>type</th>
+    <th>作用描述</th>
+  </tr>
+  <tr>
+    <td>feat</td>
+    <td>新功能更新</td>
+  </tr>
+  <tr>
+    <td>fix</td>
+    <td>bug修复</td>
+  </tr>
+  <tr>
+    <td>style</td>
+    <td>改变代码格式，如删除空行、格式化代码、去除不必要的分号等等，不影响代码功能逻辑的操作</td>
+  </tr>
+  <tr>
+    <td>refactor</td>
+    <td>代码重构时使用，不是功能更新也不是 bug 修复的更改</td>
+  </tr>
+  <tr>
+    <td>perf</td>
+    <td>性能优化等</td>
+  </tr>
+  <tr>
+    <td>test</td>
+    <td>添加测试用例或者修改测试用例</td>
+  </tr>
+  <tr>
+    <td>build</td>
+    <td>由打包工具造成的改变（如gulp、webpack编译文件）</td>
+  </tr>
+  <tr>
+    <td>chore</td>
+    <td>更改构建过程、修改配置文件，添加/删除辅助工具或者库</td>
+  </tr>
+  <tr>
+    <td>revert</td>
+    <td>撤销之前的提交</td>
+  </tr>
+</table>
+            
+            
+        </div>
+    </div>
+
+    <div class="post-tags">
+        
+        <span class="icon">
+            <a-icon type="tags" theme="filled" />
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/JavaScript" style=color:#ffa2c4>
+                JavaScript
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/Git" style=color:#ffa2c4>
+                Git
+            </a>
+        </span>
+        
+    </div>
+
+    <a href="/2022/03/08/Git commit方式-commitlint校验-prettier格式化/ " class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+
+    <a href="/2022/03/01/Vue vue使用防抖函数时出现的this丢失问题/">
+        <h2>
+            vue使用防抖函数时出现的this丢失问题
+        </h2>
+    </a>
+
+    <div class="category-and-date">
+
+        
+        <span class="category">
+            <a href="/categories/学习笔记">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" /></span>
+                学习笔记
+            </a>
+        </span>
+        
+
+        <span class="date">
+            <span class="icon">
+                <a-icon type="calendar" theme="filled" />
+            </span>
+            2022/3/1
+        </span>
+
+    </div>
+
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <p>接到一个需求，滚动一次鼠标，改变时间轴刻度。因为鼠标滚动一次会触发多次滚动事件，为了节约性能，就想到使用防抖。</p>
+            
+            
+        </div>
+    </div>
+
+    <div class="post-tags">
+        
+        <span class="icon">
+            <a-icon type="tags" theme="filled" />
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/前端" style=color:#00a596>
+                前端
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/Vue" style=color:#00bcd4>
+                Vue
+            </a>
+        </span>
+        
+    </div>
+
+    <a href="/2022/03/01/Vue vue使用防抖函数时出现的this丢失问题/ " class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+
+    <a href="/2021/11/10/ES6 数组快速创建与排序稳定性探究/">
+        <h2>
+            数组快速创建与排序稳定性探究
+        </h2>
+    </a>
+
+    <div class="category-and-date">
+
+        
+        <span class="category">
+            <a href="/categories/学习笔记">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" /></span>
+                学习笔记
+            </a>
+        </span>
+        
+
+        <span class="date">
+            <span class="icon">
+                <a-icon type="calendar" theme="filled" />
+            </span>
+            2021/11/10
+        </span>
+
+    </div>
+
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h4 id="数组快速创建问题"><a href="#数组快速创建问题" class="headerlink" title="数组快速创建问题"></a>数组快速创建问题</h4><p>我们有时候需要快速创建一个数组，比如一个<code>1-30</code>的下拉列表，该怎么写呢？</p>
+<p>如果我们直接在初始化的时候赋值 ，代码会显得冗余不堪。</p>
+<p>而如果用 <code>for</code> 循环一个个<code>push</code>，也觉得不够简洁。</p>
+<pre><code class="javascript">data()&#123;
+    return &#123;
+        arr : [1, 2, 3, ......, 29, 30],
+        arr2 : []
+    &#125;
+&#125;
+ 
+created()&#123;
+    for(let i = 1; i &lt;= 30; i++)&#123;
+        this.arr2.push(i);
+    &#125;
+&#125;
+</code></pre>
+            
+            
+        </div>
+    </div>
+
+    <div class="post-tags">
+        
+        <span class="icon">
+            <a-icon type="tags" theme="filled" />
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/前端" style=color:#00a596>
+                前端
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/JavaScript" style=color:#03a9f4>
+                JavaScript
+            </a>
+        </span>
+        
+    </div>
+
+    <a href="/2021/11/10/ES6 数组快速创建与排序稳定性探究/ " class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+
+    <a href="/2021/11/02/CSS css实现渐变色边框的3种方法/">
+        <h2>
+            css实现渐变色边框的3种方法
+        </h2>
+    </a>
+
+    <div class="category-and-date">
+
+        
+        <span class="category">
+            <a href="/categories/技术分享">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" /></span>
+                技术分享
+            </a>
+        </span>
+        
+
+        <span class="date">
+            <span class="icon">
+                <a-icon type="calendar" theme="filled" />
+            </span>
+            2021/11/2
+        </span>
+
+    </div>
+
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h4 id="使用-border-image"><a href="#使用-border-image" class="headerlink" title="使用 border-image"></a>使用 border-image</h4><p>CSS 提供了 <code>border-image</code> 属性用于给 <code>border</code> 绘制复杂图样，与 <code>background-image</code> 类似，我们可以在 <code>border</code> 中展示 <code>image</code> 和 <code>linear-gradient</code>。</p>
+<p>通过 <code>border-image</code> 设置渐变色 <code>border</code> 是最简单的方法，只需要两行代码：</p>
+<pre><code class="css">div &#123;
+  border: 4px solid;
+  border-image: linear-gradient(to right, #8f41e9, #578aef) 1;
+&#125;
+ 
+/* 或者 */
+div &#123;
+  border: 4px solid;
+  border-image-source: linear-gradient(to right, #8f41e9, #578aef);
+  border-image-slice: 1;
+&#125;
+</code></pre>
+<p>这种方式虽然简单但有个明显的缺陷，不支持设置 <code>border-radius</code>。接下来会介绍几种支持 <code>border-radius</code> 的方法。</p>
+            
+            
+        </div>
+    </div>
+
+    <div class="post-tags">
+        
+        <span class="icon">
+            <a-icon type="tags" theme="filled" />
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/Css" style=color:#03a9f4>
+                Css
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/前端" style=color:#ffa2c4>
+                前端
+            </a>
+        </span>
+        
+    </div>
+
+    <a href="/2021/11/02/CSS css实现渐变色边框的3种方法/ " class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+
+    <a href="/2021/08/12/ES6 ES6以上新特性/">
+        <h2>
+            ES6以上新特性
+        </h2>
+    </a>
+
+    <div class="category-and-date">
+
+        
+        <span class="category">
+            <a href="/categories/学习笔记">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" /></span>
+                学习笔记
+            </a>
+        </span>
+        
+
+        <span class="date">
+            <span class="icon">
+                <a-icon type="calendar" theme="filled" />
+            </span>
+            2021/8/12
+        </span>
+
+    </div>
+
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h4 id="ES7新特性"><a href="#ES7新特性" class="headerlink" title="ES7新特性"></a>ES7新特性</h4><h5 id="1-Array-prototype-includes-方法"><a href="#1-Array-prototype-includes-方法" class="headerlink" title="1.Array.prototype.includes()方法"></a>1.Array.prototype.includes()方法</h5><p>在 <code>ES6</code> 中我们有 <code>String.prototype.includes()</code> 可以查询给定字符串是否包含一个字符，而在 <code>ES7</code> 中，我们在数组中也可以用 <code>Array.prototype.includes</code> 方法来判断一个数组是否包含一个指定的值，根据情况，如果包含则返回<code>true</code>，否则返回<code>false</code>。</p>
+            
+            
+        </div>
+    </div>
+
+    <div class="post-tags">
+        
+        <span class="icon">
+            <a-icon type="tags" theme="filled" />
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/前端" style=color:#00a596>
+                前端
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/JavaScript" style=color:#ffa2c4>
+                JavaScript
+            </a>
+        </span>
+        
+    </div>
+
+    <a href="/2021/08/12/ES6 ES6以上新特性/ " class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+
+    <a href="/2021/07/12/ES6 Map-方法的基本使用/">
+        <h2>
+            Map()方法的基本使用
+        </h2>
+    </a>
+
+    <div class="category-and-date">
+
+        
+        <span class="category">
+            <a href="/categories/学习笔记">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" /></span>
+                学习笔记
+            </a>
+        </span>
+        
+
+        <span class="date">
+            <span class="icon">
+                <a-icon type="calendar" theme="filled" />
+            </span>
+            2021/7/12
+        </span>
+
+    </div>
+
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <p><code>JavaScript</code> 的对象（<code>Object</code>），本质上是键值对的集合（<code>Hash</code> 结构），但是传统上只能用字符串当作键。这给它的使用带来了很大的限制。</p>
+<pre><code class="javascript">const data = &#123;&#125;;
+const element = document.getElementById(&#39;myDiv&#39;);
+ 
+data[element] = &#39;metadata&#39;;
+data[&#39;[object HTMLDivElement]&#39;] // &quot;metadata&quot;
+</code></pre>
+<p>上面代码原意是将一个 <code>DOM</code> 节点作为对象<code>data</code>的键，但是由于对象只接受字符串作为键名，所以<code>element</code>被自动转为字符串<code>[object HTMLDivElement]</code>。</p>
+<h4 id="什么是Map"><a href="#什么是Map" class="headerlink" title="什么是Map"></a>什么是Map</h4><p>为了解决这个问题，<code>ES6</code> 提供了 <code>Map</code> 数据结构。它类似于对象，也是键值对的集合，但是“键”的范围不限于字符串，各种类型的值（包括对象）都可以当作键。<br>也就是说，<code>Object</code> 结构提供了“字符串—值”的对应，<code>Map</code> 结构提供了“值—值”的对应，是一种更完善的 <code>Hash</code> 结构实现。<br>如果你需要“键值对”的数据结构，<code>Map</code> 比 <code>Object</code> 更合适。</p>
+            
+            
+        </div>
+    </div>
+
+    <div class="post-tags">
+        
+        <span class="icon">
+            <a-icon type="tags" theme="filled" />
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/前端" style=color:#00bcd4>
+                前端
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/JavaScript" style=color:#03a9f4>
+                JavaScript
+            </a>
+        </span>
+        
+    </div>
+
+    <a href="/2021/07/12/ES6 Map-方法的基本使用/ " class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+
+    <a href="/2021/07/01/CSS 使用scss实现切换主题色/">
+        <h2>
+            使用scss实现切换主题色
+        </h2>
+    </a>
+
+    <div class="category-and-date">
+
+        
+        <span class="category">
+            <a href="/categories/技术分享">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" /></span>
+                技术分享
+            </a>
+        </span>
+        
+
+        <span class="date">
+            <span class="icon">
+                <a-icon type="calendar" theme="filled" />
+            </span>
+            2021/7/1
+        </span>
+
+    </div>
+
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <h3 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h3><div style="display: flex;">
+  <img src="/images/使用scss实现切换主题色/1.png" style="margin:0;max-width: 50%;" alt="图片"/>
+  <img src="/images/使用scss实现切换主题色/2.png" style="margin:0;max-width: 50%" alt="图片"/>
+</div>
+
+<p>直接上代码</p>
+<pre><code class="javascript">APP.vue
+
+/** 设置主题 */
+changeTheme(data) &#123;
+    window.document.documentElement.setAttribute(&#39;data-theme&#39;, data); // 给根节点设置data-theme属性，切换主题色就是修改data-theme的值
+&#125;,
+</code></pre>
+            
+            
+        </div>
+    </div>
+
+    <div class="post-tags">
+        
+        <span class="icon">
+            <a-icon type="tags" theme="filled" />
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/Css" style=color:#00a596>
+                Css
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/前端" style=color:#03a9f4>
+                前端
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/Scss" style=color:#00a596>
+                Scss
+            </a>
+        </span>
+        
+    </div>
+
+    <a href="/2021/07/01/CSS 使用scss实现切换主题色/ " class="go-post">
+        阅读全文
+    </a>
+</div>
+
+<div class="post">
+
+    <a href="/2021/06/21/Vue vue事件中的$event对象/">
+        <h2>
+            vue事件中的$event对象
+        </h2>
+    </a>
+
+    <div class="category-and-date">
+
+        
+        <span class="category">
+            <a href="/categories/学习笔记">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" /></span>
+                学习笔记
+            </a>
+        </span>
+        
+
+        <span class="date">
+            <span class="icon">
+                <a-icon type="calendar" theme="filled" />
+            </span>
+            2021/6/21
+        </span>
+
+    </div>
+
+    <div class="excerpt">
+        <div class="content" v-pre>
+            
+            <p>一般会在两种情况下使用$event参数。</p>
+<h4 id="一、DOM事件回调"><a href="#一、DOM事件回调" class="headerlink" title="一、DOM事件回调"></a>一、DOM事件回调</h4><p><code>v-on</code>指令监听<code>dom</code>事件的时候不需要写<code>$event</code>，回调函数会默认接收该参数。（形参不一定要写e，写什么都可以）</p>
+<p>如果<code>sliderMove</code>传了指定的参数a，那么就会接收a。</p>
+<p>如果既想接收事件对象，又想接收a，要写成<code>@mousedown=&quot;sliderMove($event, a)&quot;</code>。</p>
+<pre><code class="vue">&lt;template&gt;
+  &lt;div ref=&quot;bar&quot; :style=&quot;barCSS&quot; class=&quot;bar&quot; @mousedown=&quot;sliderMove&quot;&gt;&lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+ 
+export default &#123;
+  methods: &#123;
+    sliderMove(e) &#123;
+      console.log(e);
+    &#125;
+  &#125;
+&#125;;
+&lt;/script&gt;
+</code></pre>
+            
+            
+        </div>
+    </div>
+
+    <div class="post-tags">
+        
+        <span class="icon">
+            <a-icon type="tags" theme="filled" />
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/JavaScript" style=color:#ffa2c4>
+                JavaScript
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/Vue" style=color:#00bcd4>
+                Vue
+            </a>
+        </span>
+        
+    </div>
+
+    <a href="/2021/06/21/Vue vue事件中的$event对象/ " class="go-post">
+        阅读全文
+    </a>
+</div>
+
+
+             
+<div class="page-current">
+
+    <div class="prev">
+        
+    </div>
+
+    <div class="page-index">
+
+        
+
+        <span class="current">
+            1
+        </span>
+
+        
+        <span>
+            <a href="/page/2/">
+                <span class="page-num">
+                    2
+                </span>
+            </a>
+            
+            <a href="/page/3">
+                <span class="page-num">
+                    3
+                </span>
+            </a>
+            
+
+            
+
+        </span>
+        
+
+    </div>
+
+    <div class="next">
+        
+        <a href="/page/2/ ">
+            <span class="page-num">
+                <a-icon type="caret-right" theme="filled" />
+            </span>
+        </a>
+        
+    </div>
+
+</div>
+
+        </div>
+    </div>
+    
+    <div id="home-card">
+        <a-affix :offset-top="card_top">
+    <a-card class="card-style" style="width: 300px">
+        <div class="avatar">
+            <img src="../../images/gregory.jpg " alt="头像">
+        </div>
+        <div class="name">
+            Gregory Wu
+        </div>
+        <div class="descriptions">
+            
+            <div class="description">
+                
+            </div>
+            
+            <div class="description">
+                陌上花开 可缓缓归矣
+            </div>
+            
+        </div>
+        <div class="icon-links">
+            
+            <span class="icon-link">
+                <a target="_blank" rel="noopener" href="https://github.com/Gregory-wyg">
+
+                    
+                    <a-icon type="github"
+                        theme="filled" />
+                    
+                </a>
+            </span>
+            
+            <span class="icon-link">
+                <a target="_blank" rel="noopener" href="https://gitee.com/gregory_wu">
+
+                    
+                        <i class="iconfont icon-gitee-fill-round"></i>
+                    
+                </a>
+            </span>
+            
+            <span class="icon-link">
+                <a target="_blank" rel="noopener" href="https://space.bilibili.com/188447132/">
+
+                    
+                        <i class="iconfont icon-bilibili-fill"></i>
+                    
+                </a>
+            </span>
+            
+        </div>
+        <div class="friend-links">
+            
+            <div class="friend-link">
+                <a target="_blank" rel="noopener" href="https://juejin.cn/user/1354207012071015">
+                    博主掘金
+                </a>
+            </div>
+            
+        </div>
+        <div class="go-top">
+            <a-icon type="arrow-up" @click="goTop"/>
+        </div>
+    </a-card>
+</a-affix>
+    </div>
+    
+</div>
+                     
+<footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2020 - 2025 Gregory
+            <span class="footer-icon">
+                <a-icon type="flag" theme="filled" /></span>
+            @Gregory Wu
+        </div>
+        <div></div>
+        
+    </div>
+
+</footer>
+
+<script src="/js/highlight.min.js"></script>
+<script src="/js/particle.js"></script>
+                </div>
+            </div>
+        </transition>
+    </div>
+
+    <script>
+    new Vue({
+        el: "#layout",
+        data: {
+            show_page: false,
+            onload_menu: false,
+            menu_show: false,
+            card_top: 100
+        },
+        created: function () {
+            window.onload = () => {
+
+                this.show_page = true;
+
+                document.getElementById("loadcontent").style.opacity = 0;
+
+                setTimeout(function () {
+                    document.getElementById("loadleft").style.width = 0;
+                    document.getElementById("loadright").style.width = 0;
+                }, 300);
+
+                setTimeout(function () {
+                    document.getElementById("loading").style = "display:none"
+                }, 600);
+
+                // 禁用右键菜单
+                document.oncontextmenu = function (e) {
+                    e.preventDefault();
+                }
+
+                // 禁用f12
+                window.addEventListener('keydown', (e) => {
+                    if (e.keyCode === 123) {
+                        e.preventDefault();
+                    }
+                })
+            }
+        },
+        mounted() {
+            window.addEventListener('scroll', (e) => {
+                this.menu_show = false
+            })
+        },
+        methods: {
+            home_click: function () {
+                window.scrollTo({
+                    top: window.innerHeight - 80,
+                    behavior: "smooth",
+                });
+            },
+            goTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                });
+            }
+        }
+    })
+</script>
+<!--  -->
+</body>
+
+</html>

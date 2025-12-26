@@ -1,0 +1,378 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gregory's blog</title>
+    <meta name="author" content="Gregory Wu">
+    <meta name="description" content="小武的博客">
+    <meta name="keywords" content="vue,javascript,css,blog,Gregory">
+    <link rel="icon" href="/../../images/gregory.png">
+    <link rel="stylesheet" href="/css/antd.min.css">
+    <link rel="stylesheet" href="/css/icon-font.css">
+    
+    <link rel="stylesheet" href="/css/full-theme.css">
+    
+    <script src="/js/vue.js"></script>
+    <script src="/js/antd.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script type="text/javascript">
+      if (window !== top){ // 判断当前的window对象是否是top对象
+        top.location.href = window.location.href; // 如果不是，将top对象的网址自动导向被嵌入网页的网址
+      }
+    </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <script>
+        if (!navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))
+            document.writeln(
+                `<canvas id="background"><\/canvas>\n<canvas id="fireworks"><\/canvas>\n<script src="/js\/background.js"><\/script>\n<script src="/js\/fireworks.js"><\/script>`
+            );
+    </script>  
+    <div id="loading"
+        style="height: 100vh; width: 100%; position: fixed;display: flex;z-index: 200; justify-content: space-between;">
+        <div id="loadleft" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div id="loadright" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div
+            style="position: fixed; height: 100vh; width: 100%;display: flex;justify-content: center;align-items: center;">
+            <div id="loadcontent"
+                style="width:400px;height:400px;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px#a3ddfb; text-align:center;opacity:1;transition:opacity 0.3s ease-out;user-select:none;">
+                <div>
+                    <h2>LOADING...</h2>
+                    <div>
+                        <img src="/runningDeer.gif" alt="loading" style="width: 70px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="layout">
+        <transition name="into">
+            <div v-show="show_page" style="display: none;">
+                <div id="menu_show">
+                     
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">Gregory</span>
+        </a>
+        
+        <a href="/">
+            <span>
+                <a-icon type="home" theme="filled" />
+            </span>
+            <span>首页</span>
+        </a>
+        
+        <a href="/archives">
+            <span>
+                <a-icon type="folder" theme="filled" />
+            </span>
+            <span>文章</span>
+        </a>
+        
+        <a href="/categories">
+            <span>
+                <a-icon type="book" theme="filled" />
+            </span>
+            <span>分类</span>
+        </a>
+        
+        <a href="/tags">
+            <span>
+                <a-icon type="tags" theme="filled" />
+            </span>
+            <span>标签</span>
+        </a>
+        
+        <a href="/about">
+            <span>
+                <a-icon type="idcard" theme="filled" />
+            </span>
+            <span>关于</span>
+        </a>
+        
+    </div>
+
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div :class="'title'" @click="menu_show=!menu_show">
+            <span style="margin-right: 10px;">
+                <a-icon type="appstore" theme="filled" />
+            </span>
+            <span>Gregory</span>
+        </div>
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="home" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">首页</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="folder" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">文章</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="book" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">分类</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="tags" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">标签</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="idcard" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">关于</div>
+                </div>
+            </a>
+            
+        </div>
+        <div class="curtain" v-show="menu_show"></div>
+    </div>
+
+</nav>
+                </div>
+
+                <div id="main">
+                     
+<link rel="stylesheet" href="/css/post-body.css">
+<div class="article">
+    <div>
+        <h1>CSS Motion Path技术研究 </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <a-icon type="calendar" theme="filled" />
+            </span>
+            2021/5/13
+        </span>
+
+        
+        <span class="category">
+            <a href="/categories/技术分享">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" />
+                </span>
+                技术分享
+            </a>
+        </span>
+        
+
+        
+
+        <span class="tags">
+            <span class="icon">
+                <a-icon type="tags" theme="filled" />
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/Css" style=color:#03a9f4>
+                    Css
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/前端" style=color:#ff7d73>
+                    前端
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+
+    <div class="content" v-pre>
+        <p>最近在看css3手册时忽然发现了新的动画属性css, 名叫Motion Path，利用Motion Path，我们可以控制元素按照特定的路径进行位置变换的动画。并且，这个路径可以是非常复杂的一条路径。</p>
+<p>CSS Motion Path 规范主要包含以下几个属性：</p>
+<ul>
+<li>offset-path：接收一个 SVG 路径（与 SVG 的path、CSS 中的 clip-path 类似），指定运动的几何路径</li>
+<li>offset-distance：控制当前元素基于 offset-path 运动的距离</li>
+<li>offset-position：指定 offset-path 的初始位置</li>
+<li>offset-anchor：定义沿 offset-path 定位的元素的锚点。 这个也算好理解，运动的元素可能不是一个点，那么就需要指定元素中的哪个点附着在路径上进行运动</li>
+<li>offset-rotate：定义沿 offset-path 定位时元素的方向，说人话就是运动过程中元素的角度朝向</li>
+</ul>
+<span id="more"></span>
+<h4 id="CSS-Motion-Path-实现直线路径动画"><a href="#CSS-Motion-Path-实现直线路径动画" class="headerlink" title="CSS Motion Path 实现直线路径动画"></a>CSS Motion Path 实现直线路径动画</h4><pre><code class="css">&lt;div&gt;&lt;/div&gt;
+ 
+div &#123;
+   width: 60px;
+   height: 60px;
+   background: linear-gradient(#fc0, #f0c);
+   offset-path: path(&quot;M 0 0 L 100 100&quot;);
+   offset-rotate: 0deg;
+   animation: move 2000ms infinite alternate ease-in-out;
+&#125;
+
+@keyframes move &#123;
+  0% &#123;
+    offset-distance: 0%;
+  &#125;
+  100% &#123;
+    offset-distance: 100%;
+  &#125;
+&#125;
+</code></pre>
+<p>offset-path 接收一个 SVG 的 path 路径，这里我们的路径内容是一条自定义路径 path(“M 0 0 L 100 100”)，翻译过来就是从 0 0 点运动到 100px 100px 点。<br>我们会得到如下结果：<br><img src="/images/CSS Motion Path技术研究/1.gif" style="margin:0" alt="图片"/></p>
+<p>通过控制元素的 offset-distance 从 0% 变化到 100% 进行元素的路径动画。<br>当然，上述的动画是最基本的，我可以充分利用 path 的特性，增加多个中间关键帧，稍微改造下上述代码：</p>
+<pre><code class="css">&lt;div&gt;&lt;/div&gt;
+ 
+div &#123;
+  /*
+   * 只更改offset-path
+   */
+  offset-path: path(&quot;M 0 0 L 100 0 L 200 0 L 300 100 L 400 0 L 500 100 L 600 0 L 700 100 L 800 0&quot;);
+&#125;
+</code></pre>
+<p>这里最主要还是运用了 path 中的 L 指令，得到了如下图这样一条直线路径：<br><img src="/images/CSS Motion Path技术研究/2.gif" style="margin:0" alt="图片"/></p>
+<h4 id="CSS-Motion-Path-实现曲线路径动画"><a href="#CSS-Motion-Path-实现曲线路径动画" class="headerlink" title="CSS Motion Path 实现曲线路径动画"></a>CSS Motion Path 实现曲线路径动画</h4><p>上面的运动轨迹都是由直线构成，下面我们看看如何使用 CSS Motion Path 实现曲线路径动画。</p>
+<p>其实原理还是一模一样，只需要在 offset-path: path() 中添加曲线相关的路径即可。</p>
+<p>在 SVG 的 Path 中，我们取其中一种绘制曲线的方法 – 贝塞尔曲线，譬如下述这条 path，其中的 path 为 d=”M 10 80 C 80 10, 130 10, 190 80 S 300 150, 360 80”：</p>
+<pre><code class="html">&lt;svg width=&quot;400&quot; height=&quot;160&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
+  &lt;path d=&quot;M 10 80 C 80 10, 130 10, 190 80 S 300 150, 360 80&quot; stroke=&quot;black&quot; fill=&quot;transparent&quot;/&gt;
+&lt;/svg&gt;
+</code></pre>
+<p>对应这样一条连续的贝塞尔曲线：<br><img src="/images/CSS Motion Path技术研究/3.png" style="margin:0" alt="图片"/></p>
+<p>将对应的路径应用在 offset-path: path 中：</p>
+<pre><code class="css">&lt;div&gt;&lt;/div&gt;
+
+div &#123;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(#fc0, #f0c);
+  offset-path: path(&#39;M 10 80 C 80 10, 130 10, 190 80 S 300 150, 360 80&#39;);
+  offset-rotate: 0deg;
+  animation: move 3000ms infinite alternate linear;
+  offset-rotate: unset;
+&#125;
+ 
+@keyframes move &#123;
+  0% &#123;
+    offset-distance: 0%;
+  &#125;
+ 
+  100% &#123;
+    offset-distance: 100%;
+  &#125;
+&#125;
+</code></pre>
+<p>可以得到如下运动效果：<br><img src="/images/CSS Motion Path技术研究/4.gif" style="margin:0" alt="图片"/></p>
+<p>可以看到，元素是沿着贝塞尔曲线的路径进行运动的，并且，由于这次没有限制死 offset-rotate，元素的朝向也是跟随路径的朝向一直变化的。（可以联想成开车的时候，车头一直跟随道路会进行变化的，带动整个车身的角度变化）</p>
+
+    </div>
+
+    <!--  -->
+</div>
+                     
+<footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2020 - 2025 Gregory
+            <span class="footer-icon">
+                <a-icon type="flag" theme="filled" /></span>
+            @Gregory Wu
+        </div>
+        <div></div>
+        
+    </div>
+
+</footer>
+
+<script src="/js/highlight.min.js"></script>
+<script src="/js/particle.js"></script>
+                </div>
+            </div>
+        </transition>
+    </div>
+
+    <script>
+    new Vue({
+        el: "#layout",
+        data: {
+            show_page: false,
+            onload_menu: false,
+            menu_show: false,
+            card_top: 100
+        },
+        created: function () {
+            window.onload = () => {
+
+                this.show_page = true;
+
+                document.getElementById("loadcontent").style.opacity = 0;
+
+                setTimeout(function () {
+                    document.getElementById("loadleft").style.width = 0;
+                    document.getElementById("loadright").style.width = 0;
+                }, 300);
+
+                setTimeout(function () {
+                    document.getElementById("loading").style = "display:none"
+                }, 600);
+
+                // 禁用右键菜单
+                document.oncontextmenu = function (e) {
+                    e.preventDefault();
+                }
+
+                // 禁用f12
+                window.addEventListener('keydown', (e) => {
+                    if (e.keyCode === 123) {
+                        e.preventDefault();
+                    }
+                })
+            }
+        },
+        mounted() {
+            window.addEventListener('scroll', (e) => {
+                this.menu_show = false
+            })
+        },
+        methods: {
+            home_click: function () {
+                window.scrollTo({
+                    top: window.innerHeight - 80,
+                    behavior: "smooth",
+                });
+            },
+            goTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                });
+            }
+        }
+    })
+</script>
+<!--  -->
+</body>
+
+</html>
